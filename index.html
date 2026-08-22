@@ -483,6 +483,39 @@
             color: #FF88C2;
         }
 
+        /* ===== КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== */
+        .pelmeshki-button-wrapper {
+            margin-top: 24px;
+            text-align: center;
+        }
+        .pelmeshki-button {
+            display: inline-block;
+            background: #e60000;
+            color: #ffffff;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            letter-spacing: 1px;
+            box-shadow: 0 6px 0 #990000, 0 8px 24px rgba(230, 0, 0, 0.3);
+            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+            font-family: 'Roboto Condensed', sans-serif;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            text-align: center;
+        }
+        .pelmeshki-button:hover {
+            background: #ff1a1a;
+            box-shadow: 0 4px 0 #990000, 0 12px 32px rgba(230, 0, 0, 0.4);
+            transform: translateY(2px);
+        }
+        .pelmeshki-button:active {
+            transform: translateY(6px);
+            box-shadow: 0 2px 0 #990000, 0 8px 20px rgba(230, 0, 0, 0.3);
+        }
+
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
@@ -565,6 +598,11 @@
             .merch-sticker-title { font-size: 17px; }
             .merch-contacts a { font-size: 14px; padding: 8px 14px; flex: 1 1 100%; }
             .toast { font-size: 14px; padding: 10px 20px; white-space: normal; max-width: 90%; }
+            
+            .pelmeshki-button {
+                font-size: 17px;
+                padding: 12px 20px;
+            }
         }
         @media (max-width: 400px) {
             .greeting-header { gap: 10px; }
@@ -590,6 +628,10 @@
                 font-size: 11px;
                 padding: 1px 4px;
                 min-width: 24px;
+            }
+            .pelmeshki-button {
+                font-size: 15px;
+                padding: 10px 16px;
             }
         }
         @media (max-width: 360px) {
@@ -733,6 +775,13 @@
         </div>
     </div>
 
+    <!-- ===== 6. КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== -->
+    <div class="pelmeshki-button-wrapper fade-item">
+        <a href="https://i.pinimg.com/736x/6f/60/63/6f6063ff040090cffe42452289e2db96.jpg" target="_blank" class="pelmeshki-button">
+            МНУ ПЕЛЬМЕШКИ 18+
+        </a>
+    </div>
+
 </div>
 
 <script>
@@ -744,62 +793,4 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, {
-                threshold: 0.15,
-                rootMargin: '0px 0px -30px 0px'
-            });
-            fadeItems.forEach(el => observer.observe(el));
-        } else {
-            fadeItems.forEach(el => el.classList.add('visible'));
-        }
-    })();
-
-    // ===== КОПИРОВАНИЕ НОМЕРОВ =====
-    document.querySelectorAll('.card-item').forEach(item => {
-        item.addEventListener('click', function(e) {
-            const cardNumber = this.dataset.card;
-            const toast = document.getElementById('toast');
-            if (!cardNumber) return;
-
-            const copySuccess = () => {
-                this.classList.add('copied');
-                toast.textContent = '✅ Номер скопирован!';
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                    this.classList.remove('copied');
-                }, 2000);
-            };
-
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-                navigator.clipboard.writeText(cardNumber).then(copySuccess).catch(() => fallbackCopy(cardNumber, copySuccess));
-            } else {
-                fallbackCopy(cardNumber, copySuccess);
-            }
-        });
-    });
-
-    function fallbackCopy(text, callback) {
-        const textArea = document.createElement('textarea');
-        textArea.value = text;
-        textArea.style.position = 'fixed';
-        textArea.style.left = '-9999px';
-        textArea.style.top = '-9999px';
-        document.body.appendChild(textArea);
-        textArea.focus();
-        textArea.select();
-        try {
-            document.execCommand('copy');
-            callback();
-        } catch (err) {
-            console.warn('Fallback copy failed');
-        }
-        document.body.removeChild(textArea);
-    }
-</script>
-
-</body>
-</html>
+                        observer.un
