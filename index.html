@@ -483,37 +483,36 @@
             color: #FF88C2;
         }
 
-        /* ===== КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== */
-        .pelmeshki-button-wrapper {
+        /* ===== КРАСНАЯ КНОПКА ===== */
+        .red-button-wrapper {
             margin-top: 24px;
             text-align: center;
         }
-        .pelmeshki-button {
+        .red-button {
             display: inline-block;
-            background: #e60000;
+            background: #e53935;
             color: #ffffff;
             font-weight: 700;
             font-size: 20px;
-            padding: 14px 32px;
+            padding: 18px 32px;
             border-radius: 60px;
             text-decoration: none;
-            letter-spacing: 1px;
-            box-shadow: 0 6px 0 #990000, 0 8px 24px rgba(230, 0, 0, 0.3);
-            transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
-            font-family: 'Roboto Condensed', sans-serif;
+            letter-spacing: 0.5px;
+            box-shadow: 0 8px 20px rgba(229, 57, 53, 0.35);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.2s;
             border: none;
             cursor: pointer;
             width: 100%;
             text-align: center;
         }
-        .pelmeshki-button:hover {
-            background: #ff1a1a;
-            box-shadow: 0 4px 0 #990000, 0 12px 32px rgba(230, 0, 0, 0.4);
-            transform: translateY(2px);
+        .red-button:hover {
+            background: #c62828;
+            transform: scale(1.03) translateY(-2px);
+            box-shadow: 0 12px 30px rgba(229, 57, 53, 0.45);
         }
-        .pelmeshki-button:active {
-            transform: translateY(6px);
-            box-shadow: 0 2px 0 #990000, 0 8px 20px rgba(230, 0, 0, 0.3);
+        .red-button:active {
+            transform: scale(0.97);
+            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
         }
 
         /* ===== TOAST ===== */
@@ -553,7 +552,6 @@
             .link-item .link-desc { padding: 0 14px 12px 14px; font-size: 13px; }
             .support-block { padding: 14px 14px 12px; }
             
-            /* Карточки в одну строку на мобильных */
             .card-item {
                 padding: 10px 12px;
                 font-size: 14px;
@@ -597,12 +595,13 @@
             .author-link-item .author-link-desc { padding: 0 14px 10px 14px; font-size: 13px; }
             .merch-sticker-title { font-size: 17px; }
             .merch-contacts a { font-size: 14px; padding: 8px 14px; flex: 1 1 100%; }
-            .toast { font-size: 14px; padding: 10px 20px; white-space: normal; max-width: 90%; }
             
-            .pelmeshki-button {
+            .red-button {
                 font-size: 17px;
-                padding: 12px 20px;
+                padding: 16px 24px;
             }
+            
+            .toast { font-size: 14px; padding: 10px 20px; white-space: normal; max-width: 90%; }
         }
         @media (max-width: 400px) {
             .greeting-header { gap: 10px; }
@@ -629,9 +628,9 @@
                 padding: 1px 4px;
                 min-width: 24px;
             }
-            .pelmeshki-button {
+            .red-button {
                 font-size: 15px;
-                padding: 10px 16px;
+                padding: 14px 20px;
             }
         }
         @media (max-width: 360px) {
@@ -642,6 +641,10 @@
             .card-item .card-label {
                 font-size: 9px;
                 padding: 1px 6px;
+            }
+            .red-button {
+                font-size: 14px;
+                padding: 12px 16px;
             }
         }
     </style>
@@ -775,9 +778,9 @@
         </div>
     </div>
 
-    <!-- ===== 6. КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== -->
-    <div class="pelmeshki-button-wrapper fade-item">
-        <a href="https://i.pinimg.com/736x/6f/60/63/6f6063ff040090cffe42452289e2db96.jpg" target="_blank" class="pelmeshki-button">
+    <!-- ===== 6. КРАСНАЯ КНОПКА ===== -->
+    <div class="red-button-wrapper fade-item">
+        <a href="https://i.pinimg.com/736x/a9/2e/97/a92e9738477d4e7a5b9712ba7c86ba4d.jpg" target="_blank" class="red-button">
             МНУ ПЕЛЬМЕШКИ 18+
         </a>
     </div>
@@ -793,4 +796,62 @@
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
-                        observer.un
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+
+    // ===== КОПИРОВАНИЕ НОМЕРОВ =====
+    document.querySelectorAll('.card-item').forEach(item => {
+        item.addEventListener('click', function(e) {
+            const cardNumber = this.dataset.card;
+            const toast = document.getElementById('toast');
+            if (!cardNumber) return;
+
+            const copySuccess = () => {
+                this.classList.add('copied');
+                toast.textContent = '✅ Номер скопирован!';
+                toast.classList.add('show');
+                setTimeout(() => {
+                    toast.classList.remove('show');
+                    this.classList.remove('copied');
+                }, 2000);
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(cardNumber).then(copySuccess).catch(() => fallbackCopy(cardNumber, copySuccess));
+            } else {
+                fallbackCopy(cardNumber, copySuccess);
+            }
+        });
+    });
+
+    function fallbackCopy(text, callback) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            callback();
+        } catch (err) {
+            console.warn('Fallback copy failed');
+        }
+        document.body.removeChild(textArea);
+    }
+</script>
+
+</body>
+</html>
