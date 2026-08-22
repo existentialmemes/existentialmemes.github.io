@@ -2,8 +2,14 @@
 <html lang="ru">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
     <title>Экзистенциальные мемы</title>
+    
+    <!-- ===== FAVICON (логотип на вкладке) ===== -->
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
@@ -19,51 +25,59 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 24px;
+            padding: 16px;
+            margin: 0;
         }
         .container {
-            max-width: 560px;
+            max-width: 580px;
             width: 100%;
             background: #ffffff;
-            border-radius: 28px;
-            padding: 28px 24px 32px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.04);
-            border: none;
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
         }
 
-        /* ===== АНИМАЦИИ ===== */
+        /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
         .fade-item {
             opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
         }
         .fade-item.visible {
             opacity: 1;
-            transform: translateY(0);
+            transform: translateY(0) scale(1);
         }
 
-        /* Задержки для последовательного появления */
-        .fade-item:nth-child(1) { transition-delay: 0.05s; }
-        .fade-item:nth-child(2) { transition-delay: 0.10s; }
-        .fade-item:nth-child(3) { transition-delay: 0.15s; }
-        .fade-item:nth-child(4) { transition-delay: 0.20s; }
-        .fade-item:nth-child(5) { transition-delay: 0.25s; }
-        .fade-item:nth-child(6) { transition-delay: 0.30s; }
-        .fade-item:nth-child(7) { transition-delay: 0.35s; }
-        .fade-item:nth-child(8) { transition-delay: 0.40s; }
-        .fade-item:nth-child(9) { transition-delay: 0.45s; }
-        .fade-item:nth-child(10) { transition-delay: 0.50s; }
+        /* задержки */
+        .fade-item:nth-child(1) { transition-delay: 0.03s; }
+        .fade-item:nth-child(2) { transition-delay: 0.08s; }
+        .fade-item:nth-child(3) { transition-delay: 0.13s; }
+        .fade-item:nth-child(4) { transition-delay: 0.18s; }
+        .fade-item:nth-child(5) { transition-delay: 0.23s; }
+        .fade-item:nth-child(6) { transition-delay: 0.28s; }
+        .fade-item:nth-child(7) { transition-delay: 0.33s; }
+        .fade-item:nth-child(8) { transition-delay: 0.38s; }
+        .fade-item:nth-child(9) { transition-delay: 0.43s; }
+        .fade-item:nth-child(10) { transition-delay: 0.48s; }
 
+        /* ===== ЗАГОЛОВОК ===== */
         .greeting {
-            margin-bottom: 24px;
-            padding-bottom: 16px;
-            border-bottom: 1px solid #f0e0e8;
+            margin-bottom: 20px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(240, 224, 232, 0.6);
         }
         .greeting-header {
             display: flex;
             align-items: center;
             gap: 16px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
+            flex-wrap: wrap;
         }
         .project-avatar {
             width: 64px;
@@ -72,68 +86,73 @@
             object-fit: cover;
             border: 2px solid #f0e0e8;
             flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-avatar:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 16px rgba(255, 136, 194, 0.2);
         }
         .greeting h1 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            letter-spacing: -0.3px;
+            letter-spacing: -0.2px;
             color: #111;
-            font-family: 'Roboto Condensed', sans-serif;
+            line-height: 1.2;
         }
         .greeting .desc-text {
             font-size: 15px;
-            color: #111;
+            color: #1a1a1a;
             line-height: 1.6;
-            padding-left: 80px;
-            font-family: 'Roboto Condensed', sans-serif;
+            padding-left: 0;
+            font-weight: 400;
         }
         .greeting .desc-text strong {
             color: #000;
             font-weight: 700;
         }
 
+        /* ===== ССЫЛКИ ===== */
         .links-with-desc {
             display: flex;
             flex-direction: column;
-            gap: 14px;
-            margin-bottom: 28px;
+            gap: 12px;
+            margin-bottom: 24px;
         }
         .link-item {
-            background: #f0f0f0;
-            border-radius: 14px;
-            border: 1px solid #e4e4e4;
+            background: #f6f6f8;
+            border-radius: 16px;
+            border: 1px solid #ececee;
             overflow: hidden;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
         }
         .link-item:hover {
-            background: #e4e4e4;
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            background: #ededf0;
+            transform: translateY(-2px) scale(1.008);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
         }
         .link-item a {
             display: block;
-            padding: 16px 20px 8px 20px;
+            padding: 14px 18px 4px 18px;
             color: #111;
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
-            font-family: 'Roboto Condensed', sans-serif;
         }
         .link-item a i {
             margin-right: 10px;
             width: 22px;
             text-align: center;
             color: #FF88C2;
+            transition: transform 0.2s ease;
+        }
+        .link-item:hover a i {
+            transform: scale(1.1);
         }
         .link-item .link-desc {
-            padding: 0 20px 16px 20px;
+            padding: 0 18px 14px 18px;
             font-size: 14px;
-            color: #111;
+            color: #1a1a1a;
             line-height: 1.5;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .link-item .link-desc .icon {
-            margin-right: 6px;
         }
         .link-item .link-desc a {
             display: inline;
@@ -144,238 +163,143 @@
             font-weight: 400;
             background: transparent;
             border: none;
-            border-radius: 0;
-            font-family: 'Roboto Condensed', sans-serif;
         }
         .link-item .link-desc a:hover {
             background: transparent;
             color: #333;
         }
 
+        /* ===== ПОДДЕРЖКА ===== */
         .support-block {
-            background: linear-gradient(135deg, #fff5f5, #fce4ec);
-            border-radius: 16px;
-            padding: 18px 20px;
-            margin-bottom: 28px;
-            border: 2px solid #ffcdd2;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: linear-gradient(145deg, #fff6f8, #fce8ee);
+            border-radius: 20px;
+            padding: 18px 18px 16px;
+            margin-bottom: 24px;
+            border: 1px solid #ffd9e0;
+            transition: transform 0.3s ease, box-shadow 0.4s ease;
         }
         .support-block:hover {
-            transform: scale(1.005);
-            box-shadow: 0 6px 20px rgba(255, 136, 194, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(255, 136, 194, 0.12);
         }
         .support-block .support-title {
             font-size: 18px;
             font-weight: 700;
             color: #111;
-            margin-bottom: 12px;
+            margin-bottom: 14px;
             display: flex;
             align-items: center;
-            gap: 10px;
-            font-family: 'Roboto Condensed', sans-serif;
+            gap: 8px;
         }
         .support-block .support-title .pray-emoji {
             font-size: 26px;
-            line-height: 1;
         }
-        .support-block .card-item {
+        .card-item {
             display: flex;
             align-items: center;
-            gap: 12px;
-            padding: 10px 14px;
+            gap: 10px;
+            padding: 12px 14px;
             background: #ffffff;
-            border-radius: 12px;
-            border: 1px solid #ffcdd2;
+            border-radius: 14px;
+            border: 1px solid #ffd9e0;
             margin-bottom: 8px;
             font-size: 15px;
             color: #111;
             cursor: pointer;
-            transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+            transition: background 0.2s ease, transform 0.15s ease, box-shadow 0.25s ease;
             user-select: none;
-            font-family: 'Roboto Condensed', sans-serif;
+            flex-wrap: nowrap;
         }
-        .support-block .card-item:last-child {
+        .card-item:last-child {
             margin-bottom: 0;
         }
-        .support-block .card-item:hover {
-            background: #fff0f0;
-            box-shadow: 0 4px 12px rgba(255, 136, 194, 0.1);
+        .card-item:hover {
+            background: #fff4f6;
+            box-shadow: 0 4px 12px rgba(255, 136, 194, 0.08);
+            transform: scale(1.005);
         }
-        .support-block .card-item:active {
+        .card-item:active {
             transform: scale(0.97);
         }
-        .support-block .card-item .card-icon {
-            font-size: 20px;
+        .card-item .card-icon {
+            font-size: 28px;
             flex-shrink: 0;
+            line-height: 1;
+            width: 32px;
+            text-align: center;
         }
-        .support-block .card-item .card-number {
-            font-family: 'Roboto Condensed', monospace;
-            font-weight: 600;
-            letter-spacing: 1px;
-            color: #111;
-            font-size: 16px;
-            flex: 1;
-        }
-        .support-block .card-item .card-label {
-            font-size: 13px;
-            color: #555;
-            background: #f5f5f5;
-            padding: 2px 12px;
-            border-radius: 20px;
-            flex-shrink: 0;
+        /* Кастомные иконки для Т-Банка и ЮMoney */
+        .card-icon.tbank {
             font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            background: #ffdd2d;
+            color: #000;
+            border-radius: 8px;
+            padding: 2px 6px;
+            line-height: 1.2;
+            width: auto;
+            min-width: 32px;
         }
-        .support-block .card-item .copy-hint {
-            font-size: 13px;
-            color: #555;
+        .card-icon.ymoney {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            background: #003399;
+            color: #fff;
+            border-radius: 8px;
+            padding: 2px 6px;
+            line-height: 1.2;
+            width: auto;
+            min-width: 32px;
+        }
+        .card-item .card-number {
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: #111;
+            font-size: 15px;
+            flex: 1;
+            white-space: nowrap;
+            min-width: 0;
+        }
+        .card-item .card-label {
+            font-size: 12px;
+            color: #444;
+            background: #f0f0f2;
+            padding: 2px 14px;
+            border-radius: 30px;
+            flex-shrink: 0;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        .card-item .copy-hint {
+            font-size: 15px;
+            color: #666;
             flex-shrink: 0;
             transition: color 0.3s, transform 0.2s;
+            margin-left: 4px;
         }
-        .support-block .card-item:hover .copy-hint {
+        .card-item:hover .copy-hint {
             transform: scale(1.1);
-        }
-        .support-block .card-item.copied .copy-hint {
-            color: #2ed573;
-            transform: scale(1.2);
-        }
-        .support-block .card-item.copied .card-number {
-            color: #2ed573;
-        }
-
-        .merch-wrapper {
-            margin-top: 28px;
-        }
-        .merch-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .merch-title .merch-emoji {
-            font-size: 24px;
-            line-height: 1;
-        }
-        .merch-block {
-            background: #f0f0f0;
-            border-radius: 14px;
-            padding: 20px 20px 18px;
-            border: 1px solid #e4e4e4;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        .merch-block:hover {
-            transform: scale(1.005);
-            box-shadow: 0 6px 20px rgba(0,0,0,0.06);
-        }
-        .merch-block .merch-sticker-title {
-            font-size: 22px;
-            font-weight: 700;
-            color: #111;
-            text-align: center;
-            margin-bottom: 12px;
-            letter-spacing: 0.5px;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .merch-block .merch-image-wrapper {
-            width: 100%;
-            border-radius: 14px;
-            overflow: hidden;
-            border: 1px solid #e4e4e4;
-            background: #ffffff;
-            margin-bottom: 14px;
-            aspect-ratio: 2160 / 3048;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.3s ease;
-        }
-        .merch-block .merch-image-wrapper:hover {
-            transform: scale(1.01);
-        }
-        .merch-block .merch-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-        }
-        .merch-block .merch-info .merch-desc {
-            font-size: 14px;
-            color: #111;
-            line-height: 1.8;
-            margin-bottom: 14px;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .merch-block .merch-info .merch-desc strong {
-            color: #000;
-            font-weight: 700;
-        }
-        .merch-block .merch-contacts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .merch-block .merch-contacts a {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 15px;
-            color: #111;
-            text-decoration: none;
-            background: #ffffff;
-            padding: 8px 18px 8px 14px;
-            border-radius: 30px;
-            border: 1px solid #e4e4e4;
-            transition: background 0.2s, border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-            font-weight: 500;
-            flex: 1;
-            justify-content: center;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .merch-block .merch-contacts a:hover {
-            background: #f8f8f8;
-            border-color: #d0d0d0;
-            transform: scale(1.03);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
-        }
-        .merch-block .merch-contacts a i {
-            font-size: 18px;
             color: #FF88C2;
         }
-
-        .toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%) translateY(100px);
-            background: #1a1a1a;
-            color: #fff;
-            padding: 12px 28px;
-            border-radius: 14px;
-            font-size: 15px;
-            font-weight: 500;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            opacity: 0;
-            transition: opacity 0.4s, transform 0.4s;
-            z-index: 999;
-            pointer-events: none;
-            white-space: nowrap;
-            font-family: 'Roboto Condensed', sans-serif;
+        .card-item.copied .copy-hint {
+            color: #2ed573;
+            transform: scale(1.15);
         }
-        .toast.show {
-            opacity: 1;
-            transform: translateX(-50%) translateY(0);
+        .card-item.copied .card-number {
+            color: #2ed573;
         }
 
+        /* ===== АВТОР ===== */
         .author-block {
-            background: #ffffff;
-            border-radius: 16px;
+            background: #fafafa;
+            border-radius: 20px;
             padding: 16px 0 18px;
             border-top: 2px solid #f0e0e8;
             border-bottom: 2px solid #f0e0e8;
             transition: transform 0.3s ease;
+            margin-bottom: 20px;
         }
         .author-block:hover {
             transform: scale(1.003);
@@ -384,7 +308,8 @@
             display: flex;
             align-items: center;
             gap: 14px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
+            padding: 0 6px;
         }
         .author-avatar {
             width: 56px;
@@ -393,81 +318,289 @@
             object-fit: cover;
             border: 2px solid #f0e0e8;
             flex-shrink: 0;
-            transition: transform 0.3s ease;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
         }
         .author-header:hover .author-avatar {
-            transform: scale(1.05) rotate(-3deg);
+            transform: scale(1.06) rotate(-3deg);
+            box-shadow: 0 6px 14px rgba(255, 136, 194, 0.15);
         }
         .author-name {
             font-size: 18px;
             font-weight: 600;
             color: #111;
-            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-bio {
             font-size: 15px;
-            color: #111;
+            color: #1a1a1a;
             margin: 0 0 12px 0;
             line-height: 1.5;
-            font-family: 'Roboto Condensed', sans-serif;
+            padding: 0 6px;
         }
         .author-links {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 10px;
         }
         .author-link-item {
-            background: #f0f0f0;
+            background: #f0f0f2;
             border-radius: 14px;
-            border: 1px solid #e4e4e4;
+            border: 1px solid #e4e4e6;
             overflow: hidden;
-            transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
         }
         .author-link-item:hover {
-            background: #e4e4e4;
-            transform: scale(1.01);
-            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            background: #e4e4e8;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
         }
         .author-link-item a {
             display: block;
-            padding: 14px 20px 6px 20px;
+            padding: 12px 18px 2px 18px;
             color: #111;
             text-decoration: none;
             font-size: 17px;
             font-weight: 500;
-            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-link-item a i {
             margin-right: 10px;
             width: 22px;
             text-align: center;
             color: #FF88C2;
+            transition: transform 0.2s ease;
+        }
+        .author-link-item:hover a i {
+            transform: scale(1.08);
         }
         .author-link-item .author-link-desc {
-            padding: 0 20px 14px 20px;
+            padding: 0 18px 12px 18px;
             font-size: 14px;
-            color: #111;
+            color: #1a1a1a;
             line-height: 1.5;
-            font-family: 'Roboto Condensed', sans-serif;
-        }
-        .author-link-item .author-link-desc .icon {
-            margin-right: 6px;
         }
 
-        @media (max-width: 450px) {
-            .container { padding: 20px 16px; }
-            .greeting h1 { font-size: 23px; }
-            .greeting .desc-text { padding-left: 0; }
-            .greeting-header { flex-wrap: wrap; }
+        /* ===== МЕРЧ ===== */
+        .merch-wrapper {
+            margin-top: 8px;
+        }
+        .merch-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .merch-title .merch-emoji {
+            font-size: 24px;
+        }
+        .merch-block {
+            background: #f6f6f8;
+            border-radius: 20px;
+            padding: 18px 18px 18px;
+            border: 1px solid #ececee;
+            transition: transform 0.3s ease, box-shadow 0.4s ease;
+        }
+        .merch-block:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+        }
+        .merch-sticker-title {
+            font-size: 20px;
+            font-weight: 700;
+            color: #111;
+            text-align: center;
+            margin-bottom: 14px;
+            letter-spacing: 0.3px;
+        }
+        .merch-image-wrapper {
+            width: 100%;
+            border-radius: 16px;
+            overflow: hidden;
+            border: 1px solid #e4e4e6;
+            background: #ffffff;
+            margin-bottom: 14px;
+            aspect-ratio: 2160 / 3048;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+        .merch-image-wrapper:hover {
+            transform: scale(1.01);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+        }
+        .merch-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .merch-image-wrapper:hover img {
+            transform: scale(1.02);
+        }
+        .merch-desc {
+            font-size: 14px;
+            color: #1a1a1a;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+        .merch-desc strong {
+            color: #000;
+            font-weight: 700;
+        }
+        .merch-contacts {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .merch-contacts a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #111;
+            text-decoration: none;
+            background: #ffffff;
+            padding: 10px 18px;
+            border-radius: 40px;
+            border: 1px solid #dcdcde;
+            transition: background 0.25s ease, border-color 0.25s, transform 0.2s, box-shadow 0.3s;
+            font-weight: 500;
+            flex: 1 1 auto;
+            min-width: 120px;
+        }
+        .merch-contacts a:hover {
+            background: #fcfcfc;
+            border-color: #c0c0c4;
+            transform: scale(1.03);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+        }
+        .merch-contacts a i {
+            font-size: 18px;
+            color: #FF88C2;
+        }
+
+        /* ===== TOAST ===== */
+        .toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(80px);
+            background: #1a1a1a;
+            color: #fff;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 500;
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+            opacity: 0;
+            transition: opacity 0.4s cubic-bezier(0.22, 1, 0.36, 1), transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 999;
+            pointer-events: none;
+            white-space: nowrap;
+            backdrop-filter: blur(4px);
+            background: rgba(20,20,20,0.92);
+        }
+        .toast.show {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .greeting h1 { font-size: 22px; }
+            .greeting .desc-text { font-size: 14px; }
             .project-avatar { width: 52px; height: 52px; }
-            .link-item a { font-size: 17px; }
+            .link-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
+            .link-item .link-desc { padding: 0 14px 12px 14px; font-size: 13px; }
+            .support-block { padding: 14px 14px 12px; }
+            
+            /* Карточки в одну строку на мобильных */
+            .card-item {
+                padding: 10px 12px;
+                font-size: 14px;
+                gap: 8px;
+                flex-wrap: nowrap;
+            }
+            .card-item .card-number {
+                font-size: 13px;
+                letter-spacing: 0.3px;
+                white-space: nowrap;
+                min-width: 0;
+                flex-shrink: 1;
+            }
+            .card-item .card-icon {
+                font-size: 24px;
+                width: 28px;
+            }
+            .card-item .card-icon.tbank {
+                font-size: 16px;
+                padding: 1px 5px;
+                min-width: 28px;
+            }
+            .card-item .card-icon.ymoney {
+                font-size: 13px;
+                padding: 1px 5px;
+                min-width: 28px;
+            }
+            .card-item .card-label {
+                font-size: 11px;
+                padding: 1px 10px;
+                flex-shrink: 0;
+            }
+            .card-item .copy-hint {
+                font-size: 14px;
+                margin-left: 0;
+            }
+            
             .author-avatar { width: 44px; height: 44px; }
-            .author-link-item a { font-size: 16px; }
-            .support-block .card-item { font-size: 14px; flex-wrap: wrap; }
-            .support-block .card-item .card-label { margin-left: 0; }
-            .merch-block .merch-sticker-title { font-size: 18px; }
-            .merch-block .merch-contacts a { font-size: 14px; padding: 6px 14px 6px 12px; flex: 1 1 100%; }
-            .toast { font-size: 14px; padding: 10px 20px; white-space: normal; }
+            .author-name { font-size: 16px; }
+            .author-link-item a { font-size: 15px; padding: 10px 14px 0 14px; }
+            .author-link-item .author-link-desc { padding: 0 14px 10px 14px; font-size: 13px; }
+            .merch-sticker-title { font-size: 17px; }
+            .merch-contacts a { font-size: 14px; padding: 8px 14px; flex: 1 1 100%; }
+            .toast { font-size: 14px; padding: 10px 20px; white-space: normal; max-width: 90%; }
+        }
+        @media (max-width: 400px) {
+            .greeting-header { gap: 10px; }
+            .greeting h1 { font-size: 19px; }
+            .card-item .card-number {
+                font-size: 12px;
+                letter-spacing: 0.2px;
+            }
+            .card-item .card-label {
+                font-size: 10px;
+                padding: 1px 8px;
+            }
+            .card-item .card-icon {
+                font-size: 20px;
+                width: 24px;
+            }
+            .card-item .card-icon.tbank {
+                font-size: 14px;
+                padding: 1px 4px;
+                min-width: 24px;
+            }
+            .card-item .card-icon.ymoney {
+                font-size: 11px;
+                padding: 1px 4px;
+                min-width: 24px;
+            }
+        }
+        @media (max-width: 360px) {
+            .card-item .card-number {
+                font-size: 11px;
+                letter-spacing: 0px;
+            }
+            .card-item .card-label {
+                font-size: 9px;
+                padding: 1px 6px;
+            }
         }
     </style>
 </head>
@@ -483,7 +616,7 @@
             <img 
                 src="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" 
                 alt="Экзистенциальные мемы" 
-                class="project-avatar"
+                class="project-avatar" loading="lazy"
             />
             <h1>Экзистенциальные мемы</h1>
         </div>
@@ -499,32 +632,24 @@
         <div class="link-item fade-item">
             <a href="https://vk.ru/ekzistentsializm" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
             <div class="link-desc">
-                <span class="icon"></span> Большая часть всего контента. Также там единственный <a href="https://vk.me/join/sJC6_AHwYjrJYSzkcJG38t4som1OBGd3C34=" target="_blank">Экзистенциальный чатик</a>
+                Большая часть всего контента. Также там единственный <a href="https://vk.me/join/sJC6_AHwYjrJYSzkcJG38t4som1OBGd3C34=" target="_blank">Экзистенциальный чатик</a>
             </div>
         </div>
         <div class="link-item fade-item">
             <a href="https://ru.pinterest.com/ekzistentsializm" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
-            <div class="link-desc">
-                <span class="icon"></span> Есть эксклюзивные мемы, которых нет нигде
-            </div>
+            <div class="link-desc">Есть эксклюзивные мемы, которых нет нигде</div>
         </div>
         <div class="link-item fade-item">
             <a href="https://t.me/ekzistencializm" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
-            <div class="link-desc">
-                <span class="icon"></span> Также выходят все новые мемы
-            </div>
+            <div class="link-desc">Также выходят все новые мемы</div>
         </div>
         <div class="link-item fade-item">
             <a href="https://www.youtube.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-            <div class="link-desc">
-                <span class="icon"></span> Те же мемы, что и везде, только под музыку
-            </div>
+            <div class="link-desc">Те же мемы, что и везде, только под музыку</div>
         </div>
         <div class="link-item fade-item">
             <a href="https://www.tiktok.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-            <div class="link-desc">
-                <span class="icon"></span> Самое хайповое место
-            </div>
+            <div class="link-desc">Самое хайповое место</div>
         </div>
     </div>
 
@@ -534,13 +659,13 @@
             <span class="pray-emoji">🙏</span> Поддержать
         </div>
         <div class="card-item" data-card="5536914126069776">
-            <span class="card-icon">🏦</span>
+            <span class="card-icon tbank">Т</span>
             <span class="card-number">5536 9141 2606 9776</span>
             <span class="card-label">Т-Банк</span>
             <span class="copy-hint"><i class="fa-regular fa-copy"></i></span>
         </div>
         <div class="card-item" data-card="2204120143860696">
-            <span class="card-icon">💳</span>
+            <span class="card-icon ymoney">Ю</span>
             <span class="card-number">2204 1201 4386 0696</span>
             <span class="card-label">ЮMoney</span>
             <span class="copy-hint"><i class="fa-regular fa-copy"></i></span>
@@ -553,43 +678,31 @@
             <img 
                 src="https://i.pinimg.com/280x280_RS/73/a6/33/73a6338a1c41fec03c932b30caa8a5da.jpg" 
                 alt="Стёпа Антимасло" 
-                class="author-avatar"
+                class="author-avatar" loading="lazy"
             />
             <div class="author-name">Стёпа Антимасло (Я)</div>
         </div>
-        <div class="author-bio">
-            Создал Экзистенциальные мемы и всё остальное.
-        </div>
+        <div class="author-bio">Создал Экзистенциальные мемы и всё остальное.</div>
         <div class="author-links">
             <div class="author-link-item">
                 <a href="https://vk.ru/im/channels/-240477125" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
-                <div class="author-link-desc">
-                    <span class="icon"></span> Выкладываю видео, фото и пишу свои мысли
-                </div>
+                <div class="author-link-desc">Выкладываю видео, фото и пишу свои мысли</div>
             </div>
             <div class="author-link-item">
                 <a href="https://ru.pinterest.com/antimaslo/" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
-                <div class="author-link-desc">
-                    <span class="icon"></span> Фото и видеоконтент
-                </div>
+                <div class="author-link-desc">Фото и видеоконтент</div>
             </div>
             <div class="author-link-item">
                 <a href="https://t.me/antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
-                <div class="author-link-desc">
-                    <span class="icon"></span> Больше всего старого контента
-                </div>
+                <div class="author-link-desc">Больше всего старого контента</div>
             </div>
             <div class="author-link-item">
                 <a href="https://www.youtube.com/@antimaslo" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                <div class="author-link-desc">
-                    <span class="icon"></span> Всё то же самое, что и в ТикТоке
-                </div>
+                <div class="author-link-desc">Всё то же самое, что и в ТикТоке</div>
             </div>
             <div class="author-link-item">
                 <a href="https://www.tiktok.com/@stepa_antimaslo" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-                <div class="author-link-desc">
-                    <span class="icon"></span> Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое
-                </div>
+                <div class="author-link-desc">Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое</div>
             </div>
         </div>
     </div>
@@ -599,34 +712,23 @@
         <div class="merch-title">
             <span class="merch-emoji">🛍️</span> Наш мерч
         </div>
-
         <div class="merch-block">
-            <div class="merch-sticker-title">
-                СТИКЕРПАК "В НАЧАЛЕ БЫЛ МЕМ"
-            </div>
-
+            <div class="merch-sticker-title">СТИКЕРПАК "В НАЧАЛЕ БЫЛ МЕМ"</div>
             <div class="merch-image-wrapper">
                 <img 
                     src="https://i.pinimg.com/736x/97/50/5c/97505c58ec8545f3ee7d4da83797abe0.jpg" 
-                    alt="Стикеры Экзистенциальные мемы"
+                    alt="Стикеры Экзистенциальные мемы" loading="lazy"
                 />
             </div>
-
-            <div class="merch-info">
-                <div class="merch-desc">
-                    <strong>Максимально качественные виниловые стикеры</strong> будут сопровождать тебя всюду 👇<br><br>
-                    Надёжные и крепкие, они переживут даже экзистенциальный кризис и твои планы на выходные!<br><br>
-                    Чёткие, сочно-эстетичные картинки замечательно украсят твой телефон, любимый скетчбук, системный блок и вообще всё, что ты захочешь!<br><br>
-                    🥰 Десять свэговых мемо-наклеек станут твоими всего за <strong>300 рублей</strong> (отслеживаемая доставка уже включена в стоимость)
-                </div>
-                <div class="merch-contacts">
-                    <a href="https://vk.com/antimaslo_of" target="_blank">
-                        <i class="fa-brands fa-vk"></i> Написать в ВК
-                    </a>
-                    <a href="https://t.me/stepa_antimaslo" target="_blank">
-                        <i class="fa-brands fa-telegram"></i> Написать в ТГ
-                    </a>
-                </div>
+            <div class="merch-desc">
+                <strong>Максимально качественные виниловые стикеры</strong> будут сопровождать тебя всюду 👇<br><br>
+                Надёжные и крепкие, они переживут даже экзистенциальный кризис и твои планы на выходные!<br><br>
+                Чёткие, сочно-эстетичные картинки замечательно украсят твой телефон, любимый скетчбук, системный блок и вообще всё, что ты захочешь!<br><br>
+                🥰 Десять свэговых мемо-наклеек станут твоими всего за <strong>300 рублей</strong> (отслеживаемая доставка уже включена в стоимость)
+            </div>
+            <div class="merch-contacts">
+                <a href="https://vk.com/antimaslo_of" target="_blank"><i class="fa-brands fa-vk"></i> Написать в ВК</a>
+                <a href="https://t.me/stepa_antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Написать в ТГ</a>
             </div>
         </div>
     </div>
@@ -634,36 +736,35 @@
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
-    document.addEventListener('DOMContentLoaded', function() {
-        const fadeElements = document.querySelectorAll('.fade-item');
-        
-        // Проверяем, поддерживается ли IntersectionObserver
+    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ (Intersection Observer) =====
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if (entry.isIntersecting) {
                         entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
                     }
                 });
             }, {
                 threshold: 0.15,
-                rootMargin: '0px 0px -50px 0px'
+                rootMargin: '0px 0px -30px 0px'
             });
-
-            fadeElements.forEach(el => observer.observe(el));
+            fadeItems.forEach(el => observer.observe(el));
         } else {
-            fadeElements.forEach(el => el.classList.add('visible'));
+            fadeItems.forEach(el => el.classList.add('visible'));
         }
-    });
+    })();
 
     // ===== КОПИРОВАНИЕ НОМЕРОВ =====
     document.querySelectorAll('.card-item').forEach(item => {
-        item.addEventListener('click', function() {
+        item.addEventListener('click', function(e) {
             const cardNumber = this.dataset.card;
             const toast = document.getElementById('toast');
+            if (!cardNumber) return;
 
-            navigator.clipboard.writeText(cardNumber).then(() => {
+            const copySuccess = () => {
                 this.classList.add('copied');
                 toast.textContent = '✅ Номер скопирован!';
                 toast.classList.add('show');
@@ -671,25 +772,33 @@
                     toast.classList.remove('show');
                     this.classList.remove('copied');
                 }, 2000);
-            }).catch(() => {
-                const range = document.createRange();
-                const selection = window.getSelection();
-                const textNode = this.querySelector('.card-number');
-                range.selectNodeContents(textNode);
-                selection.removeAllRanges();
-                selection.addRange(range);
-                document.execCommand('copy');
-                selection.removeAllRanges();
-                this.classList.add('copied');
-                toast.textContent = '✅ Номер скопирован!';
-                toast.classList.add('show');
-                setTimeout(() => {
-                    toast.classList.remove('show');
-                    this.classList.remove('copied');
-                }, 2000);
-            });
+            };
+
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+                navigator.clipboard.writeText(cardNumber).then(copySuccess).catch(() => fallbackCopy(cardNumber, copySuccess));
+            } else {
+                fallbackCopy(cardNumber, copySuccess);
+            }
         });
     });
+
+    function fallbackCopy(text, callback) {
+        const textArea = document.createElement('textarea');
+        textArea.value = text;
+        textArea.style.position = 'fixed';
+        textArea.style.left = '-9999px';
+        textArea.style.top = '-9999px';
+        document.body.appendChild(textArea);
+        textArea.focus();
+        textArea.select();
+        try {
+            document.execCommand('copy');
+            callback();
+        } catch (err) {
+            console.warn('Fallback copy failed');
+        }
+        document.body.removeChild(textArea);
+    }
 </script>
 
 </body>
