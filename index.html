@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Экзистенциальные мемы</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
         * {
             margin: 0;
@@ -12,7 +13,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #FF88C2;
             min-height: 100vh;
             display: flex;
@@ -77,15 +78,18 @@
             font-weight: 700;
             letter-spacing: -0.3px;
             color: #111;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .greeting .desc-text {
             font-size: 15px;
             color: #111;
             line-height: 1.6;
             padding-left: 80px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .greeting .desc-text strong {
             color: #000;
+            font-weight: 700;
         }
 
         .links-with-desc {
@@ -113,6 +117,7 @@
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .link-item a i {
             margin-right: 10px;
@@ -125,6 +130,7 @@
             font-size: 14px;
             color: #111;
             line-height: 1.5;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .link-item .link-desc .icon {
             margin-right: 6px;
@@ -139,6 +145,7 @@
             background: transparent;
             border: none;
             border-radius: 0;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .link-item .link-desc a:hover {
             background: transparent;
@@ -165,6 +172,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .support-block .support-title .pray-emoji {
             font-size: 26px;
@@ -184,6 +192,7 @@
             cursor: pointer;
             transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
             user-select: none;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .support-block .card-item:last-child {
             margin-bottom: 0;
@@ -200,7 +209,7 @@
             flex-shrink: 0;
         }
         .support-block .card-item .card-number {
-            font-family: 'Courier New', monospace;
+            font-family: 'Roboto Condensed', monospace;
             font-weight: 600;
             letter-spacing: 1px;
             color: #111;
@@ -214,6 +223,7 @@
             padding: 2px 12px;
             border-radius: 20px;
             flex-shrink: 0;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .support-block .card-item .copy-hint {
             font-size: 13px;
@@ -243,6 +253,7 @@
             display: flex;
             align-items: center;
             gap: 10px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .merch-title .merch-emoji {
             font-size: 24px;
@@ -266,6 +277,7 @@
             text-align: center;
             margin-bottom: 12px;
             letter-spacing: 0.5px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .merch-block .merch-image-wrapper {
             width: 100%;
@@ -294,9 +306,11 @@
             color: #111;
             line-height: 1.8;
             margin-bottom: 14px;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .merch-block .merch-info .merch-desc strong {
             color: #000;
+            font-weight: 700;
         }
         .merch-block .merch-contacts {
             display: flex;
@@ -318,6 +332,7 @@
             font-weight: 500;
             flex: 1;
             justify-content: center;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .merch-block .merch-contacts a:hover {
             background: #f8f8f8;
@@ -347,6 +362,7 @@
             z-index: 999;
             pointer-events: none;
             white-space: nowrap;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .toast.show {
             opacity: 1;
@@ -386,12 +402,14 @@
             font-size: 18px;
             font-weight: 600;
             color: #111;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-bio {
             font-size: 15px;
             color: #111;
             margin: 0 0 12px 0;
             line-height: 1.5;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-links {
             display: flex;
@@ -417,6 +435,7 @@
             text-decoration: none;
             font-size: 17px;
             font-weight: 500;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-link-item a i {
             margin-right: 10px;
@@ -429,6 +448,7 @@
             font-size: 14px;
             color: #111;
             line-height: 1.5;
+            font-family: 'Roboto Condensed', sans-serif;
         }
         .author-link-item .author-link-desc .icon {
             margin-right: 6px;
@@ -627,13 +647,12 @@
                     }
                 });
             }, {
-                threshold: 0.15, // Элемент появляется, когда 15% его видно
-                rootMargin: '0px 0px -50px 0px' // Чуть раньше срабатывает
+                threshold: 0.15,
+                rootMargin: '0px 0px -50px 0px'
             });
 
             fadeElements.forEach(el => observer.observe(el));
         } else {
-            // Fallback для старых браузеров — показываем всё сразу
             fadeElements.forEach(el => el.classList.add('visible'));
         }
     });
