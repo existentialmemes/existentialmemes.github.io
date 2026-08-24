@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <title>Соцсети · Экзистенциальные мемы</title>
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #FF88C2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            margin: 0;
+        }
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+        }
+
+        /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .fade-item:nth-child(1) { transition-delay: 0.03s; }
+        .fade-item:nth-child(2) { transition-delay: 0.08s; }
+        .fade-item:nth-child(3) { transition-delay: 0.13s; }
+        .fade-item:nth-child(4) { transition-delay: 0.18s; }
+        .fade-item:nth-child(5) { transition-delay: 0.23s; }
+        .fade-item:nth-child(6) { transition-delay: 0.28s; }
+        .fade-item:nth-child(7) { transition-delay: 0.33s; }
+        .fade-item:nth-child(8) { transition-delay: 0.38s; }
+        .fade-item:nth-child(9) { transition-delay: 0.43s; }
+        .fade-item:nth-child(10) { transition-delay: 0.48s; }
+
+        /* ===== ЗАГОЛОВОК СТРАНИЦЫ ===== */
+        .page-header {
+            margin-bottom: 24px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(240, 224, 232, 0.6);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+        .page-header .back-link {
+            font-size: 22px;
+            color: #111;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-weight: 500;
+            transition: color 0.2s, transform 0.2s;
+        }
+        .page-header .back-link:hover {
+            color: #FF88C2;
+            transform: translateX(-4px);
+        }
+        .page-header .back-link i {
+            font-size: 24px;
+        }
+        .page-header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            color: #111;
+            line-height: 1.2;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        /* ===== РОЗОВЫЙ СМАЙЛИК ===== */
+        .page-header h1 .smile-icon {
+            font-size: 34px;
+            line-height: 1;
+            color: #FF88C2 !important;
+            filter: none;
+            display: inline-block;
+        }
+
+        /* ===== СОЦСЕТИ (СПИСОК) ===== */
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+            margin-bottom: 28px;
+        }
+        .social-item {
+            background: #f6f6f8;
+            border-radius: 18px;
+            border: 1px solid #ececee;
+            overflow: hidden;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+        }
+        .social-item:hover {
+            background: #ededf0;
+            transform: translateY(-2px) scale(1.008);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .social-item a {
+            display: block;
+            padding: 16px 18px 4px 18px;
+            color: #111;
+            text-decoration: none;
+            font-size: 19px;
+            font-weight: 500;
+        }
+        .social-item a i {
+            margin-right: 12px;
+            width: 26px;
+            text-align: center;
+            color: #FF88C2;
+            transition: transform 0.2s ease;
+        }
+        .social-item:hover a i {
+            transform: scale(1.12);
+        }
+        .social-item .social-desc {
+            padding: 0 18px 14px 18px;
+            font-size: 14px;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+        .social-item .social-desc a {
+            display: inline;
+            padding: 0;
+            color: #111;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 400;
+            background: transparent;
+            border: none;
+        }
+        .social-item .social-desc a:hover {
+            background: transparent;
+            color: #333;
+        }
+
+        /* ===== НАВИГАЦИОННАЯ КНОПКА ===== */
+        .nav-back {
+            text-align: center;
+            margin-top: 4px;
+        }
+        .nav-back a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #f0f0f2;
+            border-radius: 40px;
+            color: #111;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid #e4e4e6;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .nav-back a:hover {
+            background: #e4e4e8;
+            transform: scale(1.02);
+        }
+        .nav-back a i {
+            margin-right: 8px;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .page-header h1 { font-size: 22px; }
+            .page-header .back-link { font-size: 18px; }
+            .page-header .back-link i { font-size: 20px; }
+            .page-header h1 .smile-icon { font-size: 28px; }
+            .social-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
+            .social-item .social-desc { padding: 0 14px 12px 14px; font-size: 13px; }
+        }
+        @media (max-width: 400px) {
+            .page-header h1 { font-size: 19px; }
+            .page-header h1 .smile-icon { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ЗАГОЛОВОК СТРАНИЦЫ ===== -->
+    <div class="page-header fade-item visible">
+        <a href="#" class="back-link" onclick="history.back(); return false;">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+        <h1>
+            <span class="smile-icon">🌐</span> Соцсети
+        </h1>
+    </div>
+
+    <!-- ===== СОЦСЕТИ ===== -->
+    <div class="social-grid">
+        <div class="social-item fade-item">
+            <a href="https://vk.ru/ekzistentsializm" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
+            <div class="social-desc">Большая часть всего контента. Также там единственный <a href="https://vk.me/join/sJC6_AHwYjrJYSzkcJG38t4som1OBGd3C34=" target="_blank">Экзистенциальный чатик</a></div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://ru.pinterest.com/ekzistentsializm" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
+            <div class="social-desc">Есть эксклюзивные мемы, которых нет нигде</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://t.me/ekzistencializm" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            <div class="social-desc">Также выходят все новые мемы</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://www.youtube.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            <div class="social-desc">Те же мемы, что и везде, только под музыку</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://www.tiktok.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            <div class="social-desc">Самое хайповое место</div>
+        </div>
+    </div>
+
+    <!-- ===== КНОПКА НАЗАД ===== -->
+    <div class="nav-back fade-item">
+        <a href="#" onclick="history.back(); return false;">
+            <i class="fas fa-arrow-left"></i> Вернуться
+        </a>
+    </div>
+
+</div>
+
+<script>
+    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+</script>
+
+</body>
+</html>
