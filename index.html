@@ -4,20 +4,16 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
     <title>Экзистенциальные мемы</title>
-    
-    <!-- ===== FAVICON (логотип на вкладке) ===== -->
+
+    <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
             background: #FF88C2;
@@ -36,7 +32,6 @@
             padding: 24px 20px 32px;
             box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
             transition: box-shadow 0.3s ease, transform 0.3s ease;
-            backdrop-filter: blur(2px);
         }
         .container:hover {
             box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
@@ -53,18 +48,11 @@
             opacity: 1;
             transform: translateY(0) scale(1);
         }
-
-        /* задержки */
         .fade-item:nth-child(1) { transition-delay: 0.03s; }
         .fade-item:nth-child(2) { transition-delay: 0.08s; }
         .fade-item:nth-child(3) { transition-delay: 0.13s; }
         .fade-item:nth-child(4) { transition-delay: 0.18s; }
         .fade-item:nth-child(5) { transition-delay: 0.23s; }
-        .fade-item:nth-child(6) { transition-delay: 0.28s; }
-        .fade-item:nth-child(7) { transition-delay: 0.33s; }
-        .fade-item:nth-child(8) { transition-delay: 0.38s; }
-        .fade-item:nth-child(9) { transition-delay: 0.43s; }
-        .fade-item:nth-child(10) { transition-delay: 0.48s; }
 
         /* ===== ЗАГОЛОВОК ===== */
         .greeting {
@@ -111,70 +99,57 @@
             font-weight: 700;
         }
 
-        /* ===== ССЫЛКИ ===== */
-        .links-with-desc {
+        /* ===== РАЗДЕЛЫ-КНОПКИ ===== */
+        .sections-grid {
             display: flex;
             flex-direction: column;
             gap: 12px;
-            margin-bottom: 24px;
+            margin: 20px 0 24px;
         }
-        .link-item {
+        .section-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
             background: #f6f6f8;
             border-radius: 16px;
+            padding: 14px 18px;
             border: 1px solid #ececee;
-            overflow: hidden;
+            text-decoration: none;
+            color: #111;
+            font-size: 18px;
+            font-weight: 500;
             transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+            cursor: pointer;
         }
-        .link-item:hover {
+        .section-btn:hover {
             background: #ededf0;
             transform: translateY(-2px) scale(1.008);
             box-shadow: 0 8px 18px rgba(0,0,0,0.04);
         }
-        .link-item a {
-            display: block;
-            padding: 14px 18px 4px 18px;
-            color: #111;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: 500;
-        }
-        .link-item a i {
-            margin-right: 10px;
-            width: 22px;
+        .section-btn i {
+            width: 28px;
             text-align: center;
             color: #FF88C2;
+            font-size: 22px;
             transition: transform 0.2s ease;
         }
-        .link-item:hover a i {
+        .section-btn:hover i {
             transform: scale(1.1);
         }
-        .link-item .link-desc {
-            padding: 0 18px 14px 18px;
-            font-size: 14px;
-            color: #1a1a1a;
-            line-height: 1.5;
+        .section-btn .btn-label {
+            flex: 1;
         }
-        .link-item .link-desc a {
-            display: inline;
-            padding: 0;
-            color: #111;
-            text-decoration: underline;
-            font-size: 14px;
-            font-weight: 400;
-            background: transparent;
-            border: none;
-        }
-        .link-item .link-desc a:hover {
-            background: transparent;
-            color: #333;
+        .section-btn .btn-arrow {
+            color: #aaa;
+            font-size: 16px;
         }
 
-        /* ===== ПОДДЕРЖКА ===== */
+        /* ===== ПОДДЕРЖКА (карточки внизу) ===== */
         .support-block {
             background: linear-gradient(145deg, #fff6f8, #fce8ee);
             border-radius: 20px;
             padding: 18px 18px 16px;
-            margin-bottom: 24px;
+            margin-top: 8px;
             border: 1px solid #ffd9e0;
             transition: transform 0.3s ease, box-shadow 0.4s ease;
         }
@@ -210,17 +185,13 @@
             user-select: none;
             flex-wrap: nowrap;
         }
-        .card-item:last-child {
-            margin-bottom: 0;
-        }
+        .card-item:last-child { margin-bottom: 0; }
         .card-item:hover {
             background: #fff4f6;
             box-shadow: 0 4px 12px rgba(255, 136, 194, 0.08);
             transform: scale(1.005);
         }
-        .card-item:active {
-            transform: scale(0.97);
-        }
+        .card-item:active { transform: scale(0.97); }
         .card-item .card-icon {
             font-size: 28px;
             flex-shrink: 0;
@@ -228,7 +199,6 @@
             width: 32px;
             text-align: center;
         }
-        /* Кастомные иконки для Т-Банка и ЮMoney */
         .card-icon.tbank {
             font-family: 'Roboto Condensed', sans-serif;
             font-weight: 700;
@@ -291,230 +261,6 @@
             color: #2ed573;
         }
 
-        /* ===== АВТОР ===== */
-        .author-block {
-            background: #fafafa;
-            border-radius: 20px;
-            padding: 16px 0 18px;
-            border-top: 2px solid #f0e0e8;
-            border-bottom: 2px solid #f0e0e8;
-            transition: transform 0.3s ease;
-            margin-bottom: 20px;
-        }
-        .author-block:hover {
-            transform: scale(1.003);
-        }
-        .author-header {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-bottom: 10px;
-            padding: 0 6px;
-        }
-        .author-avatar {
-            width: 56px;
-            height: 56px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid #f0e0e8;
-            flex-shrink: 0;
-            transition: transform 0.35s ease, box-shadow 0.35s ease;
-        }
-        .author-header:hover .author-avatar {
-            transform: scale(1.06) rotate(-3deg);
-            box-shadow: 0 6px 14px rgba(255, 136, 194, 0.15);
-        }
-        .author-name {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111;
-        }
-        .author-bio {
-            font-size: 15px;
-            color: #1a1a1a;
-            margin: 0 0 12px 0;
-            line-height: 1.5;
-            padding: 0 6px;
-        }
-        .author-links {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        .author-link-item {
-            background: #f0f0f2;
-            border-radius: 14px;
-            border: 1px solid #e4e4e6;
-            overflow: hidden;
-            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
-        }
-        .author-link-item:hover {
-            background: #e4e4e8;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-        }
-        .author-link-item a {
-            display: block;
-            padding: 12px 18px 2px 18px;
-            color: #111;
-            text-decoration: none;
-            font-size: 17px;
-            font-weight: 500;
-        }
-        .author-link-item a i {
-            margin-right: 10px;
-            width: 22px;
-            text-align: center;
-            color: #FF88C2;
-            transition: transform 0.2s ease;
-        }
-        .author-link-item:hover a i {
-            transform: scale(1.08);
-        }
-        .author-link-item .author-link-desc {
-            padding: 0 18px 12px 18px;
-            font-size: 14px;
-            color: #1a1a1a;
-            line-height: 1.5;
-        }
-
-        /* ===== МЕРЧ ===== */
-        .merch-wrapper {
-            margin-top: 8px;
-        }
-        .merch-title {
-            font-size: 18px;
-            font-weight: 600;
-            color: #111;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .merch-title .merch-emoji {
-            font-size: 24px;
-        }
-        .merch-block {
-            background: #f6f6f8;
-            border-radius: 20px;
-            padding: 18px 18px 18px;
-            border: 1px solid #ececee;
-            transition: transform 0.3s ease, box-shadow 0.4s ease;
-        }
-        .merch-block:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.04);
-        }
-        .merch-sticker-title {
-            font-size: 20px;
-            font-weight: 700;
-            color: #111;
-            text-align: center;
-            margin-bottom: 14px;
-            letter-spacing: 0.3px;
-        }
-        .merch-image-wrapper {
-            width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            border: 1px solid #e4e4e6;
-            background: #ffffff;
-            margin-bottom: 14px;
-            aspect-ratio: 2160 / 3048;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-        }
-        .merch-image-wrapper:hover {
-            transform: scale(1.01);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-        }
-        .merch-image-wrapper img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            display: block;
-            transition: transform 0.5s ease;
-        }
-        .merch-image-wrapper:hover img {
-            transform: scale(1.02);
-        }
-        .merch-desc {
-            font-size: 14px;
-            color: #1a1a1a;
-            line-height: 1.8;
-            margin-bottom: 16px;
-        }
-        .merch-desc strong {
-            color: #000;
-            font-weight: 700;
-        }
-        .merch-contacts {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .merch-contacts a {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            font-size: 15px;
-            color: #111;
-            text-decoration: none;
-            background: #ffffff;
-            padding: 10px 18px;
-            border-radius: 40px;
-            border: 1px solid #dcdcde;
-            transition: background 0.25s ease, border-color 0.25s, transform 0.2s, box-shadow 0.3s;
-            font-weight: 500;
-            flex: 1 1 auto;
-            min-width: 120px;
-        }
-        .merch-contacts a:hover {
-            background: #fcfcfc;
-            border-color: #c0c0c4;
-            transform: scale(1.03);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
-        }
-        .merch-contacts a i {
-            font-size: 18px;
-            color: #FF88C2;
-        }
-
-        /* ===== КРАСНАЯ КНОПКА ===== */
-        .red-button-wrapper {
-            margin-top: 24px;
-            text-align: center;
-        }
-        .red-button {
-            display: inline-block;
-            background: #e53935;
-            color: #ffffff;
-            font-weight: 700;
-            font-size: 20px;
-            padding: 18px 32px;
-            border-radius: 60px;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            box-shadow: 0 8px 20px rgba(229, 57, 53, 0.35);
-            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.2s;
-            border: none;
-            cursor: pointer;
-            width: 100%;
-            text-align: center;
-        }
-        .red-button:hover {
-            background: #c62828;
-            transform: scale(1.03) translateY(-2px);
-            box-shadow: 0 12px 30px rgba(229, 57, 53, 0.45);
-        }
-        .red-button:active {
-            transform: scale(0.97);
-            box-shadow: 0 4px 12px rgba(229, 57, 53, 0.3);
-        }
-
         /* ===== TOAST ===== */
         .toast {
             position: fixed;
@@ -548,104 +294,32 @@
             .greeting h1 { font-size: 22px; }
             .greeting .desc-text { font-size: 14px; }
             .project-avatar { width: 52px; height: 52px; }
-            .link-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
-            .link-item .link-desc { padding: 0 14px 12px 14px; font-size: 13px; }
+            .section-btn { font-size: 16px; padding: 12px 14px; }
+            .section-btn i { font-size: 20px; width: 24px; }
             .support-block { padding: 14px 14px 12px; }
-            
-            .card-item {
-                padding: 10px 12px;
-                font-size: 14px;
-                gap: 8px;
-                flex-wrap: nowrap;
-            }
-            .card-item .card-number {
-                font-size: 13px;
-                letter-spacing: 0.3px;
-                white-space: nowrap;
-                min-width: 0;
-                flex-shrink: 1;
-            }
-            .card-item .card-icon {
-                font-size: 24px;
-                width: 28px;
-            }
-            .card-item .card-icon.tbank {
-                font-size: 16px;
-                padding: 1px 5px;
-                min-width: 28px;
-            }
-            .card-item .card-icon.ymoney {
-                font-size: 13px;
-                padding: 1px 5px;
-                min-width: 28px;
-            }
-            .card-item .card-label {
-                font-size: 11px;
-                padding: 1px 10px;
-                flex-shrink: 0;
-            }
-            .card-item .copy-hint {
-                font-size: 14px;
-                margin-left: 0;
-            }
-            
-            .author-avatar { width: 44px; height: 44px; }
-            .author-name { font-size: 16px; }
-            .author-link-item a { font-size: 15px; padding: 10px 14px 0 14px; }
-            .author-link-item .author-link-desc { padding: 0 14px 10px 14px; font-size: 13px; }
-            .merch-sticker-title { font-size: 17px; }
-            .merch-contacts a { font-size: 14px; padding: 8px 14px; flex: 1 1 100%; }
-            
-            .red-button {
-                font-size: 17px;
-                padding: 16px 24px;
-            }
-            
+            .card-item { padding: 10px 12px; font-size: 14px; gap: 8px; flex-wrap: nowrap; }
+            .card-item .card-number { font-size: 13px; letter-spacing: 0.3px; white-space: nowrap; min-width: 0; flex-shrink: 1; }
+            .card-item .card-icon { font-size: 24px; width: 28px; }
+            .card-item .card-icon.tbank { font-size: 16px; padding: 1px 5px; min-width: 28px; }
+            .card-item .card-icon.ymoney { font-size: 13px; padding: 1px 5px; min-width: 28px; }
+            .card-item .card-label { font-size: 11px; padding: 1px 10px; flex-shrink: 0; }
+            .card-item .copy-hint { font-size: 14px; margin-left: 0; }
             .toast { font-size: 14px; padding: 10px 20px; white-space: normal; max-width: 90%; }
         }
         @media (max-width: 400px) {
             .greeting-header { gap: 10px; }
             .greeting h1 { font-size: 19px; }
-            .card-item .card-number {
-                font-size: 12px;
-                letter-spacing: 0.2px;
-            }
-            .card-item .card-label {
-                font-size: 10px;
-                padding: 1px 8px;
-            }
-            .card-item .card-icon {
-                font-size: 20px;
-                width: 24px;
-            }
-            .card-item .card-icon.tbank {
-                font-size: 14px;
-                padding: 1px 4px;
-                min-width: 24px;
-            }
-            .card-item .card-icon.ymoney {
-                font-size: 11px;
-                padding: 1px 4px;
-                min-width: 24px;
-            }
-            .red-button {
-                font-size: 15px;
-                padding: 14px 20px;
-            }
+            .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
+            .section-btn i { font-size: 18px; width: 22px; }
+            .card-item .card-number { font-size: 12px; letter-spacing: 0.2px; }
+            .card-item .card-label { font-size: 10px; padding: 1px 8px; }
+            .card-item .card-icon { font-size: 20px; width: 24px; }
+            .card-item .card-icon.tbank { font-size: 14px; padding: 1px 4px; min-width: 24px; }
+            .card-item .card-icon.ymoney { font-size: 11px; padding: 1px 4px; min-width: 24px; }
         }
         @media (max-width: 360px) {
-            .card-item .card-number {
-                font-size: 11px;
-                letter-spacing: 0px;
-            }
-            .card-item .card-label {
-                font-size: 9px;
-                padding: 1px 6px;
-            }
-            .red-button {
-                font-size: 14px;
-                padding: 12px 16px;
-            }
+            .card-item .card-number { font-size: 11px; letter-spacing: 0px; }
+            .card-item .card-label { font-size: 9px; padding: 1px 6px; }
         }
     </style>
 </head>
@@ -672,33 +346,31 @@
         </div>
     </div>
 
-    <!-- ===== 2. ССЫЛКИ ===== -->
-    <div class="links-with-desc">
-        <div class="link-item fade-item">
-            <a href="https://vk.ru/ekzistentsializm" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
-            <div class="link-desc">
-                Большая часть всего контента. Также там единственный <a href="https://vk.me/join/sJC6_AHwYjrJYSzkcJG38t4som1OBGd3C34=" target="_blank">Экзистенциальный чатик</a>
-            </div>
-        </div>
-        <div class="link-item fade-item">
-            <a href="https://ru.pinterest.com/ekzistentsializm" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
-            <div class="link-desc">Есть эксклюзивные мемы, которых нет нигде</div>
-        </div>
-        <div class="link-item fade-item">
-            <a href="https://t.me/ekzistencializm" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
-            <div class="link-desc">Также выходят все новые мемы</div>
-        </div>
-        <div class="link-item fade-item">
-            <a href="https://www.youtube.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-            <div class="link-desc">Те же мемы, что и везде, только под музыку</div>
-        </div>
-        <div class="link-item fade-item">
-            <a href="https://www.tiktok.com/@ekzistentsializm" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-            <div class="link-desc">Самое хайповое место</div>
-        </div>
+    <!-- ===== 2. РАЗДЕЛЫ-КНОПКИ ===== -->
+    <div class="sections-grid">
+        <a href="https://existentialmemes.github.io/соцсети" class="section-btn fade-item">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span class="btn-label">Соцсети</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+        <a href="#" class="section-btn fade-item">
+            <i class="fa-solid fa-user"></i>
+            <span class="btn-label">Стёпа Антимасло (Я)</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+        <a href="#" class="section-btn fade-item">
+            <i class="fa-solid fa-shirt"></i>
+            <span class="btn-label">Мерч</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+        <a href="#" class="section-btn fade-item">
+            <i class="fa-solid fa-address-book"></i>
+            <span class="btn-label">Контакты</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
     </div>
 
-    <!-- ===== 3. ПОДДЕРЖКА ===== -->
+    <!-- ===== 3. ПОДДЕРЖКА (карточки внизу) ===== -->
     <div class="support-block fade-item">
         <div class="support-title">
             <span class="pray-emoji">🙏</span> Поддержать
@@ -717,78 +389,10 @@
         </div>
     </div>
 
-    <!-- ===== 4. АВТОР ===== -->
-    <div class="author-block fade-item">
-        <div class="author-header">
-            <img 
-                src="https://i.pinimg.com/280x280_RS/73/a6/33/73a6338a1c41fec03c932b30caa8a5da.jpg" 
-                alt="Стёпа Антимасло" 
-                class="author-avatar" loading="lazy"
-            />
-            <div class="author-name">Стёпа Антимасло (Я)</div>
-        </div>
-        <div class="author-bio">Создал Экзистенциальные мемы и всё остальное.</div>
-        <div class="author-links">
-            <div class="author-link-item">
-                <a href="https://vk.ru/im/channels/-240477125" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
-                <div class="author-link-desc">Выкладываю видео, фото и пишу свои мысли</div>
-            </div>
-            <div class="author-link-item">
-                <a href="https://ru.pinterest.com/antimaslo/" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
-                <div class="author-link-desc">Фото и видеоконтент</div>
-            </div>
-            <div class="author-link-item">
-                <a href="https://t.me/antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
-                <div class="author-link-desc">Больше всего старого контента</div>
-            </div>
-            <div class="author-link-item">
-                <a href="https://www.youtube.com/@antimaslo" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-                <div class="author-link-desc">Всё то же самое, что и в ТикТоке</div>
-            </div>
-            <div class="author-link-item">
-                <a href="https://www.tiktok.com/@stepa_antimaslo" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-                <div class="author-link-desc">Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое</div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 5. МЕРЧ ===== -->
-    <div class="merch-wrapper fade-item">
-        <div class="merch-title">
-            <span class="merch-emoji">🛍️</span> Наш мерч
-        </div>
-        <div class="merch-block">
-            <div class="merch-sticker-title">СТИКЕРПАК "В НАЧАЛЕ БЫЛ МЕМ"</div>
-            <div class="merch-image-wrapper">
-                <img 
-                    src="https://i.pinimg.com/736x/97/50/5c/97505c58ec8545f3ee7d4da83797abe0.jpg" 
-                    alt="Стикеры Экзистенциальные мемы" loading="lazy"
-                />
-            </div>
-            <div class="merch-desc">
-                <strong>Максимально качественные виниловые стикеры</strong> будут сопровождать тебя всюду 👇<br><br>
-                Надёжные и крепкие, они переживут даже экзистенциальный кризис и твои планы на выходные!<br><br>
-                Чёткие, сочно-эстетичные картинки замечательно украсят твой телефон, любимый скетчбук, системный блок и вообще всё, что ты захочешь!<br><br>
-                🥰 Десять свэговых мемо-наклеек станут твоими всего за <strong>300 рублей</strong> (отслеживаемая доставка уже включена в стоимость)
-            </div>
-            <div class="merch-contacts">
-                <a href="https://vk.com/antimaslo_of" target="_blank"><i class="fa-brands fa-vk"></i> Написать в ВК</a>
-                <a href="https://t.me/stepa_antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Написать в ТГ</a>
-            </div>
-        </div>
-    </div>
-
-    <!-- ===== 6. КРАСНАЯ КНОПКА ===== -->
-    <div class="red-button-wrapper fade-item">
-        <a href="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/6f6063ff040090cffe42452289e2db96.jpg" target="_blank" class="red-button">
-            МНУ ПЕЛЬМЕШКИ 18+
-        </a>
-    </div>
-
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ (Intersection Observer) =====
+    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
     (function() {
         const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {
