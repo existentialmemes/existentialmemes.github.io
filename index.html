@@ -3,7 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+
     <title>Экзистенциальные мемы</title>
+    <meta name="description" content="Экзистенциальные мемы — философские мемы, мемная философия, экзистенциальные котлетки и экзистенциальный свэг." />
+    <meta property="og:site_name" content="Экзистенциальные мемы" />
+    <meta property="og:title" content="Экзистенциальные мемы" />
+    <meta property="og:description" content="Философские мемы, мемная философия и экзистенциальный свэг." />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Экзистенциальные мемы",
+      "alternateName": "Existential Memes",
+      "url": "https://existentialmemes.github.io/"
+    }
+    </script>
 
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
@@ -37,7 +52,6 @@
             box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
         }
 
-        /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
         .fade-item {
             opacity: 0;
             transform: translateY(24px) scale(0.98);
@@ -54,7 +68,6 @@
         .fade-item:nth-child(4) { transition-delay: 0.18s; }
         .fade-item:nth-child(5) { transition-delay: 0.23s; }
 
-        /* ===== ЗАГОЛОВОК ===== */
         .greeting {
             margin-bottom: 20px;
             padding-bottom: 14px;
@@ -99,7 +112,6 @@
             font-weight: 700;
         }
 
-        /* ===== РАЗДЕЛЫ-КНОПКИ ===== */
         .sections-grid {
             display: flex;
             flex-direction: column;
@@ -144,7 +156,6 @@
             font-size: 16px;
         }
 
-        /* ===== ПОДДЕРЖКА (карточки внизу) ===== */
         .support-block {
             background: linear-gradient(145deg, #fff6f8, #fce8ee);
             border-radius: 20px;
@@ -261,7 +272,6 @@
             color: #2ed573;
         }
 
-        /* ===== TOAST ===== */
         .toast {
             position: fixed;
             bottom: 30px;
@@ -287,7 +297,6 @@
             transform: translateX(-50%) translateY(0);
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 500px) {
             body { padding: 12px; }
             .container { padding: 18px 14px 24px; border-radius: 24px; }
@@ -329,7 +338,6 @@
 
 <div class="container">
 
-    <!-- ===== 1. ЗАГОЛОВОК ===== -->
     <div class="greeting fade-item visible">
         <div class="greeting-header">
             <img 
@@ -346,7 +354,6 @@
         </div>
     </div>
 
-    <!-- ===== 2. РАЗДЕЛЫ-КНОПКИ ===== -->
     <div class="sections-grid">
         <a href="https://existentialmemes.github.io/соцсети" class="section-btn fade-item">
             <i class="fa-solid fa-share-nodes"></i>
@@ -370,7 +377,6 @@
         </a>
     </div>
 
-    <!-- ===== 3. ПОДДЕРЖКА (карточки внизу) ===== -->
     <div class="support-block fade-item">
         <div class="support-title">
             <span class="pray-emoji">🙏</span> Поддержать
@@ -392,7 +398,6 @@
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
     (function() {
         const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {
@@ -413,7 +418,6 @@
         }
     })();
 
-    // ===== КОПИРОВАНИЕ НОМЕРОВ =====
     document.querySelectorAll('.card-item').forEach(item => {
         item.addEventListener('click', function(e) {
             const cardNumber = this.dataset.card;
