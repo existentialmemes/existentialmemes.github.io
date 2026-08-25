@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <title>Стёпа Антимасло</title>
+    
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #FF88C2;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px;
+            margin: 0;
+        }
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+        }
+
+        /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .fade-item:nth-child(1) { transition-delay: 0.03s; }
+        .fade-item:nth-child(2) { transition-delay: 0.08s; }
+        .fade-item:nth-child(3) { transition-delay: 0.13s; }
+        .fade-item:nth-child(4) { transition-delay: 0.18s; }
+        .fade-item:nth-child(5) { transition-delay: 0.23s; }
+        .fade-item:nth-child(6) { transition-delay: 0.28s; }
+        .fade-item:nth-child(7) { transition-delay: 0.33s; }
+        .fade-item:nth-child(8) { transition-delay: 0.38s; }
+        .fade-item:nth-child(9) { transition-delay: 0.43s; }
+        .fade-item:nth-child(10) { transition-delay: 0.48s; }
+
+        /* ===== ШАПКА С КНОПКОЙ НАЗАД ===== */
+        .page-header {
+            margin-bottom: 12px;
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .page-header .back-link {
+            font-size: 24px;
+            color: #111;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: #f0f0f2;
+            transition: background 0.2s, transform 0.2s, color 0.2s;
+            flex-shrink: 0;
+        }
+        .page-header .back-link:hover {
+            background: #e4e4e8;
+            color: #FF88C2;
+            transform: scale(1.06);
+        }
+        .page-header .back-link i {
+            font-size: 22px;
+        }
+
+        /* ===== АВАТАР ===== */
+        .profile-avatar-wrapper {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 10px;
+        }
+        .profile-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #f0e0e8;
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+            box-shadow: 0 8px 20px rgba(255, 136, 194, 0.15);
+        }
+        .profile-avatar:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 12px 28px rgba(255, 136, 194, 0.25);
+        }
+
+        /* ===== ИМЯ + ТЕКСТ ===== */
+        .profile-name {
+            text-align: center;
+            font-size: 28px;
+            font-weight: 700;
+            color: #111;
+            margin-top: 4px;
+            letter-spacing: -0.2px;
+        }
+        .profile-role {
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            color: #444;
+            margin-top: -2px;
+            margin-bottom: 14px;
+        }
+        .profile-quote {
+            background: #fafafa;
+            border-radius: 20px;
+            padding: 18px 20px;
+            margin-bottom: 24px;
+            border-left: 4px solid #FF88C2;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .profile-quote strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* ===== СОЦСЕТИ (СПИСОК) ===== */
+        .social-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: #111;
+            margin-bottom: 14px;
+        }
+        .social-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 28px;
+        }
+        .social-item {
+            background: #f6f6f8;
+            border-radius: 16px;
+            border: 1px solid #ececee;
+            overflow: hidden;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+        }
+        .social-item:hover {
+            background: #ededf0;
+            transform: translateY(-2px) scale(1.008);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .social-item > a {
+            display: block;
+            padding: 14px 18px 4px 18px;
+            color: #111;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: 500;
+        }
+        .social-item > a i {
+            margin-right: 12px;
+            width: 24px;
+            text-align: center;
+            color: #FF88C2;
+            transition: transform 0.2s ease;
+        }
+        .social-item:hover > a i {
+            transform: scale(1.1);
+        }
+        .social-item .social-desc {
+            padding: 0 18px 12px 18px;
+            font-size: 14px;
+            color: #1a1a1a;
+            line-height: 1.5;
+        }
+        .social-item .social-desc a {
+            display: inline;
+            padding: 0;
+            font-size: 14px;
+            font-weight: 400;
+            color: #1a1a1a;
+            text-decoration: underline;
+            background: transparent;
+            border: none;
+        }
+        .social-item .social-desc a:hover {
+            color: #FF88C2;
+            background: transparent;
+        }
+
+        /* ===== КРАСНАЯ КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== */
+        .pelmeni-btn-wrapper {
+            text-align: center;
+            margin: 8px 0 24px;
+        }
+        .pelmeni-btn {
+            display: inline-block;
+            background: #e53935;
+            color: #fff;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 14px 32px;
+            border-radius: 60px;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+            box-shadow: 0 6px 18px rgba(229, 57, 53, 0.3);
+            transition: background 0.25s, transform 0.25s, box-shadow 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .pelmeni-btn:hover {
+            background: #c62828;
+            transform: scale(1.04);
+            box-shadow: 0 10px 28px rgba(229, 57, 53, 0.4);
+        }
+        .pelmeni-btn:active {
+            transform: scale(0.96);
+        }
+
+        /* ===== КНОПКА НАЗАД (внизу) ===== */
+        .nav-back {
+            text-align: center;
+            margin-top: 4px;
+        }
+        .nav-back a {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #f0f0f2;
+            border-radius: 40px;
+            color: #111;
+            text-decoration: none;
+            font-weight: 500;
+            border: 1px solid #e4e4e6;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .nav-back a:hover {
+            background: #e4e4e8;
+            transform: scale(1.02);
+        }
+        .nav-back a i {
+            margin-right: 8px;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .profile-avatar { width: 96px; height: 96px; }
+            .profile-name { font-size: 24px; }
+            .profile-role { font-size: 16px; }
+            .profile-quote { font-size: 15px; padding: 14px 16px; }
+            .social-item > a { font-size: 16px; padding: 12px 14px 2px 14px; }
+            .social-item .social-desc { padding: 0 14px 10px 14px; font-size: 13px; }
+            .social-item .social-desc a { font-size: 13px; }
+            .pelmeni-btn { font-size: 17px; padding: 12px 24px; }
+            .page-header .back-link { width: 38px; height: 38px; font-size: 20px; }
+            .page-header .back-link i { font-size: 18px; }
+        }
+        @media (max-width: 400px) {
+            .profile-avatar { width: 80px; height: 80px; }
+            .profile-name { font-size: 20px; }
+            .profile-role { font-size: 14px; }
+            .profile-quote { font-size: 14px; }
+            .pelmeni-btn { font-size: 15px; padding: 10px 18px; }
+            .social-item .social-desc a { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ШАПКА С КНОПКОЙ НАЗАД (стрелочка) ===== -->
+    <div class="page-header fade-item visible">
+        <a href="#" class="back-link" onclick="history.back(); return false;">
+            <i class="fas fa-arrow-left"></i>
+        </a>
+    </div>
+
+    <!-- ===== АВАТАР ===== -->
+    <div class="profile-avatar-wrapper fade-item">
+        <img 
+            src="https://i.pinimg.com/280x280_RS/73/a6/33/73a6338a1c41fec03c932b30caa8a5da.jpg" 
+            alt="Стёпа Антимасло" 
+            class="profile-avatar" loading="lazy"
+        />
+    </div>
+
+    <!-- ===== ИМЯ ===== -->
+    <div class="profile-name fade-item">Стёпа Антимасло</div>
+    <div class="profile-role fade-item">Создатель</div>
+
+    <!-- ===== ЦИТАТА (без кавычек) ===== -->
+    <div class="profile-quote fade-item">
+        Я создатель мемов и просто хороший добрый человек. 
+        <strong>Я создал Экзистенциальные мемы и всё остальное.</strong>
+    </div>
+
+    <!-- ===== МОИ СОЦСЕТИ (без смайлика) ===== -->
+    <div class="social-title fade-item">Мои соцсети</div>
+
+    <div class="social-grid">
+        <div class="social-item fade-item">
+            <a href="https://vk.ru/im/channels/-240477125" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
+            <div class="social-desc">
+                Выкладываю видео, фото, пишу свои мысли и общаюсь с <a href="https://vk.me/join/Qine6gjXNpu3RVpLpqqT6917ojAZejb6CtI=" target="_blank">антимаслятами</a>
+            </div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://ru.pinterest.com/antimaslo/" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
+            <div class="social-desc">Фото и видеоконтент</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://t.me/antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+            <div class="social-desc">Больше всего старого контента</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://www.youtube.com/@antimaslo" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
+            <div class="social-desc">Всё то же самое, что и в ТикТоке</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://www.tiktok.com/@stepa_antimaslo" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            <div class="social-desc">Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое</div>
+        </div>
+    </div>
+
+    <!-- ===== КРАСНАЯ КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== -->
+    <div class="pelmeni-btn-wrapper fade-item">
+        <a href="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/6f6063ff040090cffe42452289e2db96.jpg" target="_blank" class="pelmeni-btn">
+            🥟 МНУ ПЕЛЬМЕШКИ 18+
+        </a>
+    </div>
+
+    <!-- ===== КНОПКА ВЕРНУТЬСЯ НАЗАД ===== -->
+    <div class="nav-back fade-item">
+        <a href="#" onclick="history.back(); return false;">
+            <i class="fas fa-arrow-left"></i> Вернуться
+        </a>
+    </div>
+
+</div>
+
+<script>
+    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+</script>
+
+</body>
+</html>
