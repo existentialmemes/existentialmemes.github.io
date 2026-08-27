@@ -148,6 +148,19 @@
             color: #000;
             font-weight: 700;
         }
+        /* Стиль для ссылки внутри цитаты */
+        .profile-quote a {
+            color: #111;
+            text-decoration: underline;
+            font-weight: 700;
+            transition: color 0.2s, background 0.2s;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+        .profile-quote a:hover {
+            color: #FF88C2;
+            background: rgba(255, 136, 194, 0.08);
+        }
 
         /* ===== СОЦСЕТИ (СПИСОК) ===== */
         .social-title {
@@ -315,10 +328,10 @@
     <div class="profile-name fade-item">Стёпа Антимасло</div>
     <div class="profile-role fade-item">Создатель</div>
 
-    <!-- ===== ЦИТАТА (без кавычек) ===== -->
+    <!-- ===== ЦИТАТА (со ссылкой на экзистенциальные мемы) ===== -->
     <div class="profile-quote fade-item">
         Я создатель мемов и просто хороший добрый человек. 
-        <strong>Я создал Экзистенциальные мемы и всё остальное.</strong>
+        <strong>Я создал <a href="https://existentialmemes.github.io/" target="_blank">Экзистенциальные мемы</a> и всё остальное.</strong>
     </div>
 
     <!-- ===== МОИ СОЦСЕТИ (без смайлика) ===== -->
