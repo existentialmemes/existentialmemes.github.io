@@ -19,7 +19,6 @@
     }
     </script>
 
-    <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
@@ -51,7 +50,6 @@
             box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
         }
 
-        /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
         .fade-item {
             opacity: 0;
             transform: translateY(24px) scale(0.98);
@@ -63,7 +61,6 @@
             transform: translateY(0) scale(1);
         }
 
-        /* ===== КНОПКА НАЗАД ===== */
         .back-btn {
             display: inline-flex;
             align-items: center;
@@ -85,7 +82,6 @@
             transform: translateX(-3px);
         }
 
-        /* ===== ЗАГОЛОВОК РАЗДЕЛА ===== */
         .greeting {
             margin-bottom: 22px;
             padding-bottom: 14px;
@@ -119,7 +115,6 @@
             line-height: 1.2;
         }
 
-        /* ===== СЕТКА КАРТОЧЕК ===== */
         .articles-grid {
             display: flex;
             flex-direction: column;
@@ -143,35 +138,30 @@
             box-shadow: 0 12px 28px rgba(0,0,0,0.07);
         }
 
-        /* Картинка карточки — одинаковой высоты */
         .card-image {
             width: 100%;
-            height: 180px;
-            background: linear-gradient(145deg, #fff6f8, #fce8ee);
-            border-bottom: 1px solid #ececee;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             overflow: hidden;
-            position: relative;
             flex-shrink: 0;
+            background: #fce8ee;
+            line-height: 0;
         }
         .card-image img {
             width: 100%;
-            height: 100%;
-            object-fit: cover;
+            height: auto;
             display: block;
-            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .article-card:hover .card-image img {
             transform: scale(1.04);
         }
+
         .card-image .img-placeholder {
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             gap: 6px;
+            height: 180px;
             color: #d16a9b;
             text-align: center;
             padding: 12px;
@@ -185,7 +175,6 @@
             font-weight: 500;
         }
 
-        /* Текст карточки */
         .card-content {
             padding: 14px 16px 16px;
             display: flex;
@@ -214,13 +203,11 @@
             margin: 0;
         }
 
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 500px) {
             body { padding: 12px; }
             .container { padding: 18px 14px 24px; border-radius: 24px; }
             .greeting h1 { font-size: 22px; }
             .project-avatar { width: 52px; height: 52px; }
-            .card-image { height: 150px; }
             .card-content { padding: 12px 14px 14px; }
             .card-content h2 { font-size: 17px; }
             .card-content p { font-size: 13px; }
@@ -228,7 +215,6 @@
         @media (max-width: 400px) {
             .greeting-header { gap: 10px; }
             .greeting h1 { font-size: 19px; }
-            .card-image { height: 130px; }
             .card-content h2 { font-size: 16px; }
             .card-content p { font-size: 12.5px; }
         }
@@ -242,7 +228,6 @@
         <i class="fa-solid fa-arrow-left"></i> На главную
     </a>
 
-    <!-- ===== ЗАГОЛОВОК ===== -->
     <div class="greeting fade-item visible">
         <div class="greeting-header">
             <img
@@ -254,16 +239,12 @@
         </div>
     </div>
 
-    <!-- ===== СЕТКА КАРТОЧЕК ===== -->
     <div class="articles-grid">
 
         <!-- Ницше -->
-        <a href="https://existentialmemes.github.io/ницше" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-ницше" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Фото Ницше</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/ницше.jpg" alt="Фото Ницше" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-person-rays"></i> Философия Ницше</h2>
@@ -275,12 +256,9 @@
         </a>
 
         <!-- Сартр -->
-        <a href="https://existentialmemes.github.io/сартр" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-сартра" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Сартр с котом</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/сартр.jpg" alt="Сартр с котом" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-feather"></i> Философия Сартра</h2>
@@ -292,12 +270,9 @@
         </a>
 
         <!-- Кафка -->
-        <a href="https://existentialmemes.github.io/кафка" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-кафки" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Фото Кафки</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/кака.jpg" alt="Фото Кафки" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-door-closed"></i> Философия Кафки</h2>
@@ -309,12 +284,9 @@
         </a>
 
         <!-- Камю -->
-        <a href="https://existentialmemes.github.io/камю" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-камю" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Фото Камю</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/камю.jpg" alt="Фото Камю" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-sun"></i> Философия Камю</h2>
@@ -326,12 +298,9 @@
         </a>
 
         <!-- Пелевин -->
-        <a href="https://existentialmemes.github.io/пелевин" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-пелевина" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Фото Пелевина</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/плв.jpg" alt="Фото Пелевина" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-cube"></i> Философия Пелевина</h2>
@@ -343,12 +312,9 @@
         </a>
 
         <!-- Кот Шрёдингера -->
-        <a href="https://existentialmemes.github.io/кот-шрёдингера" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/кот-шрёдингера" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-solid fa-cat"></i>
-                    <span>Кот Шрёдингера</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/шре.jpg" alt="Кот Шрёдингера" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-flask"></i> Кот Шрёдингера</h2>
@@ -360,12 +326,9 @@
         </a>
 
         <!-- Смысл жизни -->
-        <a href="https://existentialmemes.github.io/смысл-жизни" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/смысл-жизни" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-solid fa-infinity"></i>
-                    <span>Уроборос / бесконечность</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/урабора.jpg" alt="Уроборос / бесконечность" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-circle-question"></i> В чём смысл жизни?</h2>
@@ -377,12 +340,9 @@
         </a>
 
         <!-- Стоицизм -->
-        <a href="https://existentialmemes.github.io/стоицизм" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-стоицизма" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Марк Аврелий</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/стои.jpg" alt="Марк Аврелий" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-mountain"></i> Философия стоицизма</h2>
@@ -394,12 +354,9 @@
         </a>
 
         <!-- Нигилизм -->
-        <a href="https://existentialmemes.github.io/нигилизм" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/философия-нигилизма" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-regular fa-image"></i>
-                    <span>Пустота / бездна</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/нига.jpg" alt="Пустота / бездна" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-ban"></i> Философия нигилизма</h2>
@@ -411,12 +368,9 @@
         </a>
 
         <!-- Парадокс Тесея -->
-        <a href="https://existentialmemes.github.io/парадокс-тесея" class="article-card fade-item">
+        <a href="https://existentialmemes.github.io/статьи/парадокс-тесея" class="article-card fade-item">
             <div class="card-image">
-                <div class="img-placeholder">
-                    <i class="fa-solid fa-ship"></i>
-                    <span>Корабль Тесея</span>
-                </div>
+                <img src="https://existentialmemes.github.io/статьи/тсе.jpg" alt="Корабль Тесея" loading="lazy" />
             </div>
             <div class="card-content">
                 <h2><i class="fa-solid fa-arrows-rotate"></i> Парадокс Тесея</h2>
