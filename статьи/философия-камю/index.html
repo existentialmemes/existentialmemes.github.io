@@ -110,7 +110,7 @@
             font-weight: 700;
         }
 
-        /* ===== СТАТЬЯ (без окошечек) ===== */
+        /* ===== СТАТЬЯ ===== */
         .article {
             display: flex;
             flex-direction: column;
@@ -154,48 +154,14 @@
         }
         blockquote:last-child { margin-bottom: 0; }
 
-        /* ===== КАРТИНКА + ПОДПИСЬ ПОД НЕЙ ===== */
+        /* ===== КАРТИНКА + ПОДПИСЬ ===== */
         .article-image {
             width: 100%;
             display: block;
             border-radius: 18px;
-            margin-top: 16px;
+            margin-top: 0;
+            margin-bottom: 16px;
             object-fit: cover;
-        }
-        .image-placeholder {
-            width: 100%;
-            min-height: 200px;
-            border-radius: 18px;
-            border: 2px dashed #ffc3d9;
-            background: linear-gradient(145deg, #fff6f8, #fce8ee);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 24px 16px;
-            margin-top: 16px;
-            text-align: center;
-            color: #d16a9b;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .image-placeholder:hover {
-            border-color: #FF88C2;
-            transform: scale(1.005);
-        }
-        .image-placeholder i {
-            font-size: 34px;
-            opacity: 0.7;
-        }
-        .image-placeholder .ph-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #c2598c;
-        }
-        .image-placeholder .ph-hint {
-            font-size: 13px;
-            font-weight: 400;
-            color: #b98aa5;
         }
         .image-caption {
             font-size: 13px;
@@ -206,7 +172,7 @@
             font-style: italic;
         }
 
-        /* ===== ФИНАЛЬНАЯ СТРОКА (без окошечка) ===== */
+        /* ===== ФИНАЛЬНАЯ СТРОКА ===== */
         .outro-line {
             margin-top: 34px;
             padding-top: 22px;
@@ -276,7 +242,6 @@
             .article { gap: 26px; }
             .article-section h2 { font-size: 21px; }
             .article-section p, blockquote { font-size: 15px; }
-            .image-placeholder { min-height: 170px; border-radius: 16px; }
             .outro-line .outro-thanks { font-size: 17px; }
             .section-btn { font-size: 16px; padding: 12px 14px; }
             .section-btn i { font-size: 20px; width: 24px; }
@@ -286,8 +251,6 @@
             .article-section h2 { font-size: 19px; }
             .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
             .section-btn i { font-size: 18px; width: 22px; }
-            .image-placeholder .ph-title { font-size: 14px; }
-            .image-placeholder .ph-hint { font-size: 12px; }
         }
     </style>
 </head>
@@ -313,15 +276,14 @@
 
         <!-- ===== ОСНОВНАЯ КОНЦЕПЦИЯ ===== -->
         <div class="article-section fade-item">
-            <h2><i class="fa-solid fa-infinity"></i> Основная концепция</h2>
 
-            <!-- Картинка №1 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Изображение №1</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
-            <div class="image-caption">Философия Камю, изображение №1</div>
+            <!-- Картинка №1 (первая, до заголовка) -->
+            <img src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/main/статьи/философия-камю/1.jpg" 
+                 alt="Философия Камю" 
+                 class="article-image" 
+                 loading="lazy" />
+
+            <h2><i class="fa-solid fa-infinity"></i> Основная концепция</h2>
 
             <p>
                 Центральное место в философии Камю занимает понятие абсурда. По Камю, абсурд возникает
@@ -338,11 +300,10 @@
             <h2><i class="fa-solid fa-mountain"></i> Сизиф, толкающий камень в гору</h2>
 
             <!-- Картинка №2 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Сизиф, толкающий камень в гору</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
+            <img src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/main/статьи/философия-камю/2.jpg" 
+                 alt="Сизиф, толкающий камень в гору" 
+                 class="article-image" 
+                 loading="lazy" />
             <div class="image-caption">Сизиф, толкающий камень в гору</div>
 
             <p>
@@ -365,12 +326,10 @@
             </p>
 
             <!-- Картинка №3 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Изображение №3</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
-            <div class="image-caption">Философия Камю, изображение №3</div>
+            <img src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/main/статьи/философия-камю/3.jpg" 
+                 alt="Бунт как ответ на абсурд" 
+                 class="article-image" 
+                 loading="lazy" />
 
             <p>
                 Бунт для Камю – это также способ создания смысла. В процессе бунта человек не принимает
@@ -391,12 +350,10 @@
             </p>
 
             <!-- Картинка №4 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Изображение №4</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
-            <div class="image-caption">Философия Камю, изображение №4</div>
+            <img src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/main/статьи/философия-камю/4.jpg" 
+                 alt="Вечный вопрос самоубийства" 
+                 class="article-image" 
+                 loading="lazy" />
         </div>
 
         <!-- ===== СОЛИДАРНОСТЬ ===== -->
