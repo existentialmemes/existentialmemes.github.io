@@ -110,7 +110,7 @@
             font-weight: 700;
         }
 
-        /* ===== СТАТЬЯ (без окошечек) ===== */
+        /* ===== СТАТЬЯ ===== */
         .article {
             display: flex;
             flex-direction: column;
@@ -162,41 +162,6 @@
             margin-top: 16px;
             object-fit: cover;
         }
-        .image-placeholder {
-            width: 100%;
-            min-height: 200px;
-            border-radius: 18px;
-            border: 2px dashed #ffc3d9;
-            background: linear-gradient(145deg, #fff6f8, #fce8ee);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 24px 16px;
-            margin-top: 16px;
-            text-align: center;
-            color: #d16a9b;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .image-placeholder:hover {
-            border-color: #FF88C2;
-            transform: scale(1.005);
-        }
-        .image-placeholder i {
-            font-size: 34px;
-            opacity: 0.7;
-        }
-        .image-placeholder .ph-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #c2598c;
-        }
-        .image-placeholder .ph-hint {
-            font-size: 13px;
-            font-weight: 400;
-            color: #b98aa5;
-        }
         .image-caption {
             font-size: 13px;
             color: #888;
@@ -206,7 +171,7 @@
             font-style: italic;
         }
 
-        /* ===== ФИНАЛЬНАЯ СТРОКА (без окошечка) ===== */
+        /* ===== ФИНАЛЬНАЯ СТРОКА ===== */
         .outro-line {
             margin-top: 34px;
             padding-top: 22px;
@@ -276,7 +241,6 @@
             .article { gap: 26px; }
             .article-section h2 { font-size: 21px; }
             .article-section p, blockquote { font-size: 15px; }
-            .image-placeholder { min-height: 170px; border-radius: 16px; }
             .outro-line .outro-thanks { font-size: 17px; }
             .section-btn { font-size: 16px; padding: 12px 14px; }
             .section-btn i { font-size: 20px; width: 24px; }
@@ -286,8 +250,6 @@
             .article-section h2 { font-size: 19px; }
             .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
             .section-btn i { font-size: 18px; width: 22px; }
-            .image-placeholder .ph-title { font-size: 14px; }
-            .image-placeholder .ph-hint { font-size: 12px; }
         }
     </style>
 </head>
@@ -309,16 +271,14 @@
 
     <div class="article">
 
-        <!-- ===== САРТР С КОТОМ ===== -->
+        <!-- ===== КАРТИНКА №1: САРТР С КОТОМ (без заголовка) ===== -->
         <div class="article-section fade-item">
-            <h2><i class="fa-solid fa-cat"></i> Сартр с котом</h2>
-
-            <!-- Картинка №1 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Сартр с котом</span>
-                <span class="ph-hint">https://github.com/existentialmemes/existentialmemes.github.io/blob/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D1%81%D0%B0%D1%80%D1%82%D1%80%D0%B0/1.jpg</span>
-            </div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D1%81%D0%B0%D1%80%D1%82%D1%80%D0%B0/1.jpg"
+                alt="Сартр с котом"
+                class="article-image"
+                loading="lazy"
+            />
             <div class="image-caption">Сартр с котом</div>
 
             <p>
@@ -334,27 +294,27 @@
 
         <!-- ===== СМЫСЛ ЖИЗНИ И АБСУРД ===== -->
         <div class="article-section fade-item">
-            <h2><i class="fa-solid fa-infinity"></i> Смысл жизни и абсурд</h2>
             <p>
                 Отношение Сартра к смыслу жизни связано с идеей "абсурда" и бессмысленности бытия. Он утверждал, что мир лишен внутреннего смысла, и это отсутствие смысла требует от человека активного создания своего собственного смысла. В условиях абсурда каждый индивид должен создавать смысл своей жизни через свободу выбора.
             </p>
 
             <!-- Картинка №2 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-hint">https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D1%81%D0%B0%D1%80%D1%82%D1%80%D0%B0/2.jpg</span>
-            </div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D1%81%D0%B0%D1%80%D1%82%D1%80%D0%B0/2.jpg"
+                alt="Философия Сартра, изображение №2"
+                class="article-image"
+                loading="lazy"
+            />
+            <div class="image-caption">Философия Сартра, изображение №2</div>
+
             <p>
                 Центральным элементом философии данного писателя является идея того, что человек брошен в мир без своего согласия, сталкивается с неизбежностью смерти и в то же время обладает свободой выбора. Именно в этом контексте возникает необходимость принятия ответственности за свои решения.
             </p>
-        </div>
 
-        <!-- ===== СВОБОДА И ОТВЕТСТВЕННОСТЬ ===== -->
-        <div class="article-section fade-item">
-            <h2><i class="fa-solid fa-scale-balanced"></i> Свобода и ответственность</h2>
             <p>
                 Сартр подчеркивал, что каждый выбор влечёт за собой моральные последствия, и отказ от выбора также является выбором.
             </p>
+
             <p>
                 Таким образом, философия Сартра представляет собой вызов традиционным представлениям о смысле жизни, выдвигая идею индивидуальной свободы и ответственности за собственное существование.
             </p>
@@ -404,6 +364,9 @@
         }
     })();
 </script>
+
+</body>
+</html>
 
 </body>
 </html>
