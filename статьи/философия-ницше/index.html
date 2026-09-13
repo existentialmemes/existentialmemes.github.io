@@ -162,41 +162,6 @@
             margin-top: 16px;
             object-fit: cover;
         }
-        .image-placeholder {
-            width: 100%;
-            min-height: 200px;
-            border-radius: 18px;
-            border: 2px dashed #ffc3d9;
-            background: linear-gradient(145deg, #fff6f8, #fce8ee);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-            padding: 24px 16px;
-            margin-top: 16px;
-            text-align: center;
-            color: #d16a9b;
-            transition: border-color 0.3s ease, transform 0.3s ease;
-        }
-        .image-placeholder:hover {
-            border-color: #FF88C2;
-            transform: scale(1.005);
-        }
-        .image-placeholder i {
-            font-size: 34px;
-            opacity: 0.7;
-        }
-        .image-placeholder .ph-title {
-            font-size: 15px;
-            font-weight: 600;
-            color: #c2598c;
-        }
-        .image-placeholder .ph-hint {
-            font-size: 13px;
-            font-weight: 400;
-            color: #b98aa5;
-        }
         .image-caption {
             font-size: 13px;
             color: #888;
@@ -276,7 +241,6 @@
             .article { gap: 26px; }
             .article-section h2 { font-size: 21px; }
             .article-section p, blockquote { font-size: 15px; }
-            .image-placeholder { min-height: 170px; border-radius: 16px; }
             .outro-line .outro-thanks { font-size: 17px; }
             .section-btn { font-size: 16px; padding: 12px 14px; }
             .section-btn i { font-size: 20px; width: 24px; }
@@ -286,8 +250,6 @@
             .article-section h2 { font-size: 19px; }
             .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
             .section-btn i { font-size: 18px; width: 22px; }
-            .image-placeholder .ph-title { font-size: 14px; }
-            .image-placeholder .ph-hint { font-size: 12px; }
         }
     </style>
 </head>
@@ -315,12 +277,12 @@
             <h2><i class="fa-solid fa-person-rays"></i> Идея сверхчеловека</h2>
 
             <!-- Картинка №1 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Изображение №1</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
-            <div class="image-caption">Философия Ницше, изображение №1</div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D0%BD%D0%B8%D1%86%D1%88%D0%B5/1.jpg"
+                alt="Философия Ницше, изображение №1"
+                class="article-image"
+                loading="lazy"
+            />
 
             <blockquote>«Человек — это канат, натянутый между животным и сверхчеловеком»</blockquote>
 
@@ -331,12 +293,12 @@
             </p>
 
             <!-- Картинка №2 -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Изображение №2</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
-            <div class="image-caption">Философия Ницше, изображение №2</div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D0%BD%D0%B8%D1%86%D1%88%D0%B5/2.jpg"
+                alt="Философия Ницше, изображение №2"
+                class="article-image"
+                loading="lazy"
+            />
 
             <p>
                 <strong>Воля к власти</strong> — стремление к постоянному движению, развитию.
@@ -387,11 +349,12 @@
             </p>
 
             <!-- Портрет Платона -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Платон</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D0%BD%D0%B8%D1%86%D1%88%D0%B5/3.jpg"
+                alt="Платон"
+                class="article-image"
+                loading="lazy"
+            />
             <div class="image-caption">Платон</div>
 
             <blockquote>
@@ -414,11 +377,12 @@
             </p>
 
             <!-- Портрет Канта -->
-            <div class="image-placeholder">
-                <i class="fa-regular fa-image"></i>
-                <span class="ph-title">Иммануил Кант</span>
-                <span class="ph-hint">Вставьте ссылку на картинку</span>
-            </div>
+            <img
+                src="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/%D1%81%D1%82%D0%B0%D1%82%D1%8C%D0%B8/%D1%84%D0%B8%D0%BB%D0%BE%D1%81%D0%BE%D1%84%D0%B8%D1%8F-%D0%BD%D0%B8%D1%86%D1%88%D0%B5/4.jpg"
+                alt="Иммануил Кант"
+                class="article-image"
+                loading="lazy"
+            />
             <div class="image-caption">Иммануил Кант</div>
 
             <blockquote>«Разве не чувствуется категорический императив Канта, как опасный для жизни!»</blockquote>
@@ -429,11 +393,11 @@
     <!-- ===== ФИНАЛЬНАЯ СТРОКА ===== -->
     <div class="outro-line fade-item">
         <div class="outro-thanks">🖤 Спасибо за уделённое время!</div>
-        <p>Также у нас есть другие статьи и обсуждения.</p>
+        <p>Также у нас есть другие статьи.</p>
     </div>
 
     <div class="sections-grid">
-        <a href="https://vk.ru/@ekzistentsializm-filosofiya-nicshe" class="section-btn fade-item">
+        <a href="https://existentialmemes.github.io/статьи/" class="section-btn fade-item">
             <i class="fa-solid fa-book-open"></i>
             <span class="btn-label">Другие статьи</span>
             <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
