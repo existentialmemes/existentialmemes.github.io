@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+
+    <title>Философия Ницше — Экзистенциальные мемы</title>
+    <meta name="description" content="Философия Ницше: сверхчеловек, воля к власти, смерть Бога, критика Платона и Канта." />
+    <meta property="og:site_name" content="Экзистенциальные мемы" />
+    <meta property="og:title" content="Философия Ницше" />
+    <meta property="og:description" content="Фридрих Вильгельм Ницше — философ, радикально изменивший курс западной мысли." />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Философия Ницше",
+      "author": { "@type": "Organization", "name": "Экзистенциальные мемы" },
+      "publisher": { "@type": "Organization", "name": "Экзистенциальные мемы" },
+      "url": "https://existentialmemes.github.io/ницше"
+    }
+    </script>
+
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #FF88C2;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 16px;
+            margin: 0;
+        }
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+        }
+
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ===== КНОПКА НАЗАД ===== */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 18px;
+            padding: 6px 12px 6px 8px;
+            border-radius: 30px;
+            background: #f6f6f8;
+            border: 1px solid #ececee;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .back-btn:hover {
+            color: #FF88C2;
+            background: #fff4f8;
+            transform: translateX(-3px);
+        }
+
+        /* ===== ЗАГОЛОВОК ===== */
+        .greeting {
+            margin-bottom: 26px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid #FF88C2;
+        }
+        .greeting h1 {
+            font-size: 38px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #111;
+            line-height: 1.15;
+            margin-bottom: 12px;
+        }
+        .greeting .desc-text {
+            font-size: 16px;
+            color: #1a1a1a;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+        .greeting .desc-text strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* ===== СТАТЬЯ (без окошечек) ===== */
+        .article {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .article-section h2 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.25;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .article-section h2 i {
+            color: #FF88C2;
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .article-section p {
+            font-size: 16px;
+            line-height: 1.7;
+            color: #1a1a1a;
+            margin-bottom: 12px;
+        }
+        .article-section p:last-child { margin-bottom: 0; }
+
+        /* ===== ЦИТАТЫ ===== */
+        blockquote {
+            border-left: 3px solid #FF88C2;
+            background: #fff6f8;
+            padding: 14px 18px;
+            border-radius: 0 14px 14px 0;
+            font-size: 16px;
+            line-height: 1.65;
+            font-style: italic;
+            color: #111;
+            margin: 16px 0;
+        }
+        blockquote:last-child { margin-bottom: 0; }
+
+        /* ===== КАРТИНКА + ПОДПИСЬ ПОД НЕЙ ===== */
+        .article-image {
+            width: 100%;
+            display: block;
+            border-radius: 18px;
+            margin-top: 16px;
+            object-fit: cover;
+        }
+        .image-placeholder {
+            width: 100%;
+            min-height: 200px;
+            border-radius: 18px;
+            border: 2px dashed #ffc3d9;
+            background: linear-gradient(145deg, #fff6f8, #fce8ee);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 16px;
+            margin-top: 16px;
+            text-align: center;
+            color: #d16a9b;
+            transition: border-color 0.3s ease, transform 0.3s ease;
+        }
+        .image-placeholder:hover {
+            border-color: #FF88C2;
+            transform: scale(1.005);
+        }
+        .image-placeholder i {
+            font-size: 34px;
+            opacity: 0.7;
+        }
+        .image-placeholder .ph-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #c2598c;
+        }
+        .image-placeholder .ph-hint {
+            font-size: 13px;
+            font-weight: 400;
+            color: #b98aa5;
+        }
+        .image-caption {
+            font-size: 13px;
+            color: #888;
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        /* ===== ФИНАЛЬНАЯ СТРОКА (без окошечка) ===== */
+        .outro-line {
+            margin-top: 34px;
+            padding-top: 22px;
+            border-top: 1px solid #f0e0e8;
+            text-align: center;
+        }
+        .outro-line .outro-thanks {
+            font-size: 18px;
+            font-weight: 700;
+            color: #111;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .outro-line p {
+            font-size: 15px;
+            color: #666;
+            line-height: 1.55;
+        }
+
+        /* ===== КНОПКИ-ССЫЛКИ ===== */
+        .sections-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 24px 0 8px;
+        }
+        .section-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: #f6f6f8;
+            border-radius: 16px;
+            padding: 14px 18px;
+            border: 1px solid #ececee;
+            text-decoration: none;
+            color: #111;
+            font-size: 18px;
+            font-weight: 500;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .section-btn:hover {
+            background: #ededf0;
+            transform: translateY(-2px) scale(1.008);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+        }
+        .section-btn i {
+            width: 28px;
+            text-align: center;
+            color: #FF88C2;
+            font-size: 22px;
+            transition: transform 0.2s ease;
+        }
+        .section-btn:hover i { transform: scale(1.1); }
+        .section-btn .btn-label { flex: 1; }
+        .section-btn .btn-arrow { color: #aaa; font-size: 16px; }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .greeting h1 { font-size: 30px; }
+            .greeting .desc-text { font-size: 15px; }
+            .article { gap: 26px; }
+            .article-section h2 { font-size: 21px; }
+            .article-section p, blockquote { font-size: 15px; }
+            .image-placeholder { min-height: 170px; border-radius: 16px; }
+            .outro-line .outro-thanks { font-size: 17px; }
+            .section-btn { font-size: 16px; padding: 12px 14px; }
+            .section-btn i { font-size: 20px; width: 24px; }
+        }
+        @media (max-width: 400px) {
+            .greeting h1 { font-size: 26px; }
+            .article-section h2 { font-size: 19px; }
+            .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
+            .section-btn i { font-size: 18px; width: 22px; }
+            .image-placeholder .ph-title { font-size: 14px; }
+            .image-placeholder .ph-hint { font-size: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <a href="https://existentialmemes.github.io/" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> На главную
+    </a>
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <div class="greeting fade-item visible">
+        <h1>Философия Ницше</h1>
+        <div class="desc-text">
+            <strong>Фридрих Вильгельм Ницше</strong> — немецкий философ 19-го века, радикально
+            изменивший курс западной мысли, поставив под сомнение основы традиционного мировоззрения.
+        </div>
+    </div>
+
+    <div class="article">
+
+        <!-- ===== СВЕРХЧЕЛОВЕК ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-person-rays"></i> Идея сверхчеловека</h2>
+
+            <!-- Картинка №1 -->
+            <div class="image-placeholder">
+                <i class="fa-regular fa-image"></i>
+                <span class="ph-title">Изображение №1</span>
+                <span class="ph-hint">Вставьте ссылку на картинку</span>
+            </div>
+            <div class="image-caption">Философия Ницше, изображение №1</div>
+
+            <blockquote>«Человек — это канат, натянутый между животным и сверхчеловеком»</blockquote>
+
+            <p>
+                Данным высказыванием философ говорит о том, что человек уже превзошёл приматов,
+                однако ему ещё предстоит подняться на ступень выше. Сверхчеловек по Ницше — творец,
+                который не подстраивается под настоящее, а формирует будущее.
+            </p>
+
+            <!-- Картинка №2 -->
+            <div class="image-placeholder">
+                <i class="fa-regular fa-image"></i>
+                <span class="ph-title">Изображение №2</span>
+                <span class="ph-hint">Вставьте ссылку на картинку</span>
+            </div>
+            <div class="image-caption">Философия Ницше, изображение №2</div>
+
+            <p>
+                <strong>Воля к власти</strong> — стремление к постоянному движению, развитию.
+                Будучи вольным к власти, сверхчеловек олицетворяет фундаментальную движущую силу
+                Вселенной, проявляющуюся во всём сущем.
+            </p>
+        </div>
+
+        <!-- ===== СМЕРТЬ БОГА ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-bolt"></i> Смерть Бога</h2>
+            <p>
+                Заратустра, главный герой романа «Так говорил Заратустра», сообщает людям о том,
+                что Бог умер.
+            </p>
+
+            <blockquote>«Прежде хула на Бога была величайшей хулой; но Бог умер, и вместе с ним умерли и эти хулители»</blockquote>
+
+            <p>
+                Данное событие в ницшеанстве — крушение традиционных ценностей. Эта радикальная
+                смена парадигмы, «переоценка всех ценностей», требует создания новой системы
+                ценностей, не основанной на прежних инстинктах. Писатель считал, что человеку,
+                для того чтобы достичь совершенства, нужно опираться на жизнеутверждающие ценности,
+                рождённые из любви к земной жизни, в противовес христианской системе, которую
+                Ницше считал «разрушительной».
+            </p>
+        </div>
+
+        <!-- ===== НИЦШЕ ПРОТИВ ВСЕХ ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-hand-fist"></i> Ницше против всех</h2>
+            <p>
+                Ницше резко критиковал философскую традицию, от Платона до своих современников,
+                за то, что она принимала фундаментальные моральные принципы как само собой
+                разумеющиеся, не подвергая их сомнению. Он считал, что такое отношение сковывает
+                мышление и препятствует самопознанию и развитию. По мнению Ницше, поистине
+                свободное мышление должно отказаться от этих ограничений, оказавшись
+                «по ту сторону добра и зла».
+            </p>
+        </div>
+
+        <!-- ===== КРИТИКА ПЛАТОНА ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-scroll"></i> Критика Платона</h2>
+            <p>
+                Ницше критиковал Платона за идеализм и отрыв от реальности. Платоновская
+                философия, по мнению Ницше, ведёт к угнетению жизни и ослаблению воли к власти.
+            </p>
+
+            <!-- Портрет Платона -->
+            <div class="image-placeholder">
+                <i class="fa-regular fa-image"></i>
+                <span class="ph-title">Платон</span>
+                <span class="ph-hint">Вставьте ссылку на картинку</span>
+            </div>
+            <div class="image-caption">Платон</div>
+
+            <blockquote>
+                «Платон скучен. В конце концов моё недоверие к Платону становится глубже, я нахожу
+                его в такой степени отклонившимся от всех основных инстинктов эллинов, в такой
+                степени пропитанным моралью, в такой степени предформой христианина — у него уже
+                понятие “добрый” является высшим понятием»
+            </blockquote>
+        </div>
+
+        <!-- ===== КРИТИКА КАНТА ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-scale-balanced"></i> Критика Канта</h2>
+            <p>
+                Кантовская философия, с её категорическим императивом («поступай так, чтобы ты
+                всегда относился к человечеству и в своём лице, и в лице всякого другого как к цели,
+                и никогда — только как к средству»), также подвергается критике. Ницше считал, что
+                категорический императив Канта — это ещё одна форма морального ограничения,
+                подавляющая индивидуальность.
+            </p>
+
+            <!-- Портрет Канта -->
+            <div class="image-placeholder">
+                <i class="fa-regular fa-image"></i>
+                <span class="ph-title">Иммануил Кант</span>
+                <span class="ph-hint">Вставьте ссылку на картинку</span>
+            </div>
+            <div class="image-caption">Иммануил Кант</div>
+
+            <blockquote>«Разве не чувствуется категорический императив Канта, как опасный для жизни!»</blockquote>
+        </div>
+
+    </div>
+
+    <!-- ===== ФИНАЛЬНАЯ СТРОКА ===== -->
+    <div class="outro-line fade-item">
+        <div class="outro-thanks">🖤 Спасибо за уделённое время!</div>
+        <p>Также у нас есть другие статьи и обсуждения.</p>
+    </div>
+
+    <div class="sections-grid">
+        <a href="https://vk.ru/@ekzistentsializm-filosofiya-nicshe" class="section-btn fade-item">
+            <i class="fa-solid fa-book-open"></i>
+            <span class="btn-label">Другие статьи</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+        <a href="https://existentialmemes.github.io/" class="section-btn fade-item">
+            <i class="fa-solid fa-house"></i>
+            <span class="btn-label">На главную</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+</script>
+
+</body>
+</html>

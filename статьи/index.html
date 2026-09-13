@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+
+    <title>Экзистенциальные статьи — Экзистенциальные мемы</title>
+    <meta name="description" content="Экзистенциальные статьи: философия Ницше, Сартра, Кафки, Камю, Пелевина, кот Шрёдингера и другие философские темы." />
+    <meta property="og:site_name" content="Экзистенциальные мемы" />
+    <meta property="og:title" content="Экзистенциальные статьи" />
+    <meta property="og:description" content="Философские статьи о Ницше, Сартре, Кафке, Камю, Пелевине и других темах." />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "CollectionPage",
+      "name": "Экзистенциальные статьи",
+      "url": "https://existentialmemes.github.io/статьи"
+    }
+    </script>
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #FF88C2;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 16px;
+            margin: 0;
+        }
+        .container {
+            max-width: 580px;
+            width: 100%;
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+        }
+
+        /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ===== КНОПКА НАЗАД ===== */
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #888;
+            text-decoration: none;
+            margin-bottom: 16px;
+            padding: 6px 12px 6px 8px;
+            border-radius: 30px;
+            background: #f6f6f8;
+            border: 1px solid #ececee;
+            transition: color 0.25s ease, background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .back-btn:hover {
+            color: #FF88C2;
+            background: #fff4f8;
+            transform: translateX(-3px);
+        }
+
+        /* ===== ЗАГОЛОВОК РАЗДЕЛА ===== */
+        .greeting {
+            margin-bottom: 22px;
+            padding-bottom: 14px;
+            border-bottom: 1px solid rgba(240, 224, 232, 0.6);
+        }
+        .greeting-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 0;
+            flex-wrap: wrap;
+        }
+        .project-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #f0e0e8;
+            flex-shrink: 0;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-avatar:hover {
+            transform: scale(1.04) rotate(-2deg);
+            box-shadow: 0 8px 16px rgba(255, 136, 194, 0.2);
+        }
+        .greeting h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.2px;
+            color: #111;
+            line-height: 1.2;
+        }
+
+        /* ===== СЕТКА КАРТОЧЕК ===== */
+        .articles-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+        .article-card {
+            display: flex;
+            flex-direction: column;
+            background: #f6f6f8;
+            border-radius: 20px;
+            border: 1px solid #ececee;
+            overflow: hidden;
+            text-decoration: none;
+            color: #111;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        .article-card:hover {
+            background: #f2f2f5;
+            transform: translateY(-3px) scale(1.006);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.07);
+        }
+
+        /* Картинка карточки — одинаковой высоты */
+        .card-image {
+            width: 100%;
+            height: 180px;
+            background: linear-gradient(145deg, #fff6f8, #fce8ee);
+            border-bottom: 1px solid #ececee;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .article-card:hover .card-image img {
+            transform: scale(1.04);
+        }
+        .card-image .img-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            color: #d16a9b;
+            text-align: center;
+            padding: 12px;
+        }
+        .card-image .img-placeholder i {
+            font-size: 30px;
+            opacity: 0.7;
+        }
+        .card-image .img-placeholder span {
+            font-size: 12px;
+            font-weight: 500;
+        }
+
+        /* Текст карточки */
+        .card-content {
+            padding: 14px 16px 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            flex: 1;
+        }
+        .card-content h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: #111;
+            line-height: 1.25;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .card-content h2 i {
+            color: #FF88C2;
+            font-size: 16px;
+            flex-shrink: 0;
+        }
+        .card-content p {
+            font-size: 14px;
+            line-height: 1.55;
+            color: #444;
+            margin: 0;
+        }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .greeting h1 { font-size: 22px; }
+            .project-avatar { width: 52px; height: 52px; }
+            .card-image { height: 150px; }
+            .card-content { padding: 12px 14px 14px; }
+            .card-content h2 { font-size: 17px; }
+            .card-content p { font-size: 13px; }
+        }
+        @media (max-width: 400px) {
+            .greeting-header { gap: 10px; }
+            .greeting h1 { font-size: 19px; }
+            .card-image { height: 130px; }
+            .card-content h2 { font-size: 16px; }
+            .card-content p { font-size: 12.5px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <a href="https://existentialmemes.github.io/" class="back-btn">
+        <i class="fa-solid fa-arrow-left"></i> На главную
+    </a>
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <div class="greeting fade-item visible">
+        <div class="greeting-header">
+            <img
+                src="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg"
+                alt="Экзистенциальные мемы"
+                class="project-avatar" loading="lazy"
+            />
+            <h1>Экзистенциальные статьи</h1>
+        </div>
+    </div>
+
+    <!-- ===== СЕТКА КАРТОЧЕК ===== -->
+    <div class="articles-grid">
+
+        <!-- Ницше -->
+        <a href="https://existentialmemes.github.io/ницше" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Фото Ницше</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-person-rays"></i> Философия Ницше</h2>
+                <p>
+                    Сверхчеловек, воля к власти и смерть Бога. Ницше перевернул западную мысль,
+                    поставив под сомнение мораль, религию и саму традицию философии.
+                </p>
+            </div>
+        </a>
+
+        <!-- Сартр -->
+        <a href="https://existentialmemes.github.io/сартр" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Сартр с котом</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-feather"></i> Философия Сартра</h2>
+                <p>
+                    Существование предшествует сущности. Сартр учит, что человек свободен,
+                    брошен в мир без предопределённого смысла и сам создаёт себя через выбор.
+                </p>
+            </div>
+        </a>
+
+        <!-- Кафка -->
+        <a href="https://existentialmemes.github.io/кафка" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Фото Кафки</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-door-closed"></i> Философия Кафки</h2>
+                <p>
+                    Абсурд, отчуждение и бюрократический кошмар. Кафка показал, как человек
+                    теряется в мире, где правила непонятны, а вина не требует преступления.
+                </p>
+            </div>
+        </a>
+
+        <!-- Камю -->
+        <a href="https://existentialmemes.github.io/камю" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Фото Камю</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-sun"></i> Философия Камю</h2>
+                <p>
+                    Абсурд и бунт. Камю утверждает: мир не имеет смысла, но человек должен
+                    жить так, будто смысл есть — и в этом его бунт против абсурда.
+                </p>
+            </div>
+        </a>
+
+        <!-- Пелевин -->
+        <a href="https://existentialmemes.github.io/пелевин" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Фото Пелевина</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-cube"></i> Философия Пелевина</h2>
+                <p>
+                    Буддизм, симуляция и пустота. Пелевин смешивает постмодерн с восточной
+                    метафизикой, показывая, что реальность — это иллюзия, а «я» — фикция.
+                </p>
+            </div>
+        </a>
+
+        <!-- Кот Шрёдингера -->
+        <a href="https://existentialmemes.github.io/кот-шрёдингера" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-solid fa-cat"></i>
+                    <span>Кот Шрёдингера</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-flask"></i> Кот Шрёдингера</h2>
+                <p>
+                    Живой и мёртвый одновременно. Мысленный эксперимент, который показывает,
+                    насколько странной становится реальность в квантовой механике.
+                </p>
+            </div>
+        </a>
+
+        <!-- Смысл жизни -->
+        <a href="https://existentialmemes.github.io/смысл-жизни" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-solid fa-infinity"></i>
+                    <span>Уроборос / бесконечность</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-circle-question"></i> В чём смысл жизни?</h2>
+                <p>
+                    Смысл жизни волнует человечество веками. От экзистенциализма до абсурда —
+                    разбираем, как философы отвечали на главный вопрос.
+                </p>
+            </div>
+        </a>
+
+        <!-- Стоицизм -->
+        <a href="https://existentialmemes.github.io/стоицизм" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Марк Аврелий</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-mountain"></i> Философия стоицизма</h2>
+                <p>
+                    Управляй тем, что в твоей власти, и принимай то, что нет. Стоики учили
+                    спокойствию, дисциплине и внутренней свободе перед лицом судьбы.
+                </p>
+            </div>
+        </a>
+
+        <!-- Нигилизм -->
+        <a href="https://existentialmemes.github.io/нигилизм" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-regular fa-image"></i>
+                    <span>Пустота / бездна</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-ban"></i> Философия нигилизма</h2>
+                <p>
+                    Отрицание смысла, ценностей и истины. Нигилизм — это вызов, с которым
+                    столкнулась современная мысль после «смерти Бога».
+                </p>
+            </div>
+        </a>
+
+        <!-- Парадокс Тесея -->
+        <a href="https://existentialmemes.github.io/парадокс-тесея" class="article-card fade-item">
+            <div class="card-image">
+                <div class="img-placeholder">
+                    <i class="fa-solid fa-ship"></i>
+                    <span>Корабль Тесея</span>
+                </div>
+            </div>
+            <div class="card-content">
+                <h2><i class="fa-solid fa-arrows-rotate"></i> Парадокс Тесея</h2>
+                <p>
+                    Если заменить все части корабля по одной — останется ли он тем же кораблём?
+                    Вопрос о тождестве, изменении и самой сути вещей.
+                </p>
+            </div>
+        </a>
+
+    </div>
+
+</div>
+
+<script>
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+</script>
+
+</body>
+</html>
