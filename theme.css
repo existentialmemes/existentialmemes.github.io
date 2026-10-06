@@ -1,0 +1,169 @@
+/* ============================================================
+   theme.css — глобальная тема для сайта
+   Подключать на КАЖДОЙ странице в <head>:
+   <link rel="stylesheet" href="/theme.css" />
+   ============================================================ */
+
+/* ============================================
+   СВЕТЛАЯ ТЕМА (по умолчанию)
+   ============================================ */
+:root {
+    /* Фон и карточка */
+    --bg:                #FF88C2;
+    --card:              #ffffff;
+    --card-border:       rgba(255, 255, 255, 0.6);
+    --card-shadow:       rgba(255, 90, 160, 0.28);
+    --card-shadow-hover: rgba(255, 90, 160, 0.35);
+
+    /* Текст */
+    --text:              #111111;
+    --text-soft:         #4a4a4a;
+    --text-strong:       #000000;
+    --text-muted:        #777777;
+
+    /* Поверхности (кнопки, плашки) */
+    --surface:           #f6f6f8;
+    --surface-hover:     #ededf0;
+    --surface-border:    #ececee;
+
+    /* Акцент */
+    --accent:            #FF88C2;
+    --accent-strong:     #ff5fa8;
+    --accent-soft:       rgba(255, 136, 194, 0.12);
+
+    /* Кнопки */
+    --btn-bg:            #ffffff;
+    --btn-bg-hover:      #fff4f8;
+    --btn-border:        #ffe0ec;
+
+    /* Блок поддержки */
+    --support-bg-1:      #fff6f8;
+    --support-bg-2:      #fce8ee;
+    --support-border:    #ffd9e0;
+
+    /* Разделители */
+    --divider:           rgba(240, 224, 232, 0.6);
+
+    /* Уведомления */
+    --toast-bg:          rgba(20, 20, 20, 0.92);
+    --toast-text:        #ffffff;
+}
+
+/* ============================================
+   ТЁМНАЯ ТЕМА
+   ============================================ */
+html[data-theme="dark"] {
+    /* Фон и карточка */
+    --bg:                #8a4a68;
+    --card:              #1a0e14;
+    --card-border:       rgba(255, 255, 255, 0.06);
+    --card-shadow:       rgba(0, 0, 0, 0.55);
+    --card-shadow-hover: rgba(0, 0, 0, 0.7);
+
+    /* Текст */
+    --text:              #f7eef3;
+    --text-soft:         #d0bcc6;
+    --text-strong:       #ffffff;
+    --text-muted:        #a08a96;
+
+    /* Поверхности */
+    --surface:           #2a1820;
+    --surface-hover:     #35202a;
+    --surface-border:    #3a2230;
+
+    /* Акцент */
+    --accent:            #FF88C2;
+    --accent-strong:     #ffa8d5;
+    --accent-soft:       rgba(255, 136, 194, 0.22);
+
+    /* Кнопки */
+    --btn-bg:            #2a1820;
+    --btn-bg-hover:      #35202a;
+    --btn-border:        #3a2230;
+
+    /* Блок поддержки */
+    --support-bg-1:      #251520;
+    --support-bg-2:      #2d1a26;
+    --support-border:    #422535;
+
+    /* Разделители */
+    --divider:           rgba(255, 136, 194, 0.18);
+
+    /* Уведомления */
+    --toast-bg:          rgba(255, 136, 194, 0.95);
+    --toast-text:        #1a0e14;
+}
+
+/* ============================================
+   ПЛАВНЫЙ ПЕРЕХОД ПРИ СМЕНЕ ТЕМЫ
+   (включается только во время клика на кнопку)
+   ============================================ */
+html.theme-transition,
+html.theme-transition * {
+    transition: background-color 0.35s ease,
+                color 0.35s ease,
+                border-color 0.35s ease,
+                box-shadow 0.35s ease !important;
+}
+
+/* ============================================
+   КНОПКА-ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ
+   ============================================ */
+.theme-toggle {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--btn-bg);
+    border: 1px solid var(--btn-border);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text);
+    font-size: 19px;
+    transition: background 0.2s, transform 0.35s, color 0.2s, border-color 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+    outline: none;
+}
+
+.theme-toggle:hover {
+    background: var(--btn-bg-hover);
+    color: var(--accent-strong);
+    transform: rotate(20deg) scale(1.06);
+}
+
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
+.theme-toggle:focus-visible {
+    box-shadow: 0 0 0 3px var(--accent-soft);
+}
+
+/* Иконки: по умолчанию показываем луну (для перехода в тёмную) */
+.theme-toggle .icon-sun  { display: none; }
+.theme-toggle .icon-moon { display: inline; }
+
+/* В тёмной теме показываем солнце */
+html[data-theme="dark"] .theme-toggle .icon-sun  { display: inline; }
+html[data-theme="dark"] .theme-toggle .icon-moon { display: none; }
+
+/* ============================================
+   АДАПТИВ ДЛЯ КНОПКИ
+   ============================================ */
+@media (max-width: 500px) {
+    .theme-toggle {
+        width: 40px;
+        height: 40px;
+        font-size: 17px;
+    }
+}
+
+/* ============================================
+   БАЗОВЫЕ СТИЛИ ДЛЯ ПЕРЕХОДА ТЕМЫ
+   (можно удалить, если у тебя свои)
+   ============================================ */
+html, body {
+    transition: background-color 0.4s ease, color 0.35s ease;
+}
