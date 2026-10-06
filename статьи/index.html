@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
@@ -7,7 +7,7 @@
 <meta name="format-detection" content="telephone=no" />
 
 <title>Экзистенциальные статьи — Экзистенциальные мемы</title>
-<meta name="description" content="Экзистенциальные статьи: философия Ницше, Сартра, Кафки, Камю, Пелевина, кот Шрёдингера и другие философские темы." />
+<meta name="description" content="Экзистенциальные статьи: философия Ницше, Сартра, Кафки, Камю, Пелевина и другие философские темы." />
 <link rel="canonical" href="https://existentialmemes.github.io/статьи" />
 
 <meta property="og:type" content="website" />
@@ -21,6 +21,12 @@
 <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
 <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
 
+<!-- ===== ТЕМА (глобальная) ===== -->
+<link rel="stylesheet" href="../theme.css" />
+<script src="../theme.js"></script>
+
+<!-- ===== ИКОНКИ + ШРИФТЫ ===== -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link rel="preconnect" href="https://existentialmemes.github.io" />
@@ -56,11 +62,7 @@
         { "@type": "ListItem", "position": 3, "url": "https://existentialmemes.github.io/статьи/философия-кафки",     "name": "Философия Кафки" },
         { "@type": "ListItem", "position": 4, "url": "https://existentialmemes.github.io/статьи/философия-камю",      "name": "Философия Камю" },
         { "@type": "ListItem", "position": 5, "url": "https://existentialmemes.github.io/статьи/философия-пелевина",  "name": "Философия Пелевина" },
-        { "@type": "ListItem", "position": 6, "url": "https://existentialmemes.github.io/статьи/кот-шрёдингера",      "name": "Кот Шрёдингера" },
-        { "@type": "ListItem", "position": 7, "url": "https://existentialmemes.github.io/статьи/в-чем-смысл-жизни",   "name": "В чём смысл жизни?" },
-        { "@type": "ListItem", "position": 8, "url": "https://existentialmemes.github.io/статьи/философия-стоицизма", "name": "Философия стоицизма" },
-        { "@type": "ListItem", "position": 9, "url": "https://existentialmemes.github.io/статьи/философия-нигилизма", "name": "Философия нигилизма" },
-        { "@type": "ListItem", "position": 10, "url": "https://existentialmemes.github.io/статьи/парадокс-тесея",    "name": "Парадокс Тесея" }
+        { "@type": "ListItem", "position": 6, "url": "https://existentialmemes.github.io/статьи/в-чем-смысл-жизни",   "name": "В чём смысл жизни?" }
       ]
     },
     {
@@ -75,22 +77,6 @@
 </script>
 
 <style>
-  :root{
-    --bg:#FF88C2;
-    --surface:#ffffff;
-    --card:#f6f6f8;
-    --card-hover:#f2f2f5;
-    --border:#ececee;
-    --text:#111;
-    --muted:#444;
-    --accent:#FF88C2;
-    --radius-lg:32px;
-    --radius-md:20px;
-    --shadow-sm:0 4px 12px rgba(0,0,0,.04);
-    --shadow-md:0 20px 40px -12px rgba(0,0,0,.2);
-    --shadow-hover:0 28px 48px -16px rgba(0,0,0,.25);
-    --ease:cubic-bezier(.22,1,.36,1);
-  }
   *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
   html{-webkit-text-size-adjust:100%;text-size-adjust:100%;}
   body{
@@ -104,96 +90,141 @@
     color:var(--text);
     -webkit-font-smoothing:antialiased;
     text-rendering:optimizeLegibility;
+    transition:background-color 0.4s ease, color 0.35s ease;
   }
   img{display:block;max-width:100%;height:auto;}
 
   .container{
     max-width:580px;
     width:100%;
-    background:var(--surface);
-    border-radius:var(--radius-lg);
+    background:var(--card);
+    border-radius:32px;
     padding:24px 20px 32px;
-    box-shadow:var(--shadow-md),var(--shadow-sm);
-    transition:box-shadow .3s ease;
+    box-shadow:0 20px 40px -12px var(--card-shadow), 0 4px 12px rgba(0,0,0,.04);
+    transition:box-shadow .3s ease, background-color 0.35s ease;
   }
   @media (hover:hover){
-    .container:hover{box-shadow:var(--shadow-hover);}
+    .container:hover{box-shadow:0 28px 48px -16px var(--card-shadow-hover);}
   }
 
   .fade-item{
     opacity:0;
     transform:translateY(24px) scale(.98);
-    transition:opacity .8s var(--ease),transform .8s var(--ease);
+    transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1);
   }
   .fade-item.visible{opacity:1;transform:none;}
   .fade-item.visible{will-change:auto;}
   .fade-item:not(.visible){will-change:opacity,transform;}
 
-  .back-btn{
-    display:inline-flex;align-items:center;gap:8px;
-    font-size:14px;font-weight:500;color:#888;text-decoration:none;
-    margin-bottom:16px;padding:6px 12px 6px 8px;
-    border-radius:30px;background:var(--card);border:1px solid var(--border);
-    transition:color .25s,background .25s,transform .25s var(--ease);
+  /* ===== ВЕРХНЯЯ ПАНЕЛЬ: НАЗАД + ТЕМА ===== */
+  .top-bar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:12px;
+    margin-bottom:16px;
   }
-  .back-btn:hover{color:var(--accent);background:#fff4f8;transform:translateX(-3px);}
+  .back-btn{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:44px;height:44px;
+    font-size:22px;
+    color:var(--text);text-decoration:none;
+    border-radius:50%;
+    background:var(--surface);
+    border:1px solid var(--surface-border);
+    transition:background .2s,transform .2s,color .2s;
+    flex-shrink:0;
+  }
+  .back-btn:hover{
+    background:var(--surface-hover);
+    color:var(--accent);
+    transform:scale(1.06);
+  }
   .back-btn:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
-  .back-btn svg{width:14px;height:14px;flex:none;}
+  .back-btn i{font-size:20px;}
 
+  /* ===== ПРИВЕТСТВИЕ ===== */
   .greeting{
     margin-bottom:22px;padding-bottom:14px;
-    border-bottom:1px solid rgba(240,224,232,.6);
+    border-bottom:1px solid var(--divider);
   }
   .greeting-header{display:flex;align-items:center;gap:16px;flex-wrap:wrap;}
   .project-avatar{
     width:64px;height:64px;border-radius:50%;object-fit:cover;
-    border:2px solid #f0e0e8;flex-shrink:0;
+    border:2px solid var(--accent);
+    flex-shrink:0;
     transition:transform .3s,box-shadow .3s;
   }
   @media (hover:hover){
-    .project-avatar:hover{transform:scale(1.04) rotate(-2deg);box-shadow:0 8px 16px rgba(255,136,194,.2);}
+    .project-avatar:hover{transform:scale(1.04) rotate(-2deg);box-shadow:0 8px 16px var(--accent-soft);}
   }
-  .greeting h1{font-size:26px;font-weight:700;letter-spacing:-.2px;line-height:1.2;}
+  .greeting h1{font-size:26px;font-weight:700;letter-spacing:-.2px;line-height:1.2;color:var(--text);}
 
+  /* ===== СПИСОК СТАТЕЙ ===== */
   .articles-grid{
     list-style:none;
     display:flex;flex-direction:column;gap:16px;
   }
   .article-card{
     display:block;
-    background:var(--card);
-    border-radius:var(--radius-md);
-    border:1px solid var(--border);
+    background:var(--surface);
+    border-radius:20px;
+    border:1px solid var(--surface-border);
     overflow:hidden;text-decoration:none;color:var(--text);
-    transition:background .25s,transform .25s var(--ease),box-shadow .3s;
+    transition:background .25s,transform .25s cubic-bezier(.22,1,.36,1),box-shadow .3s;
     content-visibility:auto;
     contain-intrinsic-size:1px 320px;
   }
   @media (hover:hover){
     .article-card:hover{
-      background:var(--card-hover);
+      background:var(--surface-hover);
       transform:translateY(-3px) scale(1.006);
-      box-shadow:0 12px 28px rgba(0,0,0,.07);
+      box-shadow:0 12px 28px rgba(0,0,0,.1);
     }
     .article-card:hover .card-image img{transform:scale(1.04);}
   }
   .article-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px;}
 
   .card-image{
-    width:100%;overflow:hidden;background:#fce8ee;line-height:0;aspect-ratio:16/9;
+    width:100%;overflow:hidden;background:var(--accent-soft);line-height:0;aspect-ratio:16/9;
   }
   .card-image img{
     width:100%;height:100%;object-fit:cover;
-    transition:transform .5s var(--ease);
+    transition:transform .5s cubic-bezier(.22,1,.36,1);
   }
 
   .card-content{padding:14px 16px 16px;display:flex;flex-direction:column;gap:6px;}
   .card-content h2{
     font-size:19px;font-weight:700;line-height:1.25;
     display:flex;align-items:center;gap:8px;
+    color:var(--text);
   }
   .card-content h2 svg{width:16px;height:16px;color:var(--accent);flex:none;}
-  .card-content p{font-size:14px;line-height:1.55;color:var(--muted);}
+  .card-content p{font-size:14px;line-height:1.55;color:var(--text-soft);}
+
+  /* ===== НИЖНЯЯ КНОПКА «ВЕРНУТЬСЯ» ===== */
+  .nav-back{
+    text-align:center;
+    margin-top:28px;
+  }
+  .nav-back a{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:12px 28px;
+    background:var(--surface);
+    border-radius:40px;
+    color:var(--text);
+    text-decoration:none;
+    font-weight:500;
+    border:1px solid var(--surface-border);
+    transition:background .2s,transform .2s;
+  }
+  .nav-back a:hover{
+    background:var(--surface-hover);
+    transform:scale(1.02);
+  }
+  .nav-back a i{margin-right:4px;}
 
   @media (max-width:500px){
     body{padding:12px;}
@@ -203,6 +234,8 @@
     .card-content{padding:12px 14px 14px;}
     .card-content h2{font-size:17px;}
     .card-content p{font-size:13px;}
+    .back-btn{width:38px;height:38px;font-size:20px;}
+    .back-btn i{font-size:18px;}
   }
   @media (max-width:400px){
     .greeting-header{gap:10px;}
@@ -226,16 +259,18 @@
 
 <main class="container">
 
-  <nav aria-label="Навигация">
-    <a href="https://existentialmemes.github.io/" class="back-btn">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <path d="M19 12H5M12 19l-7-7 7-7"/>
-      </svg>
-      На главную
+  <!-- ===== ВЕРХНЯЯ ПАНЕЛЬ: НАЗАД + ТЕМА ===== -->
+  <div class="top-bar fade-item visible">
+    <a href="../" class="back-btn" aria-label="Назад">
+      <i class="fas fa-arrow-left"></i>
     </a>
-  </nav>
+    <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+      <i class="fas fa-moon icon-moon"></i>
+      <i class="fas fa-sun icon-sun"></i>
+    </button>
+  </div>
 
+  <!-- ===== ПРИВЕТСТВИЕ ===== -->
   <header class="greeting fade-item visible">
     <div class="greeting-header">
       <img src="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg"
@@ -246,6 +281,7 @@
     </div>
   </header>
 
+  <!-- ===== СПИСОК СТАТЕЙ ===== -->
   <ul class="articles-grid">
 
     <li>
@@ -362,6 +398,11 @@
       </a>
     </li>
 
+    <!--
+    ============================================================
+    СКРЫТЫЕ СТАТЬИ (раскомментировать, чтобы вернуть на сайт)
+    ============================================================
+
     <li>
       <a href="https://existentialmemes.github.io/статьи/кот-шрёдингера"
          class="article-card fade-item"
@@ -385,6 +426,8 @@
       </a>
     </li>
 
+    -->
+
     <li>
       <a href="https://existentialmemes.github.io/статьи/в-чем-смысл-жизни"
          class="article-card fade-item"
@@ -407,6 +450,11 @@
         </div>
       </a>
     </li>
+
+    <!--
+    ============================================================
+    СКРЫТЫЕ СТАТЬИ (раскомментировать, чтобы вернуть на сайт)
+    ============================================================
 
     <li>
       <a href="https://existentialmemes.github.io/статьи/философия-стоицизма"
@@ -476,11 +524,21 @@
       </a>
     </li>
 
+    -->
+
   </ul>
+
+  <!-- ===== НИЖНЯЯ КНОПКА «ВЕРНУТЬСЯ» ===== -->
+  <div class="nav-back fade-item">
+    <a href="../">
+      <i class="fas fa-arrow-left"></i> Вернуться
+    </a>
+  </div>
 
 </main>
 
 <script>
+  /* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
   (function () {
     var items = Array.prototype.slice.call(
       document.querySelectorAll('.fade-item:not(.visible)')

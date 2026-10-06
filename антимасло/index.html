@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
     <title>Стёпа Антимасло</title>
-    
+
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
-    
+
+    <!-- ===== ТЕМА (глобальная) ===== -->
+    <link rel="stylesheet" href="../theme.css" />
+    <script src="../theme.js"></script>
+
+    <!-- ===== ИКОНКИ + ШРИФТЫ ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <style>
         * {
             margin: 0;
@@ -20,26 +26,28 @@
         }
         body {
             font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FF88C2;
+            background: var(--bg);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 16px;
             margin: 0;
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.35s ease;
         }
         .container {
             max-width: 580px;
             width: 100%;
-            background: #ffffff;
+            background: var(--card);
             border-radius: 32px;
             padding: 24px 20px 32px;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 20px 40px -12px var(--card-shadow), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.35s ease;
             backdrop-filter: blur(2px);
         }
         .container:hover {
-            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+            box-shadow: 0 28px 48px -16px var(--card-shadow-hover);
         }
 
         /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
@@ -70,12 +78,13 @@
             padding-bottom: 8px;
             display: flex;
             align-items: center;
+            justify-content: space-between;
             gap: 12px;
             flex-wrap: wrap;
         }
         .page-header .back-link {
             font-size: 24px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -83,13 +92,13 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: #f0f0f2;
+            background: var(--surface);
             transition: background 0.2s, transform 0.2s, color 0.2s;
             flex-shrink: 0;
         }
         .page-header .back-link:hover {
-            background: #e4e4e8;
-            color: #FF88C2;
+            background: var(--surface-hover);
+            color: var(--accent);
             transform: scale(1.06);
         }
         .page-header .back-link i {
@@ -107,13 +116,13 @@
             height: 120px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #f0e0e8;
+            border: 3px solid var(--accent-soft);
             transition: transform 0.4s ease, box-shadow 0.4s ease;
-            box-shadow: 0 8px 20px rgba(255, 136, 194, 0.15);
+            box-shadow: 0 8px 20px var(--accent-soft);
         }
         .profile-avatar:hover {
             transform: scale(1.04) rotate(-2deg);
-            box-shadow: 0 12px 28px rgba(255, 136, 194, 0.25);
+            box-shadow: 0 12px 28px rgba(255, 136, 194, 0.35);
         }
 
         /* ===== ИМЯ + ТЕКСТ ===== */
@@ -121,7 +130,7 @@
             text-align: center;
             font-size: 28px;
             font-weight: 700;
-            color: #111;
+            color: var(--text);
             margin-top: 4px;
             letter-spacing: -0.2px;
         }
@@ -129,28 +138,27 @@
             text-align: center;
             font-size: 18px;
             font-weight: 500;
-            color: #444;
+            color: var(--text-soft);
             margin-top: -2px;
             margin-bottom: 14px;
         }
         .profile-quote {
-            background: #fafafa;
+            background: var(--surface);
             border-radius: 20px;
             padding: 18px 20px;
             margin-bottom: 24px;
-            border-left: 4px solid #FF88C2;
+            border-left: 4px solid var(--accent);
             font-size: 16px;
             line-height: 1.7;
-            color: #1a1a1a;
+            color: var(--text);
             box-shadow: 0 2px 8px rgba(0,0,0,0.02);
         }
         .profile-quote strong {
-            color: #000;
+            color: var(--text-strong);
             font-weight: 700;
         }
-        /* Стиль для ссылки внутри цитаты */
         .profile-quote a {
-            color: #111;
+            color: var(--text);
             text-decoration: underline;
             font-weight: 700;
             transition: color 0.2s, background 0.2s;
@@ -158,15 +166,15 @@
             border-radius: 4px;
         }
         .profile-quote a:hover {
-            color: #FF88C2;
-            background: rgba(255, 136, 194, 0.08);
+            color: var(--accent);
+            background: var(--accent-soft);
         }
 
         /* ===== СОЦСЕТИ (СПИСОК) ===== */
         .social-title {
             font-size: 20px;
             font-weight: 600;
-            color: #111;
+            color: var(--text);
             margin-bottom: 14px;
         }
         .social-grid {
@@ -176,21 +184,21 @@
             margin-bottom: 28px;
         }
         .social-item {
-            background: #f6f6f8;
+            background: var(--surface);
             border-radius: 16px;
-            border: 1px solid #ececee;
+            border: 1px solid var(--surface-border);
             overflow: hidden;
             transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
         }
         .social-item:hover {
-            background: #ededf0;
+            background: var(--surface-hover);
             transform: translateY(-2px) scale(1.008);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
         }
         .social-item > a {
             display: block;
             padding: 14px 18px 4px 18px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
@@ -199,7 +207,7 @@
             margin-right: 12px;
             width: 24px;
             text-align: center;
-            color: #FF88C2;
+            color: var(--accent);
             transition: transform 0.2s ease;
         }
         .social-item:hover > a i {
@@ -208,7 +216,7 @@
         .social-item .social-desc {
             padding: 0 18px 12px 18px;
             font-size: 14px;
-            color: #1a1a1a;
+            color: var(--text);
             line-height: 1.5;
         }
         .social-item .social-desc a {
@@ -216,13 +224,13 @@
             padding: 0;
             font-size: 14px;
             font-weight: 400;
-            color: #1a1a1a;
+            color: var(--text);
             text-decoration: underline;
             background: transparent;
             border: none;
         }
         .social-item .social-desc a:hover {
-            color: #FF88C2;
+            color: var(--accent);
             background: transparent;
         }
 
@@ -263,16 +271,16 @@
         .nav-back a {
             display: inline-block;
             padding: 12px 28px;
-            background: #f0f0f2;
+            background: var(--surface);
             border-radius: 40px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            border: 1px solid #e4e4e6;
+            border: 1px solid var(--surface-border);
             transition: background 0.2s, transform 0.2s;
         }
         .nav-back a:hover {
-            background: #e4e4e8;
+            background: var(--surface-hover);
             transform: scale(1.02);
         }
         .nav-back a i {
@@ -308,18 +316,22 @@
 
 <div class="container">
 
-    <!-- ===== ШАПКА С КНОПКОЙ НАЗАД (стрелочка) ===== -->
+    <!-- ===== ШАПКА: НАЗАД + ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== -->
     <div class="page-header fade-item visible">
-        <a href="https://existentialmemes.github.io/" class="back-link">
+        <a href="https://existentialmemes.github.io/" class="back-link" aria-label="Назад">
             <i class="fas fa-arrow-left"></i>
         </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+            <i class="fas fa-moon icon-moon"></i>
+            <i class="fas fa-sun icon-sun"></i>
+        </button>
     </div>
 
     <!-- ===== АВАТАР ===== -->
     <div class="profile-avatar-wrapper fade-item">
-        <img 
-            src="https://i.pinimg.com/280x280_RS/73/a6/33/73a6338a1c41fec03c932b30caa8a5da.jpg" 
-            alt="Стёпа Антимасло" 
+        <img
+            src="https://i.pinimg.com/280x280_RS/73/a6/33/73a6338a1c41fec03c932b30caa8a5da.jpg"
+            alt="Стёпа Антимасло"
             class="profile-avatar" loading="lazy"
         />
     </div>
@@ -328,9 +340,9 @@
     <div class="profile-name fade-item">Стёпа Антимасло</div>
     <div class="profile-role fade-item">Создатель</div>
 
-    <!-- ===== ЦИТАТА (со ссылкой на экзистенциальные мемы) ===== -->
+    <!-- ===== ЦИТАТА ===== -->
     <div class="profile-quote fade-item">
-        Я создатель мемов и просто хороший добрый человек. 
+        Я создатель мемов и просто хороший добрый человек.
         <strong>Я создал <a href="https://existentialmemes.github.io/" target="_blank">Экзистенциальные мемы</a> и всё остальное.</strong>
     </div>
 
@@ -362,14 +374,14 @@
         </div>
     </div>
 
-    <!-- ===== КРАСНАЯ КНОПКА "МНУ ПЕЛЬМЕШКИ 18+" ===== -->
+    <!-- ===== КРАСНАЯ КНОПКА ===== -->
     <div class="pelmeni-btn-wrapper fade-item">
         <a href="https://raw.githubusercontent.com/existentialmemes/existentialmemes.github.io/refs/heads/main/6f6063ff040090cffe42452289e2db96.jpg" target="_blank" class="pelmeni-btn">
             🥟 МНУ ПЕЛЬМЕШКИ 18+
         </a>
     </div>
 
-    <!-- ===== КНОПКА ВЕРНУТЬСЯ НАЗАД ===== -->
+    <!-- ===== КНОПКА ВЕРНУТЬСЯ ===== -->
     <div class="nav-back fade-item">
         <a href="https://existentialmemes.github.io/">
             <i class="fas fa-arrow-left"></i> Вернуться
@@ -379,7 +391,7 @@
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    /* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
     (function() {
         const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {

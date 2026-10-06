@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+    <meta name="theme-color" content="#FF88C2" />
+
+    <title>Философия Пелевина — Экзистенциальные мемы</title>
+    <meta name="description" content="Философия Виктора Пелевина: пустота, симулякр, буддизм, критика потребительства, смерть как медиа-проект." />
+    <meta property="og:site_name" content="Экзистенциальные мемы" />
+    <meta property="og:title" content="Философия Пелевина" />
+    <meta property="og:description" content="Пустота, симулякр и постмодерн — философия Виктора Пелевина." />
+    <meta property="og:type" content="article" />
+    <meta property="og:locale" content="ru_RU" />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Article",
+      "headline": "Философия Пелевина",
+      "author": { "@type": "Organization", "name": "Экзистенциальные мемы" },
+      "publisher": { "@type": "Organization", "name": "Экзистенциальные мемы" },
+      "url": "https://existentialmemes.github.io/статьи/философия-пелевина"
+    }
+    </script>
+
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+
+    <!-- ===== ТЕМА (глобальная) ===== -->
+    <link rel="stylesheet" href="../../theme.css" />
+    <script src="../../theme.js"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-start;
+            justify-content: center;
+            padding: 16px;
+            margin: 0;
+            color: var(--text);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "kern", "liga", "calt";
+            transition: background-color 0.4s ease, color 0.35s ease;
+        }
+
+        /* ===== ИНДИКАТОР ПРОГРЕССА ===== */
+        .reading-progress {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            width: 0%;
+            background: linear-gradient(to right, var(--accent), var(--accent-strong));
+            z-index: 1000;
+            transition: width 0.1s linear;
+            pointer-events: none;
+            border-radius: 0 2px 2px 0;
+        }
+
+        .container {
+            position: relative;
+            max-width: 580px;
+            width: 100%;
+            background: var(--card);
+            border-radius: 32px;
+            padding: 24px 20px 32px;
+            box-shadow: 0 20px 40px -12px var(--card-shadow), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, background-color 0.35s ease;
+        }
+        .container:hover {
+            box-shadow: 0 28px 48px -16px var(--card-shadow-hover);
+        }
+
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1), transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* ===== ВЕРХНЯЯ ПАНЕЛЬ: КРУГЛАЯ НАЗАД + ТЕМА ===== */
+        .top-bar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 20px;
+            color: var(--text);
+            text-decoration: none;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            flex-shrink: 0;
+            transition: background 0.2s ease, transform 0.2s ease, color 0.2s ease;
+        }
+        .back-btn:hover {
+            background: var(--surface-hover);
+            color: var(--accent);
+            transform: scale(1.06);
+        }
+        .back-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .back-btn i {
+            font-size: 20px;
+        }
+
+        /* ===== ЗАГОЛОВОК ===== */
+        .greeting {
+            margin-bottom: 26px;
+            padding-bottom: 18px;
+            border-bottom: 2px solid var(--accent);
+        }
+        .greeting h1 {
+            font-size: clamp(26px, 6.5vw, 38px);
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: var(--text);
+            line-height: 1.15;
+            margin-bottom: 12px;
+            text-wrap: balance;
+        }
+        .greeting .desc-text {
+            font-size: 16px;
+            color: var(--text);
+            line-height: 1.65;
+            font-weight: 400;
+            text-wrap: pretty;
+        }
+        .greeting .desc-text strong {
+            color: var(--text-strong);
+            font-weight: 700;
+        }
+        .greeting .desc-text a {
+            color: var(--text);
+            text-decoration: underline;
+            font-weight: 700;
+            transition: color 0.2s, background 0.2s;
+            padding: 0 2px;
+            border-radius: 4px;
+        }
+        .greeting .desc-text a:hover {
+            color: var(--accent);
+            background: var(--accent-soft);
+        }
+
+        /* ===== СТАТЬЯ ===== */
+        .article {
+            display: flex;
+            flex-direction: column;
+            gap: 34px;
+        }
+
+        .article-section h2 {
+            font-size: clamp(19px, 4.5vw, 24px);
+            font-weight: 700;
+            color: var(--text);
+            line-height: 1.25;
+            margin-bottom: 14px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-wrap: balance;
+        }
+        .article-section h2 i {
+            color: var(--accent);
+            font-size: 0.85em;
+            flex-shrink: 0;
+        }
+        .article-section p {
+            font-size: 16px;
+            line-height: 1.75;
+            color: var(--text);
+            margin-bottom: 12px;
+            text-wrap: pretty;
+            hyphens: auto;
+            -webkit-hyphens: auto;
+        }
+        .article-section p:last-child { margin-bottom: 0; }
+
+        /* Список внутри статьи */
+        .article-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin: 12px 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .article-section ul li {
+            position: relative;
+            padding-left: 26px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--text);
+        }
+        .article-section ul li::before {
+            content: "•";
+            position: absolute;
+            left: 8px;
+            top: 0;
+            color: var(--accent);
+            font-size: 22px;
+            line-height: 1.3;
+            font-weight: 700;
+        }
+
+        /* ===== ЦИТАТЫ ===== */
+        blockquote {
+            position: relative;
+            border-left: 3px solid var(--accent);
+            background: var(--accent-soft);
+            padding: 16px 20px;
+            border-radius: 0 14px 14px 0;
+            font-size: 16px;
+            line-height: 1.7;
+            font-style: italic;
+            color: var(--text);
+            margin: 18px 0;
+            text-wrap: pretty;
+            quotes: "«" "»" "„" "“";
+        }
+        blockquote:last-child { margin-bottom: 0; }
+        blockquote::before {
+            content: "";
+            position: absolute;
+            left: -3px;
+            top: 12px;
+            bottom: 12px;
+            width: 3px;
+            background: var(--accent);
+            border-radius: 3px;
+            opacity: 0.35;
+        }
+
+        /* ===== КАРТИНКИ — ВСЕ ОДНОГО РАЗМЕРА ===== */
+        .article-image {
+            display: block;
+            width: 100%;
+            max-width: 320px;
+            height: auto;
+            margin: 18px auto 0;
+            border-radius: 18px;
+            object-fit: cover;
+            background: var(--surface);
+            opacity: 0;
+            transition: opacity 0.6s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.4s ease;
+            box-shadow: 0 6px 18px -8px rgba(0,0,0,0.12);
+        }
+        .article-image.loaded { opacity: 1; }
+        .article-image:hover {
+            transform: translateY(-3px) scale(1.01);
+            box-shadow: 0 14px 28px -12px rgba(0,0,0,0.2);
+        }
+        .image-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+            text-align: center;
+            margin-top: 8px;
+            margin-bottom: 4px;
+            font-style: italic;
+        }
+
+        .img-fallback {
+            width: 100%;
+            max-width: 320px;
+            min-height: 200px;
+            margin: 18px auto 0;
+            border-radius: 18px;
+            border: 2px dashed var(--accent);
+            background: var(--accent-soft);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 24px 16px;
+            text-align: center;
+            color: var(--accent);
+            font-size: 14px;
+        }
+
+        /* ===== ФИНАЛЬНАЯ СТРОКА ===== */
+        .outro-line {
+            margin-top: 38px;
+            padding-top: 24px;
+            border-top: 1px solid var(--divider);
+            text-align: center;
+        }
+        .outro-line .outro-thanks {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+        .outro-line p {
+            font-size: 15px;
+            color: var(--text-soft);
+            line-height: 1.55;
+        }
+
+        /* ===== КНОПКИ-ССЫЛКИ ===== */
+        .sections-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 24px 0 8px;
+        }
+        .section-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface);
+            border-radius: 16px;
+            padding: 14px 18px;
+            border: 1px solid var(--surface-border);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 500;
+            transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, border-color 0.25s ease;
+            cursor: pointer;
+            font-family: inherit;
+            width: 100%;
+            text-align: left;
+        }
+        .section-btn:hover {
+            background: var(--surface-hover);
+            transform: translateY(-2px) scale(1.008);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.06);
+            border-color: var(--accent);
+        }
+        .section-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+        .section-btn i {
+            width: 28px;
+            text-align: center;
+            color: var(--accent);
+            font-size: 22px;
+            transition: transform 0.2s ease;
+        }
+        .section-btn:hover i { transform: scale(1.1); }
+        .section-btn .btn-label { flex: 1; }
+        .section-btn .btn-arrow { color: var(--text-muted); font-size: 16px; transition: transform 0.25s ease; }
+        .section-btn:hover .btn-arrow { transform: translateX(4px); color: var(--accent); }
+
+        /* ===== КНОПКА «ПОДЕЛИТЬСЯ» ===== */
+        .share-wrap {
+            display: flex;
+            justify-content: center;
+            margin: 24px 0 12px;
+        }
+        .share-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 9px 18px;
+            border-radius: 30px;
+            border: 1px solid var(--accent);
+            background: var(--accent-soft);
+            color: var(--accent);
+            font-family: inherit;
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.2px;
+            cursor: pointer;
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease, background 0.25s ease, border-color 0.25s ease;
+            box-shadow: 0 4px 12px -6px rgba(255,136,194,0.5);
+        }
+        .share-btn i { font-size: 14px; }
+        .share-btn:hover {
+            background: var(--surface-hover);
+            border-color: var(--accent-strong);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 18px -6px rgba(255,136,194,0.6);
+        }
+        .share-btn:active {
+            transform: translateY(0) scale(0.98);
+        }
+        .share-btn:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 2px;
+        }
+
+        /* ===== КНОПКА НАВЕРХ ===== */
+        .to-top {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: #fff;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            cursor: pointer;
+            box-shadow: 0 8px 20px -6px rgba(255,136,194,0.7);
+            opacity: 0;
+            transform: translateY(20px) scale(0.9);
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1), background 0.25s ease;
+            z-index: 900;
+        }
+        .to-top.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+        .to-top:hover { background: var(--accent-strong); transform: translateY(-3px) scale(1.05); }
+        .to-top:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+
+        /* ===== ТОСТ ===== */
+        .toast {
+            position: fixed;
+            left: 50%;
+            bottom: 28px;
+            transform: translateX(-50%) translateY(20px);
+            background: var(--toast-bg);
+            color: var(--toast-text);
+            padding: 12px 20px;
+            border-radius: 30px;
+            font-size: 14px;
+            font-weight: 500;
+            box-shadow: 0 12px 28px -8px rgba(0,0,0,0.4);
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+            z-index: 1100;
+            max-width: 90vw;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .toast.visible {
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+        .toast i { color: var(--accent); }
+
+        /* ===== АДАПТИВ ===== */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .greeting .desc-text { font-size: 15px; }
+            .article { gap: 28px; }
+            .article-section p, blockquote, .article-section ul li { font-size: 15px; }
+            .outro-line .outro-thanks { font-size: 17px; }
+            .section-btn { font-size: 16px; padding: 12px 14px; }
+            .section-btn i { font-size: 20px; width: 24px; }
+            .article-image { max-width: 260px; }
+            .to-top { right: 14px; bottom: 14px; width: 42px; height: 42px; }
+            .toast { bottom: 80px; font-size: 13px; padding: 10px 16px; }
+            .share-btn { font-size: 13px; padding: 8px 16px; }
+            .back-btn { width: 38px; height: 38px; font-size: 18px; }
+            .back-btn i { font-size: 18px; }
+        }
+        @media (max-width: 400px) {
+            .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
+            .section-btn i { font-size: 18px; width: 22px; }
+            .article-image { max-width: 220px; }
+            .share-btn { font-size: 12.5px; padding: 8px 14px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            *, *::before, *::after {
+                animation-duration: 0.001ms !important;
+                transition-duration: 0.001ms !important;
+            }
+            .fade-item { opacity: 1; transform: none; }
+            .article-image { opacity: 1; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="reading-progress" id="readingProgress"></div>
+
+<div class="container">
+
+    <!-- ===== ВЕРХНЯЯ ПАНЕЛЬ: КРУГЛАЯ НАЗАД + ТЕМА ===== -->
+    <div class="top-bar fade-item visible">
+        <a href="../" class="back-btn" aria-label="Назад">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+            <i class="fas fa-moon icon-moon"></i>
+            <i class="fas fa-sun icon-sun"></i>
+        </button>
+    </div>
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <div class="greeting fade-item visible">
+        <h1>Философия Пелевина</h1>
+        <div class="desc-text">
+            <strong>Виктор Пелевин</strong> – русский писатель-постмодернист, родившийся в 1962 году
+            в Москве. Его философия выросла из сплава буддийской пустоты, постмодернистской теории
+            симулякров и российской действительности конца XX века. Если <a href="../философия-ницше/">Ницше</a>
+            объявил о «смерти Бога», то Пелевин описывает мир, где смысл не просто умер — он был
+            продан в рассрочку, скопирован и загружен в телевизор.
+        </div>
+
+        <img
+            class="article-image"
+            src="1.jpg"
+            alt="Портрет Виктора Пелевина"
+            loading="lazy"
+            decoding="async"
+            onload="this.classList.add('loaded')"
+            onerror="this.outerHTML='&lt;div class=\'img-fallback\'&gt;⚠️ Картинка 1.jpg не загрузилась&lt;br&gt;Проверьте, что файл лежит рядом с index.html&lt;/div&gt;'"
+        />
+        <div class="image-caption">Портрет Виктора Пелевина</div>
+    </div>
+
+    <div class="article">
+
+        <!-- ===== ПУСТОТА ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-circle-notch"></i> Пустота — основа всего</h2>
+
+            <p>
+                Центральное понятие философии Пелевина – пустота. Это не «ничто» в западном смысле,
+                а живая, порождающая основа бытия. В романе «Чапаев и Пустота» главный герой носит
+                говорящую фамилию:
+            </p>
+
+            <blockquote>
+                — Ты можешь мне сказать, кто ты?<br>
+                — Петр Пустота.<br>
+                — Это твое имя. А кто тот, кто это имя носит?
+            </blockquote>
+
+            <p>
+                Чапаев в романе выступает как дзен-мастер, который разрушает иллюзию «я». Пелевин
+                утверждает, что то, что мы называем личностью, – это набор привычек, страхов и слов,
+                заимствованных у других. За этим набором нет чего-то «настоящего» – только пустота,
+                которая, однако, не является чем-то ужасным. Напротив, осознание пустоты – это
+                освобождение.
+            </p>
+
+            <img
+                class="article-image"
+                src="2.jpg"
+                alt="Пустота в отражении"
+                loading="lazy"
+                decoding="async"
+                onload="this.classList.add('loaded')"
+                onerror="this.outerHTML='&lt;div class=\'img-fallback\'&gt;⚠️ Картинка 2.jpg не загрузилась&lt;br&gt;Проверьте, что файл лежит рядом с index.html&lt;/div&gt;'"
+            />
+        </div>
+
+        <!-- ===== СИМУЛЯКР ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-tv"></i> Симулякр: жизнь как реклама</h2>
+
+            <p>
+                Пелевин одним из первых в русской литературе осмыслил постмодернистскую концепцию
+                симулякра применительно к российской реальности. В «Generation „П“» он описывает мир,
+                где реклама стала новой религией, а потребитель — её верующим. Главный герой Вавилен
+                Татарский создаёт рекламные образы, которые начинают жить собственной жизнью и
+                подчинять себе людей.
+            </p>
+
+            <blockquote>
+                «Главная задача рекламы – это показывать людям других людей, которые сумели обмануться
+                и найти счастье в обладании материальными объектами. На самом деле такие обманувшиеся
+                живут только в клипах».
+            </blockquote>
+
+            <p>
+                Пелевин показывает: в мире симулякров нет оригинала. Нет «настоящей» России, «настоящей»
+                духовности, «настоящего» Запада. Есть только копии копий, которые мы принимаем за
+                реальность. Телевизор, реклама, политические лозунги — всё это создаёт гиперреальность,
+                в которой человек живёт, не замечая, что стены декорации.
+            </p>
+
+            <img
+                class="article-image"
+                src="3.jpg"
+                alt="Жизнь как реклама"
+                loading="lazy"
+                decoding="async"
+                onload="this.classList.add('loaded')"
+                onerror="this.outerHTML='&lt;div class=\'img-fallback\'&gt;⚠️ Картинка 3.jpg не загрузилась&lt;br&gt;Проверьте, что файл лежит рядом с index.html&lt;/div&gt;'"
+            />
+        </div>
+
+        <!-- ===== КРИТИКА ПОТРЕБИТЕЛЬСТВА ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-cart-shopping"></i> Критика потребительства и «Homo Sovieticus»</h2>
+
+            <p>
+                Пелевин жёстко критикует общество потребления, но не с морализаторской позиции, а с
+                буддийской. Желание – источник страдания. А современный капитализм превратил желание
+                в бесконечный конвейер: ты хочешь, получаешь, разочаровываешься, хочешь снова. Это
+                сансара — колесо страданий, крутящееся со скоростью рекламного ролика.
+            </p>
+
+            <p>
+                В «Empire V» эта мысль достигает буквального воплощения. Вампиры – метафора системы,
+                где само желание стало валютой. Главный герой Роман проходит путь от обычного
+                потребителя до вампира – и обнаруживает, что мир устроен как многоуровневая воронка:
+                одни пьют кровь, другие пьют «баблос», третьи потребляют иллюзию свободы. Но в основе
+                всего — всё та же пустота.
+            </p>
+
+            <p>
+                Вампиризм здесь показывает, как капитализм высасывает из человека способность видеть
+                реальность. Вместо неё подсовывается гламур – сверкающая обёртка, за которой ничего
+                нет. Гламур у Пелевина становится синонимом симулякра: не стиль, не красота, не статус,
+                а пустота, продающая саму себя. И человек, гоняясь за этой пустотой, сам становится
+                её частью.
+            </p>
+
+            <p>
+                Пелевин показывает, что потребительство — это духовная ловушка. Ты покупаешь не вещи,
+                а надежду, что покупка сделает тебя счастливым. Но следующая покупка лишь углубляет
+                голод.
+            </p>
+
+            <img
+                class="article-image"
+                src="4.jpg"
+                alt="Плакат в стиле соц-арта"
+                loading="lazy"
+                decoding="async"
+                onload="this.classList.add('loaded')"
+                onerror="this.outerHTML='&lt;div class=\'img-fallback\'&gt;⚠️ Картинка 4.jpg не загрузилась&lt;br&gt;Проверьте, что файл лежит рядом с index.html&lt;/div&gt;'"
+            />
+        </div>
+
+        <!-- ===== СМЕРТЬ КАК МЕДИА-ПРОЕКТ ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-skull"></i> Смерть как медиа-проект</h2>
+
+            <p>
+                В поздних романах («S.N.U.F.F.», «iPhuck 10», «Transhumanism Inc.») Пелевин развивает
+                тему технологического бессмертия. Своего рода бессмертие – загрузка сознания в цифру,
+                превращение человека в файл.
+            </p>
+
+            <blockquote>
+                «Смерть – это не когда вы теряете сознание навсегда. Смерть – это когда сознание
+                осознает вас до самого конца, насквозь, до того слоя, где вас никогда не было».
+            </blockquote>
+
+            <p>
+                Философ показывает: технологии не решают экзистенциальных проблем. Можно победить
+                старость, но пустоту – нет. Можно копировать сознание, но нельзя скопировать того,
+                кого нет.
+            </p>
+
+            <img
+                class="article-image"
+                src="5.jpg"
+                alt="Цифровое кладбище"
+                loading="lazy"
+                decoding="async"
+                onload="this.classList.add('loaded')"
+                onerror="this.outerHTML='&lt;div class=\'img-fallback\'&gt;⚠️ Картинка 5.jpg не загрузилась&lt;br&gt;Проверьте, что файл лежит рядом с index.html&lt;/div&gt;'"
+            />
+        </div>
+
+        <!-- ===== ПЕЛЕВИН ПРОТИВ ВСЕХ ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-hand-fist"></i> Пелевин против всех</h2>
+
+            <p>
+                Пелевин критикует всю предшествующую традицию — но не с позиции «сверхчеловека», а с
+                позиции пустоты. Он не предлагает новую систему ценностей. Он предлагает увидеть, что
+                все системы ценностей – это пустышки.
+            </p>
+
+            <p>Он иронизирует над:</p>
+
+            <ul>
+                <li><strong>Западным рационализмом</strong> – за наивную веру в прогресс и объективную истину.</li>
+                <li><strong>Русской духовностью</strong> – за превращение страдания в товар.</li>
+                <li><strong>Буддизмом</strong> – за то, что его тоже продали.</li>
+            </ul>
+        </div>
+
+        <!-- ===== ЗАКЛЮЧЕНИЕ ===== -->
+        <div class="article-section fade-item">
+            <h2><i class="fa-solid fa-feather"></i> Заключение</h2>
+
+            <p>
+                Философия Пелевина — это экзистенциальный троллинг. Он не спрашивает «в чём смысл
+                жизни?» — он спрашивает: «Кто тот, кто задаёт этот вопрос?» И отвечает: пустота.
+                Но не та пустота, которая пугает, а та, которая освобождает.
+            </p>
+
+            <p>
+                Пелевин учит не искать смысл в готовых формах, а осознать, что все формы – пусты.
+                И в этом осознании – единственная возможная свобода.
+            </p>
+
+            <blockquote>
+                «Что такое свобода и счастье, бро? Ты слышишь эти слова каждый день, но давай вместе
+                прикинем – что они значат?<br><br>
+                Мы все хотим быть счастливы. Если разобрать эту интенцию до конца, мы желаем вот чего:
+                чтобы нам немедленно стало хорошо. Другого счастья не бывает, потому что не бывает
+                другого момента времени. Счастье – это когда душе хорошо вот прямо здесь и сейчас.<br><br>
+                Но как ни старайся, невозможно гарантированно приехать в точку под названием «счастье»
+                в результате собственных усилий. Хотя бы потому, что в каждом нашем миге участвует
+                весь остальной мир. А мы над ним не властны.<br><br>
+                Поэтому дорога к счастью только одна. Смирись в своем сердце с тем, что происходит
+                в эту секунду. Прими все так, как если бы ты мечтал об этом всю жизнь. Просто
+                растворись в моменте. И как только ты перестанешь с ним бороться, ты поймёшь, что
+                тебе никогда не нужно было ничего искать».
+            </blockquote>
+        </div>
+
+    </div>
+
+    <!-- ===== ФИНАЛЬНАЯ СТРОКА ===== -->
+    <div class="outro-line fade-item">
+        <div class="outro-thanks">🖤 Спасибо за уделённое время!</div>
+        <p>Также у нас есть другие статьи.</p>
+    </div>
+
+    <div class="share-wrap fade-item">
+        <button type="button" class="share-btn" id="shareBtn" aria-label="Поделиться статьёй">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span>Поделиться</span>
+        </button>
+    </div>
+
+    <div class="sections-grid">
+        <a href="../" class="section-btn fade-item">
+            <i class="fa-solid fa-book-open"></i>
+            <span class="btn-label">Другие статьи</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+        <a href="../../" class="section-btn fade-item">
+            <i class="fa-solid fa-house"></i>
+            <span class="btn-label">На главную</span>
+            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+        </a>
+    </div>
+
+</div>
+
+<button class="to-top" id="toTop" aria-label="Наверх">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+    (function() {
+        /* ===== Плавное появление блоков ===== */
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.12,
+                rootMargin: '0px 0px -40px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+
+        /* ===== Индикатор прогресса чтения ===== */
+        const progress = document.getElementById('readingProgress');
+        const toTop = document.getElementById('toTop');
+
+        let ticking = false;
+        function onScroll() {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(() => {
+                const scrollTop = window.scrollY || document.documentElement.scrollTop;
+                const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+                const pct = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+                progress.style.width = pct + '%';
+
+                if (scrollTop > 400) {
+                    toTop.classList.add('visible');
+                } else {
+                    toTop.classList.remove('visible');
+                }
+                ticking = false;
+            });
+        }
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        /* ===== Кнопка наверх ===== */
+        toTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+
+        /* ===== Резервная загрузка картинок ===== */
+        document.querySelectorAll('.article-image').forEach(img => {
+            if (img.complete && img.naturalWidth > 0) {
+                img.classList.add('loaded');
+            }
+        });
+
+        /* ===== Кнопка «Поделиться» ===== */
+        const shareBtn = document.getElementById('shareBtn');
+        const toast = document.getElementById('toast');
+        let toastTimer = null;
+
+        function showToast(message, icon) {
+            toast.innerHTML = (icon ? '<i class="' + icon + '"></i>' : '') + message;
+            toast.classList.add('visible');
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => toast.classList.remove('visible'), 2600);
+        }
+
+        async function copyToClipboard(text) {
+            try {
+                if (navigator.clipboard && window.isSecureContext) {
+                    await navigator.clipboard.writeText(text);
+                    return true;
+                }
+                const ta = document.createElement('textarea');
+                ta.value = text;
+                ta.style.position = 'fixed';
+                ta.style.opacity = '0';
+                ta.style.left = '-9999px';
+                document.body.appendChild(ta);
+                ta.select();
+                const ok = document.execCommand('copy');
+                document.body.removeChild(ta);
+                return ok;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        shareBtn.addEventListener('click', async () => {
+            const url = window.location.href;
+            const title = document.querySelector('meta[property="og:title"]')?.content
+                          || document.title;
+            const text = document.querySelector('meta[property="og:description"]')?.content
+                          || '';
+
+            if (navigator.share) {
+                try {
+                    await navigator.share({ title, text, url });
+                    return;
+                } catch (err) {
+                    if (err && err.name === 'AbortError') return;
+                }
+            }
+
+            const ok = await copyToClipboard(url);
+            if (ok) {
+                showToast('Ссылка скопирована', 'fa-solid fa-check');
+            } else {
+                showToast('Скопируйте ссылку: ' + url, 'fa-solid fa-link');
+            }
+        });
+    })();
+</script>
+
+</body>
+</html>

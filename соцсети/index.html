@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
     <title>Соцсети · Экзистенциальные мемы</title>
-    
+
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
-    
+
+    <!-- ===== ТЕМА (глобальная) ===== -->
+    <link rel="stylesheet" href="../theme.css" />
+    <script src="../theme.js"></script>
+
+    <!-- ===== ИКОНКИ + ШРИФТЫ ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <style>
         * {
             margin: 0;
@@ -20,26 +26,28 @@
         }
         body {
             font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FF88C2;
+            background: var(--bg);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 16px;
             margin: 0;
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.35s ease;
         }
         .container {
             max-width: 580px;
             width: 100%;
-            background: #ffffff;
+            background: var(--card);
             border-radius: 32px;
             padding: 24px 20px 32px;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 20px 40px -12px var(--card-shadow), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.35s ease;
             backdrop-filter: blur(2px);
         }
         .container:hover {
-            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+            box-shadow: 0 28px 48px -16px var(--card-shadow-hover);
         }
 
         /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
@@ -61,14 +69,12 @@
         .fade-item:nth-child(6) { transition-delay: 0.28s; }
         .fade-item:nth-child(7) { transition-delay: 0.33s; }
         .fade-item:nth-child(8) { transition-delay: 0.38s; }
-        .fade-item:nth-child(9) { transition-delay: 0.43s; }
-        .fade-item:nth-child(10) { transition-delay: 0.48s; }
 
         /* ===== ЗАГОЛОВОК СТРАНИЦЫ ===== */
         .page-header {
             margin-bottom: 24px;
             padding-bottom: 14px;
-            border-bottom: 1px solid rgba(240, 224, 232, 0.6);
+            border-bottom: 1px solid var(--divider);
             display: flex;
             align-items: center;
             gap: 14px;
@@ -76,7 +82,7 @@
         }
         .page-header .back-link {
             font-size: 22px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -85,7 +91,7 @@
             transition: color 0.2s, transform 0.2s;
         }
         .page-header .back-link:hover {
-            color: #FF88C2;
+            color: var(--accent);
             transform: translateX(-4px);
         }
         .page-header .back-link i {
@@ -95,20 +101,9 @@
             font-size: 28px;
             font-weight: 700;
             letter-spacing: -0.2px;
-            color: #111;
+            color: var(--text);
             line-height: 1.2;
             flex: 1;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        /* ===== РОЗОВЫЙ СМАЙЛИК ===== */
-        .page-header h1 .smile-icon {
-            font-size: 34px;
-            line-height: 1;
-            color: #FF88C2 !important;
-            filter: none;
-            display: inline-block;
         }
 
         /* ===== СОЦСЕТИ (СПИСОК) ===== */
@@ -116,24 +111,24 @@
             display: flex;
             flex-direction: column;
             gap: 14px;
-            margin-bottom: 28px;
+            margin-bottom: 20px;
         }
         .social-item {
-            background: #f6f6f8;
+            background: var(--surface);
             border-radius: 18px;
-            border: 1px solid #ececee;
+            border: 1px solid var(--surface-border);
             overflow: hidden;
             transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
         }
         .social-item:hover {
-            background: #ededf0;
+            background: var(--surface-hover);
             transform: translateY(-2px) scale(1.008);
-            box-shadow: 0 8px 18px rgba(0,0,0,0.04);
+            box-shadow: 0 8px 18px rgba(0,0,0,0.08);
         }
         .social-item a {
             display: block;
             padding: 16px 18px 4px 18px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             font-size: 19px;
             font-weight: 500;
@@ -142,7 +137,7 @@
             margin-right: 12px;
             width: 26px;
             text-align: center;
-            color: #FF88C2;
+            color: var(--accent);
             transition: transform 0.2s ease;
         }
         .social-item:hover a i {
@@ -151,13 +146,13 @@
         .social-item .social-desc {
             padding: 0 18px 14px 18px;
             font-size: 14px;
-            color: #1a1a1a;
+            color: var(--text);
             line-height: 1.5;
         }
         .social-item .social-desc a {
             display: inline;
             padding: 0;
-            color: #111;
+            color: var(--text);
             text-decoration: underline;
             font-size: 14px;
             font-weight: 400;
@@ -166,7 +161,21 @@
         }
         .social-item .social-desc a:hover {
             background: transparent;
-            color: #333;
+            color: var(--accent);
+        }
+
+        /* ===== ПОДПИСЬ ПОД СОЦСЕТЯМИ ===== */
+        .social-note {
+            text-align: center;
+            font-size: 15px;
+            color: var(--text-soft);
+            line-height: 1.6;
+            padding: 14px 18px;
+            margin-bottom: 24px;
+            background: var(--accent-soft);
+            border-radius: 14px;
+            border: 1px solid var(--surface-border);
+            font-weight: 500;
         }
 
         /* ===== НАВИГАЦИОННАЯ КНОПКА ===== */
@@ -177,16 +186,16 @@
         .nav-back a {
             display: inline-block;
             padding: 12px 28px;
-            background: #f0f0f2;
+            background: var(--surface);
             border-radius: 40px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            border: 1px solid #e4e4e6;
+            border: 1px solid var(--surface-border);
             transition: background 0.2s, transform 0.2s;
         }
         .nav-back a:hover {
-            background: #e4e4e8;
+            background: var(--surface-hover);
             transform: scale(1.02);
         }
         .nav-back a i {
@@ -200,13 +209,13 @@
             .page-header h1 { font-size: 22px; }
             .page-header .back-link { font-size: 18px; }
             .page-header .back-link i { font-size: 20px; }
-            .page-header h1 .smile-icon { font-size: 28px; }
             .social-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
             .social-item .social-desc { padding: 0 14px 12px 14px; font-size: 13px; }
+            .social-note { font-size: 13px; padding: 12px 14px; }
         }
         @media (max-width: 400px) {
             .page-header h1 { font-size: 19px; }
-            .page-header h1 .smile-icon { font-size: 24px; }
+            .social-note { font-size: 12px; }
         }
     </style>
 </head>
@@ -214,14 +223,16 @@
 
 <div class="container">
 
-    <!-- ===== ЗАГОЛОВОК СТРАНИЦЫ ===== -->
+    <!-- ===== ЗАГОЛОВОК СТРАНИЦЫ: НАЗАД + H1 + ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== -->
     <div class="page-header fade-item visible">
-        <a href="#" class="back-link" onclick="history.back(); return false;">
+        <a href="#" class="back-link" onclick="history.back(); return false;" aria-label="Назад">
             <i class="fas fa-arrow-left"></i>
         </a>
-        <h1>
-            <span class="smile-icon">🌐</span> Соцсети
-        </h1>
+        <h1>Соцсети</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+            <i class="fas fa-moon icon-moon"></i>
+            <i class="fas fa-sun icon-sun"></i>
+        </button>
     </div>
 
     <!-- ===== СОЦСЕТИ ===== -->
@@ -248,6 +259,11 @@
         </div>
     </div>
 
+    <!-- ===== ПОДПИСЬ ПОД СОЦСЕТЯМИ ===== -->
+    <div class="social-note fade-item">
+        Во всех соцсетях есть уникальный контент, рекомендуется подписаться на все
+    </div>
+
     <!-- ===== КНОПКА НАЗАД ===== -->
     <div class="nav-back fade-item">
         <a href="#" onclick="history.back(); return false;">
@@ -258,7 +274,7 @@
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    /* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
     (function() {
         const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {

@@ -4,14 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
     <title>Мерч · Экзистенциальные мемы</title>
-    
+
     <!-- ===== FAVICON ===== -->
     <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
     <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
-    
+
+    <!-- ===== ТЕМА (глобальная) ===== -->
+    <link rel="stylesheet" href="../theme.css" />
+    <script src="../theme.js"></script>
+
+    <!-- ===== ИКОНКИ + ШРИФТЫ ===== -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
     <style>
         * {
             margin: 0;
@@ -20,26 +26,28 @@
         }
         body {
             font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: #FF88C2;
+            background: var(--bg);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
             padding: 16px;
             margin: 0;
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.35s ease;
         }
         .container {
             max-width: 580px;
             width: 100%;
-            background: #ffffff;
+            background: var(--card);
             border-radius: 32px;
             padding: 24px 20px 32px;
-            box-shadow: 0 20px 40px -12px rgba(0,0,0,0.2), 0 4px 12px rgba(0,0,0,0.04);
-            transition: box-shadow 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 20px 40px -12px var(--card-shadow), 0 4px 12px rgba(0,0,0,0.04);
+            transition: box-shadow 0.3s ease, transform 0.3s ease, background-color 0.35s ease;
             backdrop-filter: blur(2px);
         }
         .container:hover {
-            box-shadow: 0 28px 48px -16px rgba(0,0,0,0.25);
+            box-shadow: 0 28px 48px -16px var(--card-shadow-hover);
         }
 
         /* ===== АНИМАЦИИ ПОЯВЛЕНИЯ ===== */
@@ -64,11 +72,11 @@
         .fade-item:nth-child(9) { transition-delay: 0.43s; }
         .fade-item:nth-child(10) { transition-delay: 0.48s; }
 
-        /* ===== ШАПКА С КНОПКОЙ НАЗАД ===== */
+        /* ===== ШАПКА ===== */
         .page-header {
             margin-bottom: 20px;
             padding-bottom: 12px;
-            border-bottom: 1px solid rgba(240, 224, 232, 0.6);
+            border-bottom: 1px solid var(--divider);
             display: flex;
             align-items: center;
             gap: 14px;
@@ -76,7 +84,7 @@
         }
         .page-header .back-link {
             font-size: 24px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             display: inline-flex;
             align-items: center;
@@ -84,13 +92,13 @@
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: #f0f0f2;
+            background: var(--surface);
             transition: background 0.2s, transform 0.2s, color 0.2s;
             flex-shrink: 0;
         }
         .page-header .back-link:hover {
-            background: #e4e4e8;
-            color: #FF88C2;
+            background: var(--surface-hover);
+            color: var(--accent);
             transform: scale(1.06);
         }
         .page-header .back-link i {
@@ -100,28 +108,28 @@
             font-size: 28px;
             font-weight: 700;
             letter-spacing: -0.2px;
-            color: #111;
+            color: var(--text);
             line-height: 1.2;
             flex: 1;
         }
 
         /* ===== МЕРЧ ===== */
         .merch-block {
-            background: #f6f6f8;
+            background: var(--surface);
             border-radius: 20px;
             padding: 22px 20px 24px;
-            border: 1px solid #ececee;
-            transition: transform 0.3s ease, box-shadow 0.4s ease;
+            border: 1px solid var(--surface-border);
+            transition: transform 0.3s ease, box-shadow 0.4s ease, background-color 0.35s ease;
             margin-bottom: 24px;
         }
         .merch-block:hover {
             transform: translateY(-3px);
-            box-shadow: 0 12px 28px rgba(0,0,0,0.06);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.1);
         }
         .merch-sticker-title {
             font-size: 22px;
             font-weight: 700;
-            color: #111;
+            color: var(--text);
             text-align: center;
             margin-bottom: 16px;
             letter-spacing: 0.5px;
@@ -130,8 +138,8 @@
             width: 100%;
             border-radius: 16px;
             overflow: hidden;
-            border: 1px solid #e4e4e6;
-            background: #ffffff;
+            border: 1px solid var(--surface-border);
+            background: var(--card);
             margin-bottom: 16px;
             aspect-ratio: 2160 / 3048;
             display: flex;
@@ -141,7 +149,7 @@
         }
         .merch-image-wrapper:hover {
             transform: scale(1.01);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         .merch-image-wrapper img {
             width: 100%;
@@ -155,27 +163,27 @@
         }
         .merch-desc {
             font-size: 15px;
-            color: #1a1a1a;
+            color: var(--text);
             line-height: 1.8;
             margin-bottom: 18px;
         }
         .merch-desc strong {
-            color: #000;
+            color: var(--text-strong);
             font-weight: 700;
         }
         .merch-price {
-            background: #ffffff;
+            background: var(--card);
             border-radius: 14px;
             padding: 14px 18px;
-            border: 1px solid #e4e4e6;
+            border: 1px solid var(--surface-border);
             margin-bottom: 18px;
             text-align: center;
             font-size: 18px;
             font-weight: 600;
-            color: #111;
+            color: var(--text);
         }
         .merch-price span {
-            color: #FF88C2;
+            color: var(--accent);
             font-size: 22px;
         }
         .merch-contacts {
@@ -189,26 +197,26 @@
             justify-content: center;
             gap: 10px;
             font-size: 16px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
-            background: #ffffff;
+            background: var(--btn-bg);
             padding: 12px 22px;
             border-radius: 40px;
-            border: 1px solid #dcdcde;
+            border: 1px solid var(--btn-border);
             transition: background 0.25s ease, border-color 0.25s, transform 0.2s, box-shadow 0.3s;
             font-weight: 500;
             flex: 1 1 auto;
             min-width: 140px;
         }
         .merch-contacts a:hover {
-            background: #fcfcfc;
-            border-color: #c0c0c4;
+            background: var(--btn-bg-hover);
+            border-color: var(--accent);
             transform: scale(1.03);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.04);
+            box-shadow: 0 6px 16px var(--accent-soft);
         }
         .merch-contacts a i {
             font-size: 20px;
-            color: #FF88C2;
+            color: var(--accent);
         }
 
         /* ===== КНОПКА НАЗАД (внизу) ===== */
@@ -219,16 +227,16 @@
         .nav-back a {
             display: inline-block;
             padding: 12px 28px;
-            background: #f0f0f2;
+            background: var(--surface);
             border-radius: 40px;
-            color: #111;
+            color: var(--text);
             text-decoration: none;
             font-weight: 500;
-            border: 1px solid #e4e4e6;
+            border: 1px solid var(--surface-border);
             transition: background 0.2s, transform 0.2s;
         }
         .nav-back a:hover {
-            background: #e4e4e8;
+            background: var(--surface-hover);
             transform: scale(1.02);
         }
         .nav-back a i {
@@ -259,21 +267,25 @@
 
 <div class="container">
 
-    <!-- ===== ШАПКА С КНОПКОЙ НАЗАД ===== -->
+    <!-- ===== ШАПКА: НАЗАД + ПЕРЕКЛЮЧАТЕЛЬ ТЕМЫ ===== -->
     <div class="page-header fade-item visible">
-        <a href="#" class="back-link" onclick="history.back(); return false;">
+        <a href="#" class="back-link" onclick="history.back(); return false;" aria-label="Назад">
             <i class="fas fa-arrow-left"></i>
         </a>
         <h1>Наш мерч</h1>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+            <i class="fas fa-moon icon-moon"></i>
+            <i class="fas fa-sun icon-sun"></i>
+        </button>
     </div>
 
     <!-- ===== МЕРЧ ===== -->
     <div class="merch-block fade-item">
         <div class="merch-sticker-title">СТИКЕРПАК "В НАЧАЛЕ БЫЛ МЕМ"</div>
-        
+
         <div class="merch-image-wrapper">
-            <img 
-                src="https://i.pinimg.com/736x/97/50/5c/97505c58ec8545f3ee7d4da83797abe0.jpg" 
+            <img
+                src="https://i.pinimg.com/736x/97/50/5c/97505c58ec8545f3ee7d4da83797abe0.jpg"
                 alt="Стикеры Экзистенциальные мемы" loading="lazy"
             />
         </div>
@@ -305,7 +317,7 @@
 </div>
 
 <script>
-    // ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ =====
+    /* ===== АНИМАЦИЯ ПРИ СКРОЛЛЕ ===== */
     (function() {
         const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
         if ('IntersectionObserver' in window) {
