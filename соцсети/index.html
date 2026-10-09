@@ -69,6 +69,7 @@
         .fade-item:nth-child(6) { transition-delay: 0.28s; }
         .fade-item:nth-child(7) { transition-delay: 0.33s; }
         .fade-item:nth-child(8) { transition-delay: 0.38s; }
+        .fade-item:nth-child(9) { transition-delay: 0.43s; }
 
         /* ===== ЗАГОЛОВОК СТРАНИЦЫ ===== */
         .page-header {
@@ -164,18 +165,22 @@
             color: var(--accent);
         }
 
-        /* ===== ПОДПИСЬ ПОД СОЦСЕТЯМИ ===== */
-        .social-note {
-            text-align: center;
-            font-size: 15px;
-            color: var(--text-soft);
-            line-height: 1.6;
-            padding: 14px 18px;
-            margin-bottom: 24px;
-            background: var(--accent-soft);
-            border-radius: 14px;
+        /* ===== БЛОК С РЕКОМЕНДАЦИЕЙ ===== */
+        .recommendation-box {
+            background: var(--surface);
             border: 1px solid var(--surface-border);
-            font-weight: 500;
+            border-radius: 16px;
+            padding: 16px 20px;
+            margin-bottom: 24px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--text);
+            text-align: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .recommendation-box i {
+            color: var(--accent);
+            margin-right: 8px;
         }
 
         /* ===== НАВИГАЦИОННАЯ КНОПКА ===== */
@@ -211,11 +216,11 @@
             .page-header .back-link i { font-size: 20px; }
             .social-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
             .social-item .social-desc { padding: 0 14px 12px 14px; font-size: 13px; }
-            .social-note { font-size: 13px; padding: 12px 14px; }
+            .recommendation-box { font-size: 14px; padding: 14px 16px; }
         }
         @media (max-width: 400px) {
             .page-header h1 { font-size: 19px; }
-            .social-note { font-size: 12px; }
+            .recommendation-box { font-size: 13px; padding: 12px 14px; }
         }
     </style>
 </head>
@@ -259,9 +264,10 @@
         </div>
     </div>
 
-    <!-- ===== ПОДПИСЬ ПОД СОЦСЕТЯМИ ===== -->
-    <div class="social-note fade-item">
-        Во всех соцсетях есть уникальный контент, рекомендуется подписаться на все
+    <!-- ===== БЛОК С РЕКОМЕНДАЦИЕЙ ===== -->
+    <div class="recommendation-box fade-item">
+        <i class="fas fa-circle-info"></i>
+        Во всех соцсетях есть уникальный контент, рекомендуется подписаться на все, чтобы ничего не пропустить
     </div>
 
     <!-- ===== КНОПКА НАЗАД ===== -->
