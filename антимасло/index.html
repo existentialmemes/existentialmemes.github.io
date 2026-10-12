@@ -191,20 +191,24 @@
             border: 1px solid var(--surface-border);
             overflow: hidden;
             transition: background 0.25s ease, transform 0.25s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.3s ease;
+            /* Убираем отступы, чтобы ссылка заняла весь блок */
+            padding: 0;
         }
         .social-item:hover {
             background: var(--surface-hover);
             transform: translateY(-2px) scale(1.008);
             box-shadow: 0 8px 18px rgba(0,0,0,0.08);
         }
+        /* Ссылка теперь занимает весь блок social-item */
         .social-item > a {
             display: block;
-            padding: 14px 18px 4px 18px;
+            padding: 14px 18px 12px 18px; /* объединяем отступы заголовка и описания */
             color: var(--text);
             text-decoration: none;
             font-size: 18px;
             font-weight: 500;
         }
+        /* Иконка внутри ссылки */
         .social-item > a i {
             margin-right: 12px;
             width: 24px;
@@ -215,12 +219,16 @@
         .social-item:hover > a i {
             transform: scale(1.1);
         }
+        /* Описание теперь внутри ссылки, поэтому стилизуем его как span */
         .social-item .social-desc {
-            padding: 0 18px 12px 18px;
+            display: block; /* чтобы занимало всю ширину */
+            margin-top: 4px;
             font-size: 14px;
             color: var(--text);
             line-height: 1.5;
+            font-weight: 400;
         }
+        /* Ссылки внутри описания (если есть) – оставляем как есть, но они теперь часть общей ссылки */
         .social-item .social-desc a {
             display: inline;
             padding: 0;
@@ -315,8 +323,8 @@
             .profile-name { font-size: 24px; }
             .profile-role { font-size: 16px; }
             .profile-quote { font-size: 15px; padding: 14px 16px; }
-            .social-item > a { font-size: 16px; padding: 12px 14px 2px 14px; }
-            .social-item .social-desc { padding: 0 14px 10px 14px; font-size: 13px; }
+            .social-item > a { font-size: 16px; padding: 12px 14px 10px 14px; }
+            .social-item .social-desc { font-size: 13px; margin-top: 3px; }
             .social-item .social-desc a { font-size: 13px; }
             .recommendation-box { font-size: 14px; padding: 14px 16px; }
             .pelmeni-btn { font-size: 17px; padding: 12px 24px; }
@@ -372,17 +380,24 @@
     <div class="social-title fade-item">Мои соцсети</div>
 
     <div class="social-grid">
+        <!-- Теперь весь блок обёрнут в ссылку -->
         <div class="social-item fade-item">
-            <a href="https://t.me/antimaslo" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
-            <div class="social-desc">Мысли, кружки, жизнь</div>
+            <a href="https://t.me/antimaslo" target="_blank">
+                <i class="fa-brands fa-telegram"></i> Telegram
+                <span class="social-desc">Мысли, кружки, жизнь</span>
+            </a>
         </div>
         <div class="social-item fade-item">
-            <a href="https://www.youtube.com/@antimaslo" target="_blank"><i class="fa-brands fa-youtube"></i> YouTube</a>
-            <div class="social-desc">Длинные видео</div>
+            <a href="https://www.youtube.com/@antimaslo" target="_blank">
+                <i class="fa-brands fa-youtube"></i> YouTube
+                <span class="social-desc">Длинные видео</span>
+            </a>
         </div>
         <div class="social-item fade-item">
-            <a href="https://www.tiktok.com/@stepa_antimaslo" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
-            <div class="social-desc">Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое</div>
+            <a href="https://www.tiktok.com/@stepa_antimaslo" target="_blank">
+                <i class="fa-brands fa-tiktok"></i> TikTok
+                <span class="social-desc">Обзоры чужих мемов, уроки создания мемов, пошлые видео и многое другое</span>
+            </a>
         </div>
         <!--
         ============================================================
@@ -390,16 +405,18 @@
         ============================================================
 
         <div class="social-item fade-item">
-            <a href="https://ru.pinterest.com/antimaslo/" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
-            <div class="social-desc">Фото и видеоконтент</div>
+            <a href="https://ru.pinterest.com/antimaslo/" target="_blank">
+                <i class="fa-brands fa-pinterest"></i> Pinterest
+                <span class="social-desc">Фото и видеоконтент</span>
+            </a>
         </div>
 
         -->
         <div class="social-item fade-item">
-            <a href="https://vk.ru/im/channels/-240477125" target="_blank"><i class="fa-brands fa-vk"></i> ВКонтакте</a>
-            <div class="social-desc">
-                Только самое важное
-            </div>
+            <a href="https://vk.ru/im/channels/-240477125" target="_blank">
+                <i class="fa-brands fa-vk"></i> ВКонтакте
+                <span class="social-desc">Только самое важное</span>
+            </a>
         </div>
     </div>
 
@@ -449,4 +466,4 @@
 </script>
 
 </body>
-</html>
+                </html>
