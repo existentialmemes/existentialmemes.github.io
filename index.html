@@ -221,6 +221,58 @@
         }
 
         /* ============================================
+           ПОДПИСАТЬСЯ НА РАССЫЛКУ (отдельная CTA-кнопка)
+           ============================================ */
+        .subscribe-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            width: 100%;
+            margin: 0 0 24px;
+            padding: 16px 24px;
+            background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+            color: #fff;
+            border: none;
+            border-radius: 18px;
+            font-family: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.2px;
+            text-decoration: none;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 24px var(--accent-soft);
+            transition: transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.3s ease,
+                        filter 0.25s ease;
+        }
+        .subscribe-btn::after {
+            content: "";
+            position: absolute;
+            top: 0; left: -120%;
+            width: 60%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+            transform: skewX(-20deg);
+            transition: left 0.55s ease;
+            pointer-events: none;
+        }
+        .subscribe-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 14px 32px var(--accent-soft);
+            filter: brightness(1.05);
+        }
+        .subscribe-btn:hover::after { left: 130%; }
+        .subscribe-btn:active { transform: translateY(-1px) scale(0.99); }
+        .subscribe-btn i {
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+        .subscribe-btn:hover i { transform: rotate(-8deg) scale(1.12); }
+
+        /* ============================================
            ПОДДЕРЖАТЬ
            ============================================ */
         .support-block {
@@ -396,6 +448,7 @@
         .fade-item:nth-child(6) { transition-delay: 0.28s; }
         .fade-item:nth-child(7) { transition-delay: 0.33s; }
         .fade-item:nth-child(8) { transition-delay: 0.38s; }
+        .fade-item:nth-child(9) { transition-delay: 0.43s; }
 
         /* ============================================
            АДАПТИВ
@@ -408,6 +461,8 @@
             .project-avatar { width: 52px; height: 52px; }
             .section-btn { font-size: 16px; padding: 12px 14px; }
             .section-btn .icon-wrap { width: 36px; height: 36px; font-size: 16px; }
+            .subscribe-btn { font-size: 16px; padding: 14px 20px; border-radius: 16px; }
+            .subscribe-btn i { font-size: 18px; }
             .support-block { padding: 14px 14px 12px; }
             .card-item { padding: 10px 12px; font-size: 14px; gap: 8px; flex-wrap: nowrap; }
             .card-item .card-number { font-size: 13px; letter-spacing: 0.3px; }
@@ -423,6 +478,8 @@
             .greeting h1 { font-size: 19px; }
             .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
             .section-btn .icon-wrap { width: 32px; height: 32px; font-size: 14px; }
+            .subscribe-btn { font-size: 15px; padding: 12px 16px; gap: 10px; }
+            .subscribe-btn i { font-size: 16px; }
             .card-item .card-number { font-size: 12px; letter-spacing: 0.2px; }
             .card-item .card-label { font-size: 10px; padding: 1px 8px; }
             .card-item .card-icon { font-size: 20px; width: 24px; }
@@ -493,12 +550,13 @@
             <span class="btn-label">Контакты</span>
             <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
         </a>
-        <a href="https://vk.ru/app5748831_-224907173" class="section-btn fade-item" target="_blank" rel="noopener noreferrer">
-            <span class="icon-wrap"><i class="fa-solid fa-envelope-open-text"></i></span>
-            <span class="btn-label">Рассылка</span>
-            <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
-        </a>
     </div>
+
+    <!-- ===== ПОДПИСАТЬСЯ НА РАССЫЛКУ (отдельная CTA) ===== -->
+    <a href="https://vk.ru/app5748831_-224907173" class="subscribe-btn fade-item" target="_blank" rel="noopener noreferrer">
+        <i class="fa-solid fa-envelope-open-text"></i>
+        <span>Подписаться на рассылку</span>
+    </a>
 
     <!-- ===== ПОДДЕРЖАТЬ ===== -->
     <div class="support-block fade-item">
