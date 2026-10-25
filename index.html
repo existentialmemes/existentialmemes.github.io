@@ -58,7 +58,7 @@
         .container {
             max-width: 580px;
             width: 100%;
-            margin: auto 0;           /* ← не даёт обрезать верх при нехватке высоты */
+            margin: auto 0;           /* не даёт обрезать верх при нехватке высоты */
             background: var(--card);
             border-radius: 32px;
             padding: 24px 22px 32px;
@@ -172,10 +172,13 @@
             position: absolute;
             transition: opacity 0.3s ease, transform 0.3s ease;
         }
-        .title-row .theme-toggle .icon-sun { opacity: 0; transform: rotate(-90deg) scale(0.5); }
+        /* по умолчанию (светлая тема) — луна */
+        .title-row .theme-toggle .icon-sun  { opacity: 0; transform: rotate(-90deg) scale(0.5); }
         .title-row .theme-toggle .icon-moon { opacity: 1; transform: rotate(0) scale(1); }
-        body.dark-theme .title-row .theme-toggle .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
-        body.dark-theme .title-row .theme-toggle .icon-sun { opacity: 1; transform: rotate(0) scale(1); }
+
+        /* тёмная тема — класс is-dark на самой кнопке (управляется из JS) */
+        .title-row .theme-toggle.is-dark .icon-moon { opacity: 0; transform: rotate(90deg) scale(0.5); }
+        .title-row .theme-toggle.is-dark .icon-sun  { opacity: 1; transform: rotate(0) scale(1); }
 
         .greeting .desc-text {
             font-size: 15px;
@@ -691,6 +694,47 @@
         }
         document.body.removeChild(textArea);
     }
+
+    /* ============================================================
+       Переключение иконки солнце/луна на кнопке темы.
+       Работает независимо от того, как theme.js переключает тему:
+       проверяет class="dark-theme"/"dark" и data-theme="dark"
+       на <html> и <body>, и вешает .is-dark на саму кнопку.
+       ============================================================ */
+    (function () {
+        const btn = document.getElementById('themeToggle');
+        if (!btn) return;
+
+        const isDarkActive = () => {
+            const html = document.documentElement;
+            const body = document.body;
+            return (
+                body.classList.contains('dark-theme') ||
+                body.classList.contains('dark') ||
+                html.classList.contains('dark-theme') ||
+                html.classList.contains('dark') ||
+                html.getAttribute('data-theme') === 'dark' ||
+                body.getAttribute('data-theme') === 'dark'
+            );
+        };
+
+        const syncIcon = () => {
+            btn.classList.toggle('is-dark', isDarkActive());
+        };
+
+        /* синхронизация при загрузке */
+        syncIcon();
+
+        /* синхронизация после клика (theme.js успевает переключить тему) */
+        btn.addEventListener('click', () => {
+            setTimeout(syncIcon, 0);
+        });
+
+        /* если theme.js меняет тему асинхронно — подстрахуемся MutationObserver */
+        const mo = new MutationObserver(syncIcon);
+        mo.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+        mo.observe(document.body, { attributes: true, attributeFilter: ['class', 'data-theme'] });
+    })();
 </script>
 
 </body>
