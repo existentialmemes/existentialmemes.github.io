@@ -144,6 +144,19 @@
         .social-item:hover a i {
             transform: scale(1.12);
         }
+        /* ===== ИКОНКА MAX (inline SVG) ===== */
+        .social-item a .max-icon {
+            display: inline-block;
+            width: 26px;
+            height: 26px;
+            margin-right: 12px;
+            vertical-align: middle;
+            color: var(--accent);
+            transition: transform 0.2s ease, color 0.35s ease;
+        }
+        .social-item:hover a .max-icon {
+            transform: scale(1.12);
+        }
         .social-item .social-desc {
             padding: 0 18px 14px 18px;
             font-size: 14px;
@@ -215,6 +228,7 @@
             .page-header .back-link { font-size: 18px; }
             .page-header .back-link i { font-size: 20px; }
             .social-item a { font-size: 16px; padding: 12px 14px 2px 14px; }
+            .social-item a .max-icon { width: 20px; height: 20px; }
             .social-item .social-desc { padding: 0 14px 12px 14px; font-size: 13px; }
             .recommendation-box { font-size: 14px; padding: 14px 16px; }
         }
@@ -249,6 +263,15 @@
         <div class="social-item fade-item">
             <a href="https://ru.pinterest.com/ekzistentsializm" target="_blank"><i class="fa-brands fa-pinterest"></i> Pinterest</a>
             <div class="social-desc">Есть эксклюзивные мемы, которых нет нигде</div>
+        </div>
+        <div class="social-item fade-item">
+            <a href="https://max.ru/channel_ekzistencializm" target="_blank">
+                <svg class="max-icon" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                    <path fill="currentColor" d="M32 6C17.64 6 6 17.64 6 32c0 5.1 1.45 9.86 3.97 13.9L7 58l12.5-2.75C23.3 57.06 27.5 58 32 58c14.36 0 26-11.64 26-26S46.36 6 32 6zm0 8c9.94 0 18 8.06 18 18s-8.06 18-18 18c-3.9 0-7.5-1.25-10.45-3.38l-1.1-.8-5.4 1.19 1.24-5.2-.85-1.12A17.9 17.9 0 0 1 14 32c0-9.94 8.06-18 18-18z"/>
+                </svg>
+                MAX
+            </a>
+            <div class="social-desc">Новая соцсеть — присоединяйтесь к каналу</div>
         </div>
         <div class="social-item fade-item">
             <a href="https://t.me/ekzistencializm" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
