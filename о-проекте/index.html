@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes" />
+
+    <title>О проекте — Экзистенциальные мемы</title>
+    <meta name="description" content="О проекте «Экзистенциальные мемы» — авторский творческий проект Стёпы Антимасло: история, подход, сообщество котлеток и планы." />
+    <meta property="og:site_name" content="Экзистенциальные мемы" />
+    <meta property="og:title" content="О проекте — Экзистенциальные мемы" />
+    <meta property="og:description" content="История, творческий подход и сообщество проекта «Экзистенциальные мемы»." />
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Экзистенциальные мемы",
+      "alternateName": "Existential Memes",
+      "url": "https://existentialmemes.github.io/"
+    }
+    </script>
+
+    <!-- ===== FAVICON ===== -->
+    <link rel="icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="shortcut icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" type="image/jpeg" />
+    <link rel="apple-touch-icon" href="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg" />
+
+    <!-- ===== ТЕМА (глобальная) ===== -->
+    <link rel="stylesheet" href="../theme.css" />
+    <script src="../theme.js"></script>
+
+    <!-- ===== ИКОНКИ + ШРИФТЫ ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+
+    <style>
+        /* ============================================
+           СБРОС + БАЗА
+           ============================================ */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'Roboto Condensed', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg);
+            min-height: 100vh;
+            display: flex;
+            padding: 16px;
+            margin: 0;
+            color: var(--text);
+            transition: background-color 0.4s ease, color 0.35s ease;
+            position: relative;
+        }
+
+        .container {
+            max-width: 580px;
+            width: 100%;
+            margin: auto;
+            background: var(--card);
+            border-radius: 32px;
+            padding: 24px 22px 32px;
+            box-shadow:
+                0 20px 50px -16px var(--card-shadow),
+                0 4px 14px rgba(0, 0, 0, 0.1),
+                inset 0 1px 0 var(--card-border);
+            transition: box-shadow 0.35s ease, background-color 0.35s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .container::before {
+            content: "";
+            position: absolute;
+            top: -80px; right: -80px;
+            width: 220px; height: 220px;
+            background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+        }
+        .container > * { position: relative; z-index: 1; }
+
+        .container:hover {
+            box-shadow:
+                0 28px 60px -16px var(--card-shadow-hover),
+                0 6px 18px rgba(0, 0, 0, 0.12),
+                inset 0 1px 0 var(--card-border);
+        }
+
+        /* ============================================
+           ШАПКА
+           ============================================ */
+        .top-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+            gap: 10px;
+        }
+
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-soft);
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            padding: 8px 14px;
+            border-radius: 12px;
+            background: var(--surface);
+            border: 1px solid var(--surface-border);
+            transition: color 0.25s ease,
+                        background 0.25s ease,
+                        border-color 0.25s ease,
+                        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .back-btn i { font-size: 13px; transition: transform 0.25s ease; }
+        .back-btn:hover {
+            color: var(--accent-strong);
+            border-color: var(--accent);
+            background: var(--surface-hover);
+            transform: translateX(-2px);
+        }
+        .back-btn:hover i { transform: translateX(-3px); }
+
+        /* ============================================
+           ПРИВЕТСТВИЕ
+           ============================================ */
+        .greeting {
+            margin-bottom: 8px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--divider);
+        }
+        .greeting-header {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .project-avatar {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+            flex-shrink: 0;
+            box-shadow: 0 6px 16px var(--accent-soft);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .project-avatar:hover {
+            transform: scale(1.06) rotate(-3deg);
+            box-shadow: 0 10px 22px rgba(255, 136, 194, 0.35);
+        }
+        .greeting h1 {
+            font-size: 26px;
+            font-weight: 700;
+            letter-spacing: -0.3px;
+            color: var(--text);
+            line-height: 1.2;
+        }
+        .greeting .desc-text {
+            font-size: 15px;
+            color: var(--text-soft);
+            line-height: 1.65;
+            font-weight: 400;
+        }
+        .greeting .desc-text strong {
+            color: var(--text-strong);
+            font-weight: 700;
+        }
+
+        /* ============================================
+           КОНТЕНТ СТАТЬИ
+           ============================================ */
+        .about-content {
+            display: flex;
+            flex-direction: column;
+            margin: 4px 0 24px;
+        }
+        .about-section {
+            padding: 18px 0;
+            border-bottom: 1px solid var(--divider);
+        }
+        .about-section:last-child { border-bottom: none; padding-bottom: 4px; }
+
+        .about-section h2 {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--text);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            line-height: 1.3;
+            letter-spacing: -0.2px;
+        }
+        .about-section h2::before {
+            content: "";
+            width: 4px;
+            height: 18px;
+            border-radius: 2px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+            flex-shrink: 0;
+        }
+
+        .about-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: var(--text-soft);
+            margin-bottom: 11px;
+        }
+        .about-section p:last-child { margin-bottom: 0; }
+
+        .about-section strong {
+            color: var(--text-strong);
+            font-weight: 700;
+        }
+
+        /* ===== ТЕГИ (исполнители) ===== */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin: 4px 0 12px;
+        }
+        .tag {
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 12px;
+            border-radius: 30px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+        .tag:hover {
+            transform: translateY(-1px);
+            background: var(--accent);
+            color: #fff;
+        }
+
+        /* ===== ФИНАЛЬНАЯ ЦИТАТА ===== */
+        .quote-block {
+            background: linear-gradient(145deg, var(--support-bg-1), var(--support-bg-2));
+            border: 1px solid var(--support-border);
+            border-radius: 18px;
+            padding: 22px 20px;
+            margin: 14px 0 12px;
+            text-align: center;
+            font-size: 21px;
+            font-weight: 700;
+            color: var(--text);
+            letter-spacing: -0.2px;
+            transition: transform 0.3s ease, box-shadow 0.4s ease;
+        }
+        .quote-block:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 32px var(--accent-soft);
+        }
+
+        /* ===== КНОПКА ВНИЗУ ===== */
+        .section-btn {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            background: var(--surface);
+            border-radius: 18px;
+            padding: 14px 18px;
+            border: 1px solid var(--surface-border);
+            text-decoration: none;
+            color: var(--text);
+            font-size: 18px;
+            font-weight: 600;
+            transition: background 0.25s ease,
+                        transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+                        box-shadow 0.3s ease,
+                        border-color 0.25s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        .section-btn::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 4px;
+            background: linear-gradient(180deg, var(--accent), var(--accent-strong));
+            transform: scaleY(0);
+            transform-origin: center;
+            transition: transform 0.3s ease;
+        }
+        .section-btn:hover {
+            background: var(--surface-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 24px var(--accent-soft);
+            border-color: var(--accent);
+        }
+        .section-btn:hover::before { transform: scaleY(1); }
+
+        .section-btn .icon-wrap {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            background: var(--accent-soft);
+            color: var(--accent-strong);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            flex-shrink: 0;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+        .section-btn:hover .icon-wrap {
+            background: var(--accent);
+            color: #fff;
+            transform: rotate(-6deg) scale(1.08);
+        }
+        .section-btn .btn-label { flex: 1; }
+        .section-btn .btn-arrow {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: transform 0.25s ease, color 0.25s ease;
+        }
+        .section-btn:hover .btn-arrow {
+            transform: translateX(4px);
+            color: var(--accent-strong);
+        }
+
+        /* ============================================
+           АНИМАЦИЯ ПОЯВЛЕНИЯ
+           ============================================ */
+        .fade-item {
+            opacity: 0;
+            transform: translateY(24px) scale(0.98);
+            transition: opacity 0.8s cubic-bezier(0.22, 1, 0.36, 1),
+                        transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+            will-change: transform, opacity;
+        }
+        .fade-item.visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+        .fade-item:nth-child(1)  { transition-delay: 0.03s; }
+        .fade-item:nth-child(2)  { transition-delay: 0.06s; }
+        .fade-item:nth-child(3)  { transition-delay: 0.09s; }
+        .fade-item:nth-child(4)  { transition-delay: 0.12s; }
+        .fade-item:nth-child(5)  { transition-delay: 0.15s; }
+        .fade-item:nth-child(6)  { transition-delay: 0.18s; }
+        .fade-item:nth-child(7)  { transition-delay: 0.21s; }
+        .fade-item:nth-child(8)  { transition-delay: 0.24s; }
+        .fade-item:nth-child(9)  { transition-delay: 0.27s; }
+        .fade-item:nth-child(10) { transition-delay: 0.30s; }
+        .fade-item:nth-child(11) { transition-delay: 0.33s; }
+        .fade-item:nth-child(12) { transition-delay: 0.36s; }
+
+        /* ============================================
+           КНОПКА ВВЕРХ
+           ============================================ */
+        .to-top {
+            position: fixed;
+            right: 22px;
+            bottom: 22px;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            border: 1px solid var(--surface-border);
+            background: var(--card);
+            color: var(--accent-strong);
+            font-size: 20px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 8px 22px var(--card-shadow), 0 2px 6px rgba(0,0,0,0.08);
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(12px) scale(0.9);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
+                        visibility 0.3s ease, background 0.2s ease, color 0.2s ease,
+                        border-color 0.2s ease, box-shadow 0.3s ease;
+            z-index: 50;
+        }
+        .to-top.show {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+        }
+        .to-top:hover {
+            background: var(--accent);
+            color: #fff;
+            border-color: var(--accent);
+            transform: translateY(-2px) scale(1.06);
+            box-shadow: 0 12px 28px var(--accent-soft);
+        }
+        .to-top:active {
+            transform: scale(0.94);
+        }
+
+        /* ============================================
+           АДАПТИВ
+           ============================================ */
+        @media (max-width: 500px) {
+            body { padding: 12px; }
+            .container { padding: 18px 14px 24px; border-radius: 24px; }
+            .greeting h1 { font-size: 22px; }
+            .greeting .desc-text { font-size: 14px; }
+            .project-avatar { width: 52px; height: 52px; }
+            .back-btn { font-size: 14px; padding: 7px 12px; }
+            .about-section { padding: 15px 0; }
+            .about-section h2 { font-size: 17px; margin-bottom: 10px; }
+            .about-section h2::before { height: 16px; }
+            .about-section p { font-size: 14px; line-height: 1.65; }
+            .quote-block { font-size: 18px; padding: 18px 16px; }
+            .section-btn { font-size: 16px; padding: 12px 14px; }
+            .section-btn .icon-wrap { width: 36px; height: 36px; font-size: 16px; }
+            .tag { font-size: 12px; padding: 3px 10px; }
+            .to-top { width: 46px; height: 46px; font-size: 17px; right: 14px; bottom: 14px; }
+        }
+        @media (max-width: 400px) {
+            .greeting-header { gap: 10px; }
+            .greeting h1 { font-size: 19px; }
+            .about-section h2 { font-size: 16px; }
+            .about-section p { font-size: 13.5px; }
+            .section-btn { font-size: 15px; padding: 10px 12px; gap: 10px; }
+            .section-btn .icon-wrap { width: 32px; height: 32px; font-size: 14px; }
+            .quote-block { font-size: 17px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- ===== ВЕРХНЯЯ ПАНЕЛЬ ===== -->
+    <div class="top-bar fade-item visible">
+        <a href="https://existentialmemes.github.io/" class="back-btn">
+            <i class="fa-solid fa-arrow-left"></i> На главную
+        </a>
+        <button class="theme-toggle" id="themeToggle" aria-label="Переключить тему" title="Переключить тему">
+            <i class="fas fa-moon icon-moon"></i>
+            <i class="fas fa-sun icon-sun"></i>
+        </button>
+    </div>
+
+    <!-- ===== ЗАГОЛОВОК ===== -->
+    <div class="greeting fade-item">
+        <div class="greeting-header">
+            <img
+                src="https://i.pinimg.com/280x280_RS/f2/0a/17/f20a1738866cab48647ec757ef4e18cd.jpg"
+                alt="Экзистенциальные мемы"
+                class="project-avatar" loading="lazy"
+            />
+            <h1>О проекте</h1>
+        </div>
+        <div class="desc-text">
+            <strong>«Экзистенциальные мемы»</strong> — авторский творческий проект
+            Стёпы Антимасло, существующий с 29 февраля 2024 года.
+        </div>
+    </div>
+
+    <!-- ===== КОНТЕНТ ===== -->
+    <div class="about-content">
+
+        <section class="about-section fade-item">
+            <h2>Что такое «Экзистенциальные мемы»?</h2>
+            <p>
+                <strong>«Экзистенциальные мемы»</strong> — авторский творческий проект
+                Стёпы Антимасло, существующий с 29 февраля 2024 года.
+            </p>
+            <p>
+                Это попытка соединить две вещи, которые изначально казались мне совершенно
+                разными: мемы и экзистенциализм. Хотя, если подумать, между ними гораздо
+                больше общего, чем может показаться.
+            </p>
+            <p>
+                Для меня экзистенциальный мем — это мем, который находится над повседневностью.
+                В нём можно разглядеть нечто большее, чем просто однослойную шутку или прямое
+                высказывание. Это что-то, в чём каждый может раскопать что-то своё, а может
+                вообще ничего не увидеть. И именно в этом заключается ценность.
+            </p>
+            <p>
+                Мемы здесь не обязательно должны быть смешными. Юмор — лишь один из инструментов
+                выражения мыслей. Иногда вместо него остаются только образ, атмосфера,
+                противоречие или мысль, которую невозможно выразить словами.
+            </p>
+            <p>
+                Мне нравится, когда для понимания мема ничего не нужно объяснять. Когда на
+                изображении нет ни единого слова, но в нём можно обнаружить целую вселенную смыслов.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Как всё начиналось</h2>
+            <p>
+                Идея проекта появилась в феврале 2024 года, когда я учился в десятом классе.
+            </p>
+            <p>
+                К тому моменту я уже очень любил мемы и вёл постироничный паблик. Одновременно
+                с этим я начал увлекаться экзистенциализмом, читать философские произведения
+                и размышлять над разными вопросами.
+            </p>
+            <p>
+                Однажды мне захотелось объединить эти два стихии. Я начал искать экзистенциальные
+                мемы в интернете, но обнаружил, что ничего такого нет. В русскоязычном пространстве
+                таких мемов мне найти не удалось, а зарубежные варианты совершенно не соответствовали
+                тому, что я хотел увидеть.
+            </p>
+            <p>
+                Тогда я решил сделать их самостоятельно.
+            </p>
+            <p>
+                Сначала я создал пять картинок и показал их другу. Ему очень понравилось. После
+                этого я создал паблик, опубликовал первые работы и продолжил делать новые.
+            </p>
+            <p>
+                Никакого грандиозного плана у меня тогда не было. Я просто делал то, что мне
+                нравилось. Постепенно появились первые подписчики, положительная обратная связь,
+                обсуждения и целое сообщество.
+            </p>
+            <p>
+                Так 29 февраля 2024 года началась история «Экзистенциальных мемов».
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Как менялось творчество</h2>
+            <p>
+                Первые мемы были преимущественно философскими. Они строились на отсылках
+                к произведениям Сартра, Кафки, Ницше и Камю. Мне хотелось переосмысливать
+                прочитанное и выражать философские идеи посредством мемов.
+            </p>
+            <p>
+                Со временем в моём творчестве стали появляться самые разные темы: грусть,
+                самокопание, любовь, личные переживания, повседневные ситуации и наблюдения
+                за окружающим миром.
+            </p>
+            <p>
+                При этом я бы не стал делить историю проекта на чёткие периоды. Всё происходило
+                довольно хаотично. Темы перемешивались, возвращались, сосуществовали и продолжают
+                меняться до сих пор.
+            </p>
+            <p>
+                Постепенно я стал всё больше обращаться к собственной жизни. Теперь мне необязательно
+                предварительно прочитать книгу или посмотреть фильм, чтобы создать мем. Иногда
+                достаточно обычной ситуации, случайной фразы или какой-нибудь детали, которую
+                я заметил в повседневности.
+            </p>
+            <p>
+                Я понял, что людям интересна именно эта искренность. Возможность увидеть
+                не искусственно придуманную историю, а что-то настоящее, пропущенное через
+                моё восприятие.
+            </p>
+            <p>
+                Я делаю мемы ровно так, как чувствую.
+            </p>
+            <p>
+                Я не стремлюсь преувеличивать свои переживания ради эффекта. Иногда говорю о себе,
+                иногда — о других людях, иногда — о своих мыслях и мечтах. Но всё это так или иначе
+                проходит через мою призму.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Мой творческий подход</h2>
+            <p>
+                У меня нет какой-то определённой системы создания мемов. Я не придерживаюсь
+                заранее установленных правил, не ограничиваю себя конкретными темами и не пытаюсь
+                следовать определённой эстетике.
+            </p>
+            <p>
+                Я просто замечаю в повседневности что-то интересное: деталь с особенной атмосферой,
+                странное сочетание обстоятельств, какое-нибудь противоречие или ситуацию, которая
+                выбивается из привычного представления о мире. После этого думаю, как можно выразить
+                замеченное с помощью картинки. Визуальный стиль моих работ постоянно меняется.
+                Поэтому моей главной авторской особенностью я считаю не конкретную эстетику,
+                а образ мышления и способ формулирования мыслей. Мне говорили, что мои мемы можно
+                узнать именно по формулировкам.
+            </p>
+            <p>
+                Я публикую всё, что создаю. Сейчас мой ритм довольно устойчивый: примерно
+                один-два новых мема в день. В начале проекта поддерживать такую регулярность
+                иногда было непросто, но со временем ежедневное создание мемов стало естественной
+                частью моей жизни.
+            </p>
+            <p>
+                Источники вдохновения могут быть совершенно разными. Это книги, музыка, фильмы,
+                другие мемы, собственные фотографии, случайные разговоры и самые обыкновенные
+                жизненные ситуации.
+            </p>
+            <p>
+                Особенное влияние на меня оказала русская рэп-сцена. Среди исполнителей, чьё
+                творчество сопровождало меня и повлияло на моё мировосприятие:
+            </p>
+            <div class="tags">
+                <span class="tag">booker</span>
+                <span class="tag">pyrokinesis</span>
+                <span class="tag">playingtheangel</span>
+                <span class="tag">sted d</span>
+                <span class="tag">aikko</span>
+                <span class="tag">Гнилаялирика</span>
+                <span class="tag">metox</span>
+                <span class="tag">Слава КПСС</span>
+            </div>
+            <p>
+                Я никогда не ставил перед собой задачу намеренно перенимать их стиль. Иногда
+                отправной точкой становились цитаты или идеи из песен, иногда музыка просто
+                наталкивала меня на мысли, которые впоследствии превращались в мемы.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Свобода интерпретации</h2>
+            <p>
+                Одно из важных изменений в моём творческом подходе — постепенный отказ от объяснений.
+            </p>
+            <p>
+                Когда я только начинал, то часто оставлял под мемами пояснения: рассказывал,
+                на какого философа ссылаюсь, какое произведение имею в виду или какая строчка
+                из песни стала источником идеи.
+            </p>
+            <p>
+                Теперь я практически никогда этого не делаю.
+            </p>
+            <p>
+                Мне кажется, что объяснение зачастую ограничивает восприятие работы. Если я заранее
+                рассказываю человеку, что именно он должен увидеть, то лишаю его возможности
+                самостоятельно обнаружить собственный смысл.
+            </p>
+            <p>
+                Я хочу, чтобы каждый воспринимал мем так, как ему хочется и как ему необходимо
+                именно в этот момент.
+            </p>
+            <p>
+                Особенно ценю ситуации, когда подписчики находят в моих работах смыслы, о которых
+                я сам даже не задумывался. Для меня это один из лучших показателей того, что мем получился.
+            </p>
+            <p>
+                Ведь иногда работа становится чем-то большим, чем первоначальный замысел её автора.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Сообщество котлеток</h2>
+            <p>
+                «Экзистенциальные мемы» — это не только картинки и публикации. Это ещё и люди,
+                которые собираются вокруг проекта.
+            </p>
+            <p>
+                Наше сообщество – <strong>котлетки</strong>.
+            </p>
+            <p>
+                История этого названия началась с одного из первых мемов во ВКонтакте, посвящённого
+                котлеткам. Под следующей публикацией кто-то попросил снова сделать мем на эту тему.
+                Другие подписчики подхватили шутку, и постепенно котлетки стали нашим внутренним мемом.
+            </p>
+            <p>
+                Со временем это превратилось в нечто гораздо большее, чем просто шутка.
+            </p>
+            <p>
+                Я общаюсь с котлетками в чатах, отвечаю на вопросы, обсуждаю разные темы. Иногда
+                идеи участников превращаются в новые мемы, иногда я использую присланные ими
+                изображения. Бывает, что мы общаемся лично, созваниваемся и даже встречаемся
+                в реальной жизни.
+            </p>
+            <p>
+                Мне важно, чтобы сообщество оставалось открытым к диалогу. Уже с первых дней
+                существования проекта я замечал, насколько котлетки готовы обсуждать публикации,
+                делиться собственными позициями и общаться друг с другом.
+            </p>
+            <p>
+                Я воспринимаю аудиторию не просто как цифру, а как <strong>ЖИВЫХ людей</strong>,
+                которым моё творчество действительно делает жизнь лучше.
+            </p>
+            <p>
+                Мне писали, что мои мемы помогали им переживать сложные периоды, лучше понимать
+                себя и чувствовать, что они не одиноки. Иногда человеку достаточно увидеть, что
+                кто-то ещё испытывает похожие чувства, и обнаружить людей, с которыми можно
+                этим поделиться.
+            </p>
+            <p>
+                А иногда мем просто смешит и разбавляет серые будни.
+            </p>
+            <p>
+                Всё это имеет для меня огромное значение и даёт понимание, что то, чем я занимаюсь,
+                действительно кому-то нужно.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Зачем нужны статьи?</h2>
+            <p>
+                Помимо мемов, на сайте есть статьи о философии, мыслителях и других интересующих
+                меня темах.
+            </p>
+            <p>
+                Я пишу о том, что интересно мне самому сейчас или было интересно раньше. Мне хочется
+                делиться контекстом, который повлиял на моё мышление и творчество.
+            </p>
+            <p>
+                В статьях можно подробнее познакомиться с идеями Ницше, Сартра, Кафки, Камю,
+                Пелевина и других авторов, а также с вопросами, которые возникают при размышлениях
+                о человеке и окружающем мире. Это возможность немного глубже заглянуть в контекст
+                моих работ и лучше понять, откуда появляются некоторые идеи.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Экзистенциальный свэг</h2>
+            <p>
+                У проекта есть и собственный мерч — в частности, наклейки с экзистенциальными мемами.
+            </p>
+            <p>
+                Для меня это возможность сделать проект частью повседневной жизни сообщества.
+            </p>
+            <p>
+                Мне нравится сама идея, что человек может носить с собой наклейку с любимым мемом,
+                видеть её каждый день и таким образом сохранять небольшую частичку нашего
+                общего пространства.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Будущее проекта</h2>
+            <p>
+                Я не строю жёстких долгосрочных планов. Обычно я определяю для себя небольшие цели
+                и постепенно двигаюсь к ним, занимаясь тем, что интересно мне в данный момент.
+            </p>
+            <p>
+                Сейчас мне особенно интересно снимать видео, рассказывать о мемах и делиться
+                различными мыслями. Мне хочется глубже знакомить участников сообщества с контекстом
+                моего творчества, чтобы мы лучше понимали друг друга.
+            </p>
+            <p>
+                В перспективе я хотел бы развивать сообщество, проводить больше встреч и создавать
+                новые возможности для общения.
+            </p>
+            <p>
+                Но главная задача на данный момент — сформировать крепкое сообщество людей,
+                которым действительно близко то, что происходит внутри проекта.
+            </p>
+            <p>
+                Я также хочу однажды выстроить свою жизнь таким образом, чтобы иметь возможность
+                заниматься исключительно творчеством: создавать мемы, снимать видео, делиться
+                мыслями и воплощать собственные идеи.
+            </p>
+            <p>
+                Для меня это и есть настоящее представление об успехе.
+            </p>
+        </section>
+
+        <section class="about-section fade-item">
+            <h2>Во что я верю</h2>
+            <p>
+                Я не считаю, что человек обязан постоянно куда-то бежать, достигать навязанных
+                кем-то целей и доказывать окружающим свою состоятельность.
+            </p>
+            <p>
+                Мне гораздо ближе идея спокойного движения по жизни, самостоятельного мышления
+                и умения ценить то, что у тебя уже есть.
+            </p>
+            <p>
+                Необязательно соответствовать чужим ожиданиям. Необязательно постоянно стремиться
+                к чему-то большему. Можно иметь собственное мнение, заниматься тем, что тебе
+                интересно, и быть довольным своей жизнью.
+            </p>
+            <div class="quote-block">Я пропагандирую счастье.</div>
+            <p>
+                И, пожалуй, это лучше всего описывает то, что я хотел бы передать через своё творчество.
+            </p>
+        </section>
+
+    </div>
+
+    <!-- ===== НАЗАД НА ГЛАВНУЮ ===== -->
+    <a href="https://existentialmemes.github.io/" class="section-btn fade-item">
+        <span class="icon-wrap"><i class="fa-solid fa-house"></i></span>
+        <span class="btn-label">На главную</span>
+        <span class="btn-arrow"><i class="fa-solid fa-chevron-right"></i></span>
+    </a>
+
+</div>
+
+<!-- ===== КНОПКА ВВЕРХ ===== -->
+<button class="to-top" id="toTop" aria-label="Наверх" title="Наверх">
+    <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+<script>
+    /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
+    (function() {
+        const fadeItems = document.querySelectorAll('.fade-item:not(.visible)');
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -30px 0px'
+            });
+            fadeItems.forEach(el => observer.observe(el));
+        } else {
+            fadeItems.forEach(el => el.classList.add('visible'));
+        }
+    })();
+
+    /* ===== КНОПКА НАВЕРХ ===== */
+    (function() {
+        const btn = document.getElementById('toTop');
+        if (!btn) return;
+
+        const onScroll = () => {
+            if (window.scrollY > 300) btn.classList.add('show');
+            else btn.classList.remove('show');
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+
+        btn.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    })();
+</script>
+
+</body>
+</html>
